@@ -739,7 +739,7 @@ canvas { display: block; width: 100%; }
     <span class="logo-sub">Crypto Engine</span>
   </div>
   <div class="masthead-right">
-    <span style="color:var(--ghost)">2026-03-14 · 16:39 UTC · 550 labeled</span><br>
+    <span style="color:var(--ghost)">2026-03-14 · 16:42 UTC · 550 labeled</span><br>
     <span class="live-indicator"><span class="pulse"></span>Pipeline active</span>
   </div>
 </div>
@@ -1214,161 +1214,23 @@ function switchTab(id){
 }
 
 // ── DATA ──
-const sniperRows=[
-  {rank:1,sym:'ZEC',price:206.05,ret:0.007382,va:0.8329,rs:0.02755,ts:0.9522,prob:0.4408,lbl:'NOUP'},
-  {rank:2,sym:'XRP',price:1.3518,ret:0.003042,va:1.7953,rs:-0.00057,ts:0.4118,prob:0.4354,lbl:'NOUP'},
-  {rank:3,sym:'PENGU',price:0.006757,ret:0.007155,va:0.5866,rs:0.02499,ts:0.3934,prob:0.3735,lbl:'NOUP'},
-  {rank:4,sym:'VVV',price:5.3988,ret:0.008820,va:0.6622,rs:-0.05072,ts:0.3151,prob:0.4658,lbl:'NOUP'},
-  {rank:5,sym:'HBAR',price:0.09463,ret:-0.00085,va:2.2292,rs:-0.00633,ts:0.3002,prob:0.5084,lbl:'UP'},
-  {rank:6,sym:'TAO',price:195.37,ret:-0.00438,va:1.6771,rs:0.06847,ts:0.2242,prob:0.4070,lbl:'NOUP'},
-  {rank:7,sym:'LINK',price:8.792,ret:0.001709,va:0.9479,rs:0.01439,ts:0.0822,prob:0.4267,lbl:'NOUP'},
-  {rank:8,sym:'BTC',price:67867.14,ret:0.002374,va:0.5983,rs:0.00851,ts:0.0194,prob:0.4789,lbl:'NOUP'},
-  {rank:9,sym:'SUI',price:0.907,ret:0.002431,va:0.5816,rs:0.01438,ts:-0.0024,prob:0.4328,lbl:'NOUP'},
-  {rank:10,sym:'LTC',price:53.37,ret:0.001313,va:0.9459,rs:0.00128,ts:-0.1226,prob:0.4669,lbl:'NOUP'},
-  {rank:11,sym:'SOL',price:83.71,ret:-0.00203,va:1.4492,rs:0.00954,ts:-0.2079,prob:0.4698,lbl:'NOUP'},
-  {rank:12,sym:'ETH',price:1996.06,ret:-0.00105,va:0.8313,rs:0.01620,ts:-0.2721,prob:0.4717,lbl:'NOUP'},
-  {rank:13,sym:'ADA',price:0.2548,ret:-0.00235,va:1.4097,rs:0.00483,ts:-0.2871,prob:0.5117,lbl:'UP'},
-  {rank:14,sym:'AVAX',price:9.10,ret:0.001100,va:0.4099,rs:0.01707,ts:-0.3354,prob:0.4597,lbl:'NOUP'},
-  {rank:15,sym:'ZRO',price:1.972,ret:0.001524,va:0.6688,rs:0.00959,ts:-0.6007,prob:0.4532,lbl:'NOUP'},
-];
-const symWRs=[
-  {s:'PEPE-USD',t:7,w:.714},{s:'HBAR-USD',t:23,w:.696},{s:'NEAR-USD',t:6,w:.667},
-  {s:'XRP-USD',t:23,w:.652},{s:'HYPE-USD',t:8,w:.625},{s:'BERA-USD',t:5,w:.600},
-  {s:'BCH-USD',t:5,w:.600},{s:'BTC-USD',t:23,w:.522},{s:'AVAX-USD',t:14,w:.500},
-  {s:'LTC-USD',t:24,w:.500},{s:'SUI-USD',t:20,w:.500},{s:'ZEC-USD',t:19,w:.474},
-  {s:'ADA-USD',t:22,w:.455},{s:'SOL-USD',t:25,w:.440},{s:'DOGE-USD',t:19,w:.421},
-  {s:'ETH-USD',t:24,w:.417},{s:'PENGU-USD',t:17,w:.412},{s:'LINK-USD',t:22,w:.364},
-  {s:'TAO-USD',t:18,w:.333},{s:'XLM-USD',t:13,w:.231},
-];
-const regHist=[
-  {ts:'02/16',p:68372,s:'Neutral'},{ts:'02/17',p:67633,s:'Bullish'},{ts:'02/18',p:67494,s:'Neutral'},
-  {ts:'02/19',p:66609,s:'Neutral'},{ts:'02/20',p:67363,s:'Neutral'},{ts:'02/21',p:68021,s:'Neutral'},
-  {ts:'02/22',p:68014,s:'Neutral'},{ts:'02/23',p:66185,s:'Bullish'},{ts:'02/24',p:63074,s:'Neutral'},
-  {ts:'02/25',p:65826,s:'Bullish'},{ts:'02/26',p:68041,s:'Neutral'},{ts:'02/27',p:66003,s:'Neutral'},
-  {ts:'02/28',p:64763,s:'Neutral'},{ts:'03/01',p:66923,s:'Bullish'},{ts:'03/02',p:66341,s:'Neutral'},
-  {ts:'03/03',p:67740,s:'Neutral'},{ts:'03/06',p:68535,s:'Neutral'},{ts:'03/07',p:68026,s:'Neutral'},
-  {ts:'03/08',p:67686,s:'Bearish'},{ts:'03/09',p:67702,s:'Neutral'},
-];
-const aucHist=[
-  {d:'02/07',auc:0.278,acc:0.267},{d:'02/08',auc:0.438,acc:0.222},{d:'02/11',auc:1.000,acc:0.810},
-  {d:'02/12',auc:0.931,acc:0.500},{d:'02/13',auc:0.438,acc:0.444},{d:'02/14',auc:0.831,acc:0.767},
-  {d:'02/15',auc:0.740,acc:0.697},{d:'02/16',auc:0.644,acc:0.694},{d:'02/17',auc:0.527,acc:0.615},
-  {d:'02/18',auc:0.534,acc:0.500},{d:'02/19',auc:0.438,acc:0.556},{d:'02/20',auc:0.585,acc:0.583},
-  {d:'02/21',auc:0.509,acc:0.529},{d:'02/22',auc:0.472,acc:0.500},{d:'02/23',auc:0.547,acc:0.589},
-  {d:'02/24',auc:0.553,acc:0.576},{d:'02/25',auc:0.805,acc:0.677},{d:'02/26',auc:0.595,acc:0.646},
-  {d:'02/27',auc:0.569,acc:0.662},{d:'02/28',auc:0.525,acc:0.549},{d:'03/01',auc:0.342,acc:0.432},
-  {d:'03/02',auc:0.247,acc:0.416},{d:'03/03',auc:0.363,acc:0.513},{d:'03/06',auc:0.358,acc:0.542},
-  {d:'03/07',auc:0.353,acc:0.488},{d:'03/08',auc:0.324,acc:0.416},{d:'03/09',auc:0.310,acc:0.370},
-];
-const horizForecast=[
-  {h:'1m',prob:0.4914,lbl:'DOWN'},{h:'5m',prob:0.6120,lbl:'UP'},{h:'15m',prob:0.5537,lbl:'UP'},
-  {h:'30m',prob:0.4986,lbl:'DOWN'},{h:'1h',prob:0.4804,lbl:'DOWN'},{h:'4h',prob:0.5267,lbl:'UP'},
-  {h:'24h',prob:0.2679,lbl:'DOWN'},
-];
-const patSummary=[
-  {L:3,up:38601,dn:47999},{L:4,up:38601,dn:47998},{L:5,up:38601,dn:47998},
-  {L:6,up:38601,dn:47997},{L:7,up:38601,dn:47996},{L:8,up:38600,dn:47996},
-  {L:9,up:38600,dn:47995},{L:10,up:38600,dn:47995},
-];
-const preUp3=[
-  {p:'= = =',c:5092},{p:'= = ↓',c:2030},{p:'↓ = =',c:1978},{p:'= ↓ =',c:1781},
-  {p:'↓ ↓ ↓',c:1740},{p:'↓ ↑ ↓',c:1640},{p:'= = ↑',c:1573},{p:'↑ ↑ ↓',c:1418},
-  {p:'↑ ↓ ↑',c:1374},{p:'↑ ↓ ↓',c:1373},
-];
-const preDn3=[
-  {p:'= = =',c:6360},{p:'= = ↓',c:2575},{p:'↓ ↓ ↓',c:2348},{p:'↓ = =',c:2277},
-  {p:'= = ↑',c:2247},{p:'= ↓ =',c:2140},{p:'↑ = =',c:1919},{p:'= ↑ =',c:1854},
-  {p:'↓ ↑ ↓',c:1788},{p:'↓ ↓ ↑',c:1758},
-];
-const compStats=[
-  {L:3,occ:38630,pU:13.18,pD:16.46,pE:70.35},
-  {L:4,occ:27178,pU:12.27,pD:15.19,pE:72.54},
-  {L:5,occ:19714,pU:11.24,pD:13.81,pE:74.95},
-  {L:6,occ:14776,pU:10.59,pD:12.94,pE:76.47},
-  {L:7,occ:11299,pU:10.36,pD:12.38,pE:77.25},
-  {L:8,occ:8729,pU:9.82,pD:12.09,pE:78.10},
-  {L:9,occ:6817,pU:9.61,pD:11.54,pE:78.85},
-  {L:10,occ:5375,pU:9.21,pD:11.40,pE:79.39},
-];
-const hrateData=[
-  {h:1,lh:33,lm:73,sh:48,sm:75},{h:2,lh:46,lm:108,sh:48,sm:97},
-  {h:3,lh:57,lm:131,sh:60,sm:120},{h:4,lh:68,lm:150,sh:79,sm:129},
-  {h:5,lh:59,lm:160,sh:89,sm:134},{h:6,lh:62,lm:170,sh:100,sm:131},
-  {h:7,lh:66,lm:177,sh:98,sm:134},{h:8,lh:71,lm:181,sh:102,sm:136},
-  {h:9,lh:74,lm:180,sh:116,sm:138},{h:10,lh:74,lm:179,sh:130,sm:134},
-];
-const recentSigs=[
-  {ts:'Mar 09 05:28',side:'LONG', p:67378,pct:0.347,r:'TIE'},
-  {ts:'Mar 08 15:53',side:'SHORT',p:67111,pct:-0.079,r:'MISS'},
-  {ts:'Mar 08 12:53',side:'SHORT',p:67364,pct:-0.162,r:'TIE'},
-  {ts:'Mar 08 11:05',side:'SHORT',p:67588,pct:-0.434,r:'MISS'},
-  {ts:'Mar 08 08:35',side:'LONG', p:67321,pct:0.076,r:'HIT'},
-  {ts:'Mar 08 02:43',side:'LONG', p:67395,pct:0.320,r:'MISS'},
-  {ts:'Mar 07 21:48',side:'LONG', p:67311,pct:0.053,r:'HIT'},
-  {ts:'Mar 07 19:19',side:'SHORT',p:67333,pct:-0.313,r:'TIE'},
-  {ts:'Mar 07 17:33',side:'SHORT',p:67870,pct:-0.073,r:'MISS'},
-  {ts:'Mar 07 12:40',side:'SHORT',p:67992,pct:-0.073,r:'MISS'},
-  {ts:'Mar 07 11:57',side:'SHORT',p:68026,pct:-0.109,r:'TIE'},
-  {ts:'Mar 07 11:48',side:'SHORT',p:68101,pct:-0.127,r:'HIT'},
-  {ts:'Mar 07 10:57',side:'SHORT',p:67915,pct:-0.060,r:'HIT'},
-  {ts:'Mar 07 09:41',side:'LONG', p:68002,pct:0.054,r:'HIT'},
-  {ts:'Mar 07 07:52',side:'LONG', p:67806,pct:0.063,r:'HIT'},
-  {ts:'Mar 07 06:27',side:'SHORT',p:67876,pct:-0.131,r:'HIT'},
-  {ts:'Mar 06 23:59',side:'SHORT',p:68118,pct:-0.130,r:'MISS'},
-  {ts:'Mar 06 10:14',side:'SHORT',p:70672,pct:-0.061,r:'MISS'},
-  {ts:'Mar 06 06:36',side:'SHORT',p:70436,pct:-0.059,r:'MISS'},
-  {ts:'Mar 03 21:49',side:'LONG', p:68013,pct:0.108,r:'TIE'},
-  {ts:'Mar 02 04:45',side:'SHORT',p:66737,pct:-0.067,r:'MISS'},
-];
-const featCmp=[
-  {feat:'median_minute_usd_24h',up:45274,dn:29937,mx:60000,u:'$'},
-  {feat:'usd_turnover_24h',up:113094041,dn:85063195,mx:150000000,u:'$'},
-  {feat:'volume_accel',up:1.431,dn:1.356,mx:2.5,u:'x'},
-  {feat:'vol_breakout',up:0.973,dn:0.983,mx:1.2,u:''},
-  {feat:'TopMoverScore',up:0.243,dn:0.238,mx:0.5,u:''},
-  {feat:'rs_7d',up:-0.00511,dn:0.00474,mx:0.05,u:''},
-  {feat:'ret_1h',up:0.00312,dn:0.00462,mx:0.01,u:''},
-];
-const latestCoefs=[
-  {f:'median_minute_usd_24h',c:0.912,d:'Higher liquidity base → model predicts UP.'},
-  {f:'usd_turnover_24h',c:-0.7367,d:'High raw turnover → less likely UP. Liquidity ≠ direction.'},
-  {f:'TopMoverScore',c:0.4396,d:'Higher composite momentum/volume rank → UP signal.'},
-  {f:'Rank',c:0.3433,d:'Counterintuitive: worse rank slightly predicts UP. Possible mean-reversion.'},
-  {f:'rs_7d',c:-0.2639,d:'Strong 7D RS → DOWN. Possible exhaustion/overbought.'},
-  {f:'ret_1h',c:-0.1959,d:'Recent 1h momentum faded by model. Anti-momentum at hourly scale.'},
-  {f:'volume_accel',c:0.1235,d:'Accelerating volume slightly supports UP.'},
-  {f:'vol_breakout',c:-0.0649,d:'Vol breakout score mildly suppressive. Weakest feature.'},
-];
-const coefHist=[
-  {ts:'Mar 07',v:{median_minute_usd_24h:0.7634,usd_turnover_24h:-0.589,TopMoverScore:0.3202,Rank:0.312,rs_7d:-0.2818,volume_accel:0.2255,vol_breakout:-0.1967,ret_1h:-0.1014}},
-  {ts:'Mar 08',v:{median_minute_usd_24h:0.9316,usd_turnover_24h:-0.7433,TopMoverScore:0.4018,Rank:0.3496,rs_7d:-0.2744,volume_accel:0.1971,vol_breakout:-0.1361,ret_1h:-0.135}},
-  {ts:'Mar 09',v:{median_minute_usd_24h:0.912,usd_turnover_24h:-0.7367,TopMoverScore:0.4396,Rank:0.3433,rs_7d:-0.2639,volume_accel:0.1235,vol_breakout:-0.0649,ret_1h:-0.1959}},
-];
-const tradeLog=[
-  {d:'Feb 26',c:'NEAR',e:1.146,r:'NEUTRAL',t:'SMALL_BUY',ret:0,pnl:0},
-  {d:'Mar 01',c:'LINK',e:8.999,r:'STRONG_BULL',t:'BUY',ret:-0.0344,pnl:-34.45},
-  {d:'Mar 01',c:'PENGU',e:0.00691,r:'STRONG_BULL',t:'STRONG_BUY',ret:-0.0174,pnl:-17.36},
-  {d:'Mar 01',c:'DOGE',e:0.09438,r:'STRONG_BULL',t:'STRONG_BUY',ret:0,pnl:0},
-  {d:'Mar 02',c:'TAO',e:177.9,r:'NEUTRAL',t:'SMALL_BUY',ret:0.0226,pnl:22.60},
-  {d:'Mar 02',c:'BTC',e:66326,r:'NEUTRAL',t:'SMALL_BUY',ret:0.02097,pnl:20.97},
-];
-const consHist=[
-  {ts:'Feb 24',p:63092,l:'UP',prob:.548,a:71.4},{ts:'Feb 25',p:65774,l:'UP',prob:.575,a:100},
-  {ts:'Feb 26',p:68172,l:'DOWN',prob:.400,a:71.4},{ts:'Feb 27',p:65976,l:'UP',prob:.654,a:85.7},
-  {ts:'Feb 28',p:64800,l:'UP',prob:.622,a:85.7},{ts:'Mar 01',p:67045,l:'UP',prob:.661,a:100},
-  {ts:'Mar 02',p:66366,l:'DOWN',prob:.376,a:85.7},{ts:'Mar 03',p:67714,l:'DOWN',prob:.420,a:85.7},
-  {ts:'Mar 04',p:70904,l:'NEUTRAL',prob:.368,a:57.1},{ts:'Mar 05',p:72912,l:'DOWN',prob:.401,a:85.7},
-  {ts:'Mar 06a',p:70267,l:'NEUTRAL',prob:.432,a:57.1},{ts:'Mar 06b',p:68587,l:'UP',prob:.587,a:100},
-  {ts:'Mar 07',p:67996,l:'NEUTRAL',prob:.482,a:57.1},{ts:'Mar 08',p:67677,l:'NEUTRAL',prob:.458,a:57.1},
-  {ts:'Mar 09',p:67579,l:'NEUTRAL',prob:.471,a:57.1},
-];
-const dailyDir=[
-  {d:'2/20',u:14,dn:1},{d:'2/21',u:0,dn:15},{d:'2/22',u:0,dn:11},
-  {d:'2/23',u:0,dn:14},{d:'2/24',u:14,dn:1},{d:'2/25',u:12,dn:3},
-  {d:'2/26',u:1,dn:14},{d:'2/27',u:1,dn:14},{d:'2/28',u:15,dn:0},
-  {d:'3/01',u:2,dn:13},{d:'3/02',u:10,dn:5},{d:'3/03',u:2,dn:13},
-  {d:'3/06',u:11,dn:4},{d:'3/07',u:1,dn:14},{d:'3/08',u:11,dn:4},
-];
+const sniperRows=[{"rank": 1, "sym": "VVV", "price": 6.4586, "ret": 0.0082425302069997, "va": 0.5728702592798289, "rs": 0.0124847327353641, "ts": 0.9614073412448638, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 2, "sym": "LINK", "price": 9.002, "ret": 0.0034555790881731, "va": 1.8511792399958489, "rs": -0.0146330727840062, "ts": 0.5291141170368742, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 3, "sym": "DOGE", "price": 0.09484, "ret": 0.0026429855164393, "va": 1.804431630158366, "rs": -0.0133909226251087, "ts": 0.5203527743311762, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 4, "sym": "LTC", "price": 54.41, "ret": -0.0001837559720692, "va": 1.6346945870138987, "rs": -0.0131283488991023, "ts": 0.4026028520199911, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 5, "sym": "ZEC", "price": 208.81, "ret": 0.0037494592126134, "va": 1.1151758278729036, "rs": -0.0114953648054535, "ts": 0.3785513191868767, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 6, "sym": "HYPE", "price": 38.03, "ret": 0.0114361702127658, "va": 0.1518020540502782, "rs": 0.0217165544743818, "ts": 0.2958146795686376, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 7, "sym": "ZRO", "price": 1.977, "ret": -0.0045317220543805, "va": 1.873161896219847, "rs": -0.0201538974950447, "ts": 0.2165598715264719, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 8, "sym": "ADA", "price": 0.2606, "ret": 0.0015372790161414, "va": 1.363131177323981, "rs": -0.0239736657701479, "ts": 0.1942544509868303, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 9, "sym": "HBAR", "price": 0.09214, "ret": -0.0010841283607979, "va": 1.04859990933684, "rs": -0.0329827808966632, "ts": 0.1184428584519069, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 10, "sym": "SOL", "price": 86.72, "ret": 0.0005769008884273, "va": 1.1413260101538698, "rs": -0.018355022559822, "ts": -0.0968131267576705, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 11, "sym": "XRP", "price": 1.3892, "ret": 0.0002880184331797, "va": 0.7197308638651495, "rs": -0.008855822255112, "ts": -0.1865227353680452, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 12, "sym": "ETH", "price": 2073.81, "ret": 0.0013326573477221, "va": 0.983407432522728, "rs": -0.0113577528308009, "ts": -0.1917714970675675, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 13, "sym": "TRUMP", "price": 4.04, "ret": -0.0049261083743841, "va": 1.05458257309247, "rs": 0.0768049427868866, "ts": -0.1973258110457598, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 14, "sym": "AVAX", "price": 9.56, "ret": -0.0020876826722338, "va": 1.0745396003665764, "rs": -0.0230467196291581, "ts": -0.200418444677004, "prob": null, "lbl": "nan", "alloc": "SKIP"}, {"rank": 15, "sym": "BTC", "price": 70588.0, "ret": -0.0001267760151111, "va": 0.8601812276344886, "rs": -0.0080074399317087, "ts": -0.2724728081982515, "prob": null, "lbl": "nan", "alloc": "SKIP"}];
+const symWRs=[{"s": "HYPE-USD", "t": 11, "w": 0.7273}, {"s": "HBAR-USD", "t": 29, "w": 0.7241}, {"s": "PEPE-USD", "t": 10, "w": 0.7}, {"s": "XRP-USD", "t": 27, "w": 0.6667}, {"s": "NEAR-USD", "t": 8, "w": 0.625}, {"s": "BERA-USD", "t": 5, "w": 0.6}, {"s": "BCH-USD", "t": 5, "w": 0.6}, {"s": "ADA-USD", "t": 28, "w": 0.5357}, {"s": "BTC-USD", "t": 28, "w": 0.5357}, {"s": "SUI-USD", "t": 25, "w": 0.52}, {"s": "BNKR-USD", "t": 6, "w": 0.5}, {"s": "LTC-USD", "t": 29, "w": 0.4828}, {"s": "DOGE-USD", "t": 23, "w": 0.4783}, {"s": "AVAX-USD", "t": 19, "w": 0.4737}, {"s": "ZEC-USD", "t": 24, "w": 0.4583}, {"s": "ZRO-USD", "t": 11, "w": 0.4545}, {"s": "PENGU-USD", "t": 20, "w": 0.45}, {"s": "VVV-USD", "t": 16, "w": 0.4375}, {"s": "ETH-USD", "t": 30, "w": 0.4333}, {"s": "SOL-USD", "t": 30, "w": 0.4333}, {"s": "TAO-USD", "t": 24, "w": 0.4167}, {"s": "LINK-USD", "t": 27, "w": 0.3704}, {"s": "XLM-USD", "t": 17, "w": 0.3529}, {"s": "PUMP-USD", "t": 12, "w": 0.3333}];
+const regHist=[{"ts": "02/22", "p": 68013.76, "s": "Neutral"}, {"ts": "02/23", "p": 66185.02, "s": "Bullish"}, {"ts": "02/24", "p": 63073.56, "s": "Neutral"}, {"ts": "02/25", "p": 65825.75, "s": "Bullish"}, {"ts": "02/26", "p": 68041.47, "s": "Neutral"}, {"ts": "02/27", "p": 66002.93, "s": "Neutral"}, {"ts": "02/28", "p": 64762.56, "s": "Neutral"}, {"ts": "03/01", "p": 66922.53, "s": "Bullish"}, {"ts": "03/02", "p": 66340.8, "s": "Neutral"}, {"ts": "03/03", "p": 67740.17, "s": "Neutral"}, {"ts": "03/06", "p": 68535.19, "s": "Neutral"}, {"ts": "03/07", "p": 68026.49, "s": "Neutral"}, {"ts": "03/08", "p": 67685.69, "s": "Bearish"}, {"ts": "03/09", "p": 67701.65, "s": "Neutral"}, {"ts": "03/10", "p": 70796.02, "s": "Neutral"}, {"ts": "03/11", "p": 69524.0, "s": "Bullish"}, {"ts": "03/12", "p": 69945.76, "s": "Neutral"}, {"ts": "03/13", "p": 72096.76, "s": "Neutral"}, {"ts": "03/14", "p": 70482.52, "s": "Neutral"}, {"ts": "03/14", "p": 70572.02, "s": "Neutral"}];
+const aucHist=[{"d": "02/06", "auc": null, "acc": 1.0}, {"d": "02/07", "auc": 0.2777777777777778, "acc": 0.2667}, {"d": "02/08", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 1.0, "acc": 0.8095}, {"d": "02/12", "auc": 0.9305555555555555, "acc": 0.5}, {"d": "02/13", "auc": 0.4382716049382716, "acc": 0.4444}, {"d": "02/14", "auc": 0.8311111111111111, "acc": 0.7667}, {"d": "02/15", "auc": 0.7396694214876033, "acc": 0.697}, {"d": "02/16", "auc": 0.6439628482972136, "acc": 0.6944}, {"d": "02/17", "auc": 0.5267379679144385, "acc": 0.6154}, {"d": "02/18", "auc": 0.5341176470588236, "acc": 0.5}, {"d": "02/19", "auc": 0.4377880184331797, "acc": 0.5556}, {"d": "02/20", "auc": 0.5851851851851853, "acc": 0.5833}, {"d": "02/21", "auc": 0.5092307692307693, "acc": 0.5294}, {"d": "02/22", "auc": 0.4717241379310345, "acc": 0.5}, {"d": "02/23", "auc": 0.5470967741935484, "acc": 0.5893}, {"d": "02/24", "auc": 0.553030303030303, "acc": 0.5763}, {"d": "02/25", "auc": 0.8047619047619047, "acc": 0.6774}, {"d": "02/26", "auc": 0.5946745562130178, "acc": 0.6462}, {"d": "02/27", "auc": 0.5691056910569106, "acc": 0.6618}, {"d": "02/28", "auc": 0.5249169435215947, "acc": 0.5493}, {"d": "03/01", "auc": 0.3422619047619048, "acc": 0.4324}, {"d": "03/02", "auc": 0.2465277777777778, "acc": 0.4156}, {"d": "03/03", "auc": 0.3629916183107672, "acc": 0.5125}, {"d": "03/06", "auc": 0.3578616352201258, "acc": 0.5422}, {"d": "03/07", "auc": 0.3532608695652174, "acc": 0.4884}, {"d": "03/08", "auc": 0.3239795918367347, "acc": 0.4157}, {"d": "03/09", "auc": 0.3096274794388002, "acc": 0.3696}, {"d": "03/10", "auc": 0.3164444444444445, "acc": 0.3789}, {"d": "03/11", "auc": 0.3729662077596996, "acc": 0.4388}, {"d": "03/12", "auc": 0.4496031746031746, "acc": 0.4455}, {"d": "03/13", "auc": 0.4812091503267974, "acc": 0.4231}, {"d": "03/14", "auc": 0.5886699507389161, "acc": 0.5047}, {"d": "03/14", "auc": 0.6414565826330532, "acc": 0.5091}];
+const horizForecast=[{"h": "1m", "prob": 0.3422, "lbl": "DOWN"}, {"h": "5m", "prob": 0.5002, "lbl": "UP"}, {"h": "15m", "prob": 0.5048, "lbl": "UP"}, {"h": "30m", "prob": 0.4576, "lbl": "DOWN"}, {"h": "1h", "prob": 0.4525, "lbl": "DOWN"}, {"h": "4h", "prob": 0.3734, "lbl": "DOWN"}, {"h": "24h", "prob": 0.0994, "lbl": "DOWN"}];
+const patSummary=[{"L": 3, "up": 40570, "dn": 50021}, {"L": 4, "up": 40570, "dn": 50020}, {"L": 5, "up": 40570, "dn": 50020}, {"L": 6, "up": 40570, "dn": 50019}, {"L": 7, "up": 40570, "dn": 50018}, {"L": 8, "up": 40569, "dn": 50018}, {"L": 9, "up": 40569, "dn": 50017}, {"L": 10, "up": 40569, "dn": 50017}];
+const preUp3=[{"p": "= = =", "c": 5299}, {"p": "= = \u2193", "c": 2106}, {"p": "\u2193 = =", "c": 2070}, {"p": "= \u2193 =", "c": 1864}, {"p": "\u2193 \u2193 \u2193", "c": 1808}, {"p": "\u2193 \u2191 \u2193", "c": 1714}, {"p": "= = \u2191", "c": 1674}, {"p": "\u2191 \u2191 \u2193", "c": 1495}, {"p": "\u2191 \u2193 \u2193", "c": 1458}, {"p": "\u2191 \u2193 \u2191", "c": 1444}];
+const preDn3=[{"p": "= = =", "c": 6578}, {"p": "= = \u2193", "c": 2673}, {"p": "\u2193 \u2193 \u2193", "c": 2439}, {"p": "\u2193 = =", "c": 2349}, {"p": "= = \u2191", "c": 2334}, {"p": "= \u2193 =", "c": 2204}, {"p": "\u2191 = =", "c": 2013}, {"p": "= \u2191 =", "c": 1933}, {"p": "\u2193 \u2191 \u2193", "c": 1868}, {"p": "\u2193 \u2193 \u2191", "c": 1835}];
+const compStats=[{"L": 3, "occ": 39832, "pU": 13.3, "pD": 16.51, "pE": 70.18}, {"L": 4, "occ": 27954, "pU": 12.37, "pD": 15.25, "pE": 72.39}, {"L": 5, "occ": 20234, "pU": 11.33, "pD": 13.86, "pE": 74.81}, {"L": 6, "occ": 15137, "pU": 10.62, "pD": 12.97, "pE": 76.4}, {"L": 7, "occ": 11565, "pU": 10.43, "pD": 12.4, "pE": 77.17}, {"L": 8, "occ": 8925, "pU": 9.9, "pD": 12.13, "pE": 77.96}, {"L": 9, "occ": 6958, "pU": 9.67, "pD": 11.61, "pE": 78.72}, {"L": 10, "occ": 5477, "pU": 9.28, "pD": 11.5, "pE": 79.22}];
+const hrateData=[{"h": 1, "lh": 34, "lm": 73, "sh": 49, "sm": 76}, {"h": 2, "lh": 46, "lm": 112, "sh": 49, "sm": 99}, {"h": 3, "lh": 57, "lm": 136, "sh": 63, "sm": 125}, {"h": 4, "lh": 69, "lm": 156, "sh": 81, "sm": 133}, {"h": 5, "lh": 60, "lm": 166, "sh": 91, "sm": 139}, {"h": 6, "lh": 63, "lm": 177, "sh": 102, "sm": 137}, {"h": 7, "lh": 67, "lm": 184, "sh": 100, "sm": 138}, {"h": 8, "lh": 72, "lm": 188, "sh": 104, "sm": 139}, {"h": 9, "lh": 75, "lm": 186, "sh": 118, "sm": 141}, {"h": 10, "lh": 76, "lm": 183, "sh": 132, "sm": 138}];
+const recentSigs=[{"ts": "Mar 14 11:43", "side": "LONG", "p": 70704.97, "pct": 0.074, "r": "HIT"}, {"ts": "Mar 14 10:44", "side": "LONG", "p": 70525.34, "pct": 0.123, "r": "TIE"}, {"ts": "Mar 14 08:50", "side": "SHORT", "p": 70558.35, "pct": -0.086, "r": "MISS"}, {"ts": "Mar 14 08:37", "side": "SHORT", "p": 70619.27, "pct": -0.065, "r": "TIE"}, {"ts": "Mar 14 07:51", "side": "LONG", "p": 70593.77, "pct": 0.122, "r": "MISS"}, {"ts": "Mar 14 01:35", "side": "SHORT", "p": 70659.93, "pct": -0.153, "r": "HIT"}, {"ts": "Mar 13 20:53", "side": "LONG", "p": 71456.05, "pct": 0.26, "r": "MISS"}, {"ts": "Mar 13 18:47", "side": "SHORT", "p": 71100.0, "pct": -0.154, "r": "TIE"}, {"ts": "Mar 13 11:34", "side": "SHORT", "p": 72365.42, "pct": -0.065, "r": "TIE"}, {"ts": "Mar 12 10:11", "side": "SHORT", "p": 69917.28, "pct": -0.165, "r": "MISS"}, {"ts": "Mar 12 08:44", "side": "SHORT", "p": 69804.33, "pct": -0.058, "r": "MISS"}, {"ts": "Mar 11 11:51", "side": "SHORT", "p": 69419.87, "pct": -0.073, "r": "HIT"}, {"ts": "Mar 11 11:28", "side": "SHORT", "p": 69500.0, "pct": -0.17, "r": "MISS"}, {"ts": "Mar 11 08:59", "side": "LONG", "p": 69641.26, "pct": 0.072, "r": "TIE"}, {"ts": "Mar 11 08:32", "side": "SHORT", "p": 69545.19, "pct": -0.111, "r": "TIE"}, {"ts": "Mar 11 06:51", "side": "LONG", "p": 69974.73, "pct": 0.194, "r": "HIT"}, {"ts": "Mar 11 01:55", "side": "LONG", "p": 70136.78, "pct": 0.305, "r": "TIE"}, {"ts": "Mar 10 09:59", "side": "LONG", "p": 71074.18, "pct": 0.137, "r": "MISS"}, {"ts": "Mar 10 06:45", "side": "SHORT", "p": 69956.07, "pct": -0.123, "r": "TIE"}, {"ts": "Mar 09 22:29", "side": "LONG", "p": 68849.91, "pct": 0.116, "r": "MISS"}, {"ts": "Mar 09 05:28", "side": "LONG", "p": 67378.37, "pct": 0.347, "r": "TIE"}];
+const featCmp=[{"feat": "median_minute_usd_24h", "up": 42916.17346, "dn": 29449.9694, "mx": 51499.40815}, {"feat": "usd_turnover_24h", "up": 109286407.69729, "dn": 83125496.84682, "mx": 131143689.23675}, {"feat": "volume_accel", "up": 1.39269, "dn": 1.37419, "mx": 1.67123}, {"feat": "vol_breakout", "up": 0.92285, "dn": 0.98261, "mx": 1.17913}, {"feat": "TopMoverScore", "up": 0.22209, "dn": 0.24118, "mx": 0.28942}, {"feat": "rs_7d", "up": -0.0039, "dn": 0.00902, "mx": 0.01082}, {"feat": "ret_1h", "up": 0.00317, "dn": 0.0044, "mx": 0.00528}];
+const latestCoefs=[{"f": "median_minute_usd_24h", "c": 0.7986}, {"f": "usd_turnover_24h", "c": -0.6474}, {"f": "rs_7d", "c": -0.3394}, {"f": "TopMoverScore", "c": 0.3261}, {"f": "Rank", "c": 0.2582}, {"f": "vol_breakout", "c": -0.2012}, {"f": "volume_accel", "c": 0.0954}, {"f": "ret_1h", "c": -0.0948}];
+const coefHist=[{"ts": "Mar 13", "v": {"median_minute_usd_24h": 0.9786, "usd_turnover_24h": -0.8294, "rs_7d": -0.2641, "TopMoverScore": 0.2373, "Rank": 0.2181, "vol_breakout": -0.1861, "volume_accel": 0.1513, "ret_1h": -0.0533}}, {"ts": "Mar 14", "v": {"median_minute_usd_24h": 0.9433, "usd_turnover_24h": -0.7874, "rs_7d": -0.3293, "TopMoverScore": 0.3114, "Rank": 0.2448, "vol_breakout": -0.1854, "volume_accel": 0.1205, "ret_1h": -0.0825}}, {"ts": "Mar 14", "v": {"median_minute_usd_24h": 0.7986, "usd_turnover_24h": -0.6474, "rs_7d": -0.3394, "TopMoverScore": 0.3261, "Rank": 0.2582, "vol_breakout": -0.2012, "volume_accel": 0.0954, "ret_1h": -0.0948}}];
+const tradeLog=[{"d": "2026-02-26", "c": "NEAR", "e": 1.146, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0, "pnl": 0.0}, {"d": "2026-03-01", "c": "LINK", "e": 8.999, "r": "STRONG_BULL", "t": "BUY", "ret": -0.0344482720302256, "pnl": -34.4482720302256}, {"d": "2026-03-01", "c": "PENGU", "e": 0.006914, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": -0.01735608909459074, "pnl": -17.35608909459074}, {"d": "2026-03-01", "c": "DOGE", "e": 0.09438, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": 0.0, "pnl": 0.0}, {"d": "2026-03-02", "c": "TAO", "e": 177.9, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.02259696458684646, "pnl": 22.59696458684646}, {"d": "2026-03-02", "c": "BTC", "e": 66326.0, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0209667400416127, "pnl": 20.9667400416127}];
+const consHist=[{"ts": "Mar 02", "p": 66365, "l": "DOWN", "prob": 0.3763135466435246, "a": 85.71}, {"ts": "Mar 03", "p": 67713, "l": "DOWN", "prob": 0.4202905307890873, "a": 85.71}, {"ts": "Mar 04", "p": 70904, "l": "NEUTRAL", "prob": 0.3682489047608098, "a": 57.14}, {"ts": "Mar 05", "p": 72911, "l": "DOWN", "prob": 0.401207893001453, "a": 85.71}, {"ts": "Mar 06", "p": 70267, "l": "NEUTRAL", "prob": 0.4316505341136588, "a": 57.14}, {"ts": "Mar 06", "p": 68586, "l": "UP", "prob": 0.5866758810504761, "a": 100.0}, {"ts": "Mar 07", "p": 67996, "l": "NEUTRAL", "prob": 0.481755936542925, "a": 57.14}, {"ts": "Mar 08", "p": 67677, "l": "NEUTRAL", "prob": 0.4579616036984484, "a": 57.14}, {"ts": "Mar 09", "p": 67579, "l": "NEUTRAL", "prob": 0.4714727765208011, "a": 57.14}, {"ts": "Mar 10", "p": 70759, "l": "NEUTRAL", "prob": 0.3856814479994208, "a": 57.14}, {"ts": "Mar 11", "p": 69520, "l": "DOWN", "prob": 0.3352444946640563, "a": 100.0}, {"ts": "Mar 12", "p": 70032, "l": "DOWN", "prob": 0.3944252441662967, "a": 85.71}, {"ts": "Mar 13", "p": 71994, "l": "DOWN", "prob": 0.2798910961098509, "a": 100.0}, {"ts": "Mar 14", "p": 70438, "l": "NEUTRAL", "prob": 0.4978344965791395, "a": 57.14}, {"ts": "Mar 14", "p": 70594, "l": "DOWN", "prob": 0.3668237818638402, "a": 71.43}];
+const dailyDir=[{"d": "02/26", "u": 1, "dn": 14}, {"d": "02/27", "u": 1, "dn": 14}, {"d": "02/28", "u": 15, "dn": 0}, {"d": "03/01", "u": 2, "dn": 13}, {"d": "03/02", "u": 10, "dn": 5}, {"d": "03/03", "u": 2, "dn": 13}, {"d": "03/06", "u": 11, "dn": 4}, {"d": "03/07", "u": 1, "dn": 14}, {"d": "03/08", "u": 11, "dn": 4}, {"d": "03/09", "u": 15, "dn": 0}, {"d": "03/10", "u": 1, "dn": 14}, {"d": "03/11", "u": 15, "dn": 0}, {"d": "03/12", "u": 14, "dn": 1}, {"d": "03/13", "u": 0, "dn": 15}, {"d": "03/14", "u": 12, "dn": 3}];
 
 // ── HELPERS ──
 const ink='#f0e4c8', amber='#f0a020', blood='#e8442a', sage='#44cc70', pale='#2a2010', warm='#151008', ghost='#6a5e48', dim='#9a8e78', dimer='#7a6e58';
