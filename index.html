@@ -739,7 +739,7 @@ canvas { display: block; width: 100%; }
     <span class="logo-sub">Crypto Engine</span>
   </div>
   <div class="masthead-right">
-    <span style="color:var(--ghost)">2026-03-14 · 16:45 UTC · 550 labeled</span><br>
+    <span style="color:var(--ghost)">2026-03-14 · 16:49 UTC · 550 labeled</span><br>
     <span class="live-indicator"><span class="pulse"></span>Pipeline active</span>
   </div>
 </div>
@@ -847,31 +847,19 @@ canvas { display: block; width: 100%; }
       <!-- 1m micro -->
       <div class="panel">
         <div class="ph"><div class="ph-t">BTC 1-Minute Micro Features</div><div class="badge">179k candles</div></div>
-        
-<div class="feat-grid">
-  <div class="feat-cell"><div class="fc-lbl">Intraday Bias</div>
-    <div class="fc-val am">CHOP</div>
-    <div class="fc-sub">↑23.7% / ↓22.0% / =54.2%</div></div>
-  <div class="feat-cell"><div class="fc-lbl">Compression Flag</div>
-    <div class="fc-val ">FALSE</div>
-    <div class="fc-sub">Normal vol regime</div></div>
-  <div class="feat-cell"><div class="fc-lbl">Shock Flag</div>
-    <div class="fc-val ">CLEAR</div>
-    <div class="fc-sub">No micro-shock</div></div>
-  <div class="feat-cell"><div class="fc-lbl">Volatility 60m</div>
-    <div class="fc-val">0.0404%</div>
-    <div class="fc-sub">Avg return +0.0006%</div></div>
-  <div class="feat-cell"><div class="fc-lbl">Longest Up Streak</div>
-    <div class="fc-val up">3 min</div>
-    <div class="fc-sub">last 60 candles</div></div>
-  <div class="feat-cell"><div class="fc-lbl">Longest Down Streak</div>
-    <div class="fc-val dn">3 min</div>
-    <div class="fc-sub">last 60 candles</div></div>
-</div>
+        <div class="feat-grid">
+          <div class="feat-cell"><div class="fc-lbl">Intraday Bias</div><div class="fc-val am">CHOP</div><div class="fc-sub">↑28.8% / ↓25.4% / =45.8%</div></div>
+          <div class="feat-cell"><div class="fc-lbl">Compression Flag</div><div class="fc-val">FALSE</div><div class="fc-sub">Normal vol regime</div></div>
+          <div class="feat-cell"><div class="fc-lbl">Shock Flag</div><div class="fc-val ok">CLEAR</div><div class="fc-sub">No micro-shock</div></div>
+          <div class="feat-cell"><div class="fc-lbl">Volatility 60m</div><div class="fc-val">0.064%</div><div class="fc-sub">Avg return +0.0014%</div></div>
+          <div class="feat-cell"><div class="fc-lbl">Longest Up Streak</div><div class="fc-val up">5 min</div><div class="fc-sub">last 60 candles</div></div>
+          <div class="feat-cell"><div class="fc-lbl">Longest Down Streak</div><div class="fc-val dn">3 min</div><div class="fc-sub">last 60 candles</div></div>
+        </div>
       </div>
     </div>
+  </div>
 
-<div class="col2">
+  <div class="col2">
     <div class="panel mb"><div class="ph"><div class="ph-t">BTC Price &amp; Regime History</div><div style="display:flex;gap:8px;font-family:var(--cond);font-size:9px;"><span style="color:var(--sage)">● Bullish</span><span style="color:var(--amber)">● Neutral</span><span style="color:var(--blood)">● Bearish</span></div></div><div class="chart-wrap" style="height:145px"><canvas id="btcChart" height="115"></canvas></div></div>
     <div class="panel mb"><div class="ph"><div class="ph-t">Sniper Model AUC Drift</div><div class="badge blood">Degrading</div></div><div class="chart-wrap" style="height:145px"><canvas id="aucChart" height="115"></canvas></div></div>
   </div>
