@@ -593,7 +593,7 @@ canvas { display: block; width: 100%; }
 /* ═══════════════════════════ TRADE ROW ═══════════════════════════ */
 .tl-row {
   display: grid;
-  grid-template-columns: 56px 65px 88px 100px 90px 56px 70px 70px;
+  grid-template-columns: 56px 65px 88px 100px 90px 62px 56px 65px 72px;
   align-items: center;
   padding: 7px 11px;
   border-bottom: 1px solid rgba(180,168,144,.3);
@@ -739,7 +739,7 @@ canvas { display: block; width: 100%; }
     <span class="logo-sub">Crypto Engine</span>
   </div>
   <div class="masthead-right">
-    <span style="color:var(--ghost)">2026-03-16 · 11:15 UTC · 579 labeled</span><br>
+    <span style="color:var(--ghost)">2026-03-16 · 23:51 UTC · 594 labeled</span><br>
     <span class="live-indicator"><span class="pulse"></span>Pipeline active</span>
   </div>
 </div>
@@ -754,7 +754,7 @@ canvas { display: block; width: 100%; }
   <div class="tic">
     <div class="tic-lbl">BTC / USD</div>
     <div class="tic-val">67,701</div>
-    <div class="tic-sub">+$1,537.57 vs prev</div>
+    <div class="tic-sub">+$1,258.02 vs prev</div>
   </div>
   <div class="tic accent-sage">
     <div class="tic-lbl">Prob Up 24h</div>
@@ -769,22 +769,22 @@ canvas { display: block; width: 100%; }
   <div class="tic">
     <div class="tic-lbl">Intraday Bias</div>
     <div class="tic-val amber">CHOP</div>
-    <div class="tic-sub">↑20.3% / ↓18.6%</div>
+    <div class="tic-sub">↑32.2% / ↓32.2%</div>
   </div>
   <div class="tic accent-blood">
     <div class="tic-lbl">Model AUC</div>
-    <div class="tic-val blood">0.679</div>
+    <div class="tic-val blood">0.669</div>
     <div class="tic-sub">OK — prev peak</div>
   </div>
   <div class="tic">
     <div class="tic-lbl">Signal Hit Rate H10</div>
-    <div class="tic-val">39.1%</div>
-    <div class="tic-sub">210 HIT · 327 MISS</div>
+    <div class="tic-val">39.2%</div>
+    <div class="tic-sub">211 HIT · 327 MISS</div>
   </div>
   <div class="tic accent-amber">
     <div class="tic-lbl">BTC Consensus</div>
     <div class="tic-val amber">Neutral</div>
-    <div class="tic-sub">Consensus NEUTRAL · Prob UP 53.2% · Agreement 57%</div>
+    <div class="tic-sub">Consensus NEUTRAL · Prob UP 43.6% · Agreement 57%</div>
   </div>
 </div>
 
@@ -804,15 +804,34 @@ canvas { display: block; width: 100%; }
 </div>
 
 <div class="tab-pane active" id="tab-overview">
-  <div class="col32">
-    <!-- Sniper table -->
-    <div class="panel amber-accent mb">
-      <div class="ph"><div class="ph-t">Sniper Watchlist — Today's Scan</div><div style="display:flex;gap:6px"><div class="badge">15 symbols</div><div class="badge amber">All SKIP</div><div class="badge">12:08 UTC</div></div></div>
-      <div class="tscroll">
-        <table><thead><tr><th>#</th><th>Symbol</th><th class="r">Price</th><th class="r">1h Ret</th><th class="r">Vol Accel</th><th class="r">RS 7D</th><th>Mover Score</th><th class="r">Pred↑</th><th class="c">Label</th><th class="c">Alloc</th></tr></thead>
-        <tbody id="s-body"></tbody></table>
+  <!-- PERFORMANCE CHART — TOP OF OVERVIEW -->
+  <div class="col2 mb">
+    <div class="panel">
+      <div class="ph">
+        <div class="ph-t">Cumulative P&amp;L — $100k Bankroll · Half Kelly</div>
+        <div style="display:flex;gap:6px">
+          <div class="badge sage">All UP Calls</div>
+          <div class="badge">Paper + Real</div>
+        </div>
+      </div>
+      <div class="chart-wrap" style="height:180px"><canvas id="perfChart" height="150"></canvas></div>
+      <div style="display:flex;justify-content:space-around;padding:8px 13px;border-top:1px solid var(--pale);font-family:var(--mono);font-size:9px;">
+        <span id="perf-start">Start: $100,000</span>
+        <span id="perf-current">Current: —</span>
+        <span id="perf-roi">ROI: —</span>
+        <span id="perf-wr">Win Rate: —</span>
       </div>
     </div>
+    <div class="panel">
+      <div class="ph">
+        <div class="ph-t">Recent Trades — Last 10</div>
+        <div class="badge" id="recent-trade-count">— trades</div>
+      </div>
+      <div class="scroll-y" style="max-height:280px" id="recent-trades-list"></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:14px">
 
     <!-- Right col -->
     <div style="display:flex;flex-direction:column;gap:14px;">
@@ -821,8 +840,8 @@ canvas { display: block; width: 100%; }
         <div class="ph"><div class="ph-t">BTC Regime Engine</div><span class="badge amber">Bear → Neutral</span></div>
         <div class="regime-hero">
           <div style="font-family:var(--cond);font-size:9px;letter-spacing:.3em;color:var(--ghost);text-transform:uppercase;margin-bottom:6px">BTC / USD · Coinbase</div>
-          <div class="btc-price-disp">$73,245.65</div>
-          <div style="font-size:11px;margin-top:5px"><span class="pos">+$1,537.57</span><span class="muted" style="margin-left:8px;font-style:italic">vs prev $71,707.59</span></div>
+          <div class="btc-price-disp">$74,503.65</div>
+          <div style="font-size:11px;margin-top:5px"><span class="pos">+$1,258.02</span><span class="muted" style="margin-left:8px;font-style:italic">vs prev $73,245.16</span></div>
           <div style="display:flex;align-items:center;gap:10px;margin-top:10px;">
             <div class="sig-pill Neutral">Neutral</div>
             <div style="flex:1">
@@ -833,12 +852,12 @@ canvas { display: block; width: 100%; }
             </div>
           </div>
         </div>
-        <div class="score-line"><span class="sl-name">ETH/BTC Δ (+3.03%)</span><span class="sl-score p">+1</span></div>
-        <div class="score-line"><span class="sl-name">Momentum 3D (+3.27%)</span><span class="sl-score p">+1</span></div>
-        <div class="score-line"><span class="sl-name">Orderbook (0.094)</span><span class="sl-score z">+0</span></div>
+        <div class="score-line"><span class="sl-name">ETH/BTC Δ (+5.08%)</span><span class="sl-score p">+1</span></div>
+        <div class="score-line"><span class="sl-name">Momentum 3D (+5.02%)</span><span class="sl-score p">+1</span></div>
+        <div class="score-line"><span class="sl-name">Orderbook (0.137)</span><span class="sl-score z">+0</span></div>
         <div class="score-line"><span class="sl-name">Fear &amp; Greed (23 — Extreme Fear)</span><span class="sl-score p">+1</span></div>
         <div class="score-line"><span class="sl-name">Hashrate Δ (-2.34%)</span><span class="sl-score z">+0</span></div>
-        <div class="score-line"><span class="sl-name">USDT Flow (-0.01%)</span><span class="sl-score z">+0</span></div>
+        <div class="score-line"><span class="sl-name">USDT Flow (-0.00%)</span><span class="sl-score z">+0</span></div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--warm);border-top:1px solid var(--pale);">
           <span style="font-family:var(--cond);font-size:9px;letter-spacing:.2em;color:var(--ghost);text-transform:uppercase">Total Score · Confidence 50.0%</span>
           <span style="font-family:var(--display);font-size:22px;color:var(--amber)">+3 / 6</span>
@@ -874,50 +893,50 @@ canvas { display: block; width: 100%; }
       <div id="hf-list"><div class="hf-row">
   <span class="hf-hor">1m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:33.9%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">33.9%</span>
+    <div class="hf-bar-fill" style="width:49.7%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">49.7%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">5m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:55.6%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">55.6%</span>
+    <div class="hf-bar-fill" style="width:55.5%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">55.5%</span>
   </div>
   <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">15m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:67.9%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">67.9%</span>
+    <div class="hf-bar-fill" style="width:54.4%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">54.4%</span>
   </div>
   <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">30m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:64.8%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">64.8%</span>
-  </div>
-  <span class="hf-lbl"><span class="tag up">UP</span></span>
-</div><div class="hf-row">
-  <span class="hf-hor">1h</span>
-  <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:59.8%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">59.8%</span>
-  </div>
-  <span class="hf-lbl"><span class="tag up">UP</span></span>
-</div><div class="hf-row">
-  <span class="hf-hor">4h</span>
-  <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:43.3%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">43.3%</span>
+    <div class="hf-bar-fill" style="width:48.6%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">48.6%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
+  <span class="hf-hor">1h</span>
+  <div class="hf-bar-track">
+    <div class="hf-bar-fill" style="width:43.4%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">43.4%</span>
+  </div>
+  <span class="hf-lbl"><span class="tag no">NOUP</span></span>
+</div><div class="hf-row">
+  <span class="hf-hor">4h</span>
+  <div class="hf-bar-track">
+    <div class="hf-bar-fill" style="width:54.2%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">54.2%</span>
+  </div>
+  <span class="hf-lbl"><span class="tag up">UP</span></span>
+</div><div class="hf-row">
   <span class="hf-hor">24h</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:49.0%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">49.0%</span>
+    <div class="hf-bar-fill" style="width:15.7%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">15.7%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div></div>
@@ -927,6 +946,9 @@ canvas { display: block; width: 100%; }
     </div>
   </div>
 </div>
+
+
+
 
 <!-- ═════════════════════ TAB: PATTERNS ═════════════════════ -->
 <div class="tab-pane" id="tab-patterns">
@@ -965,10 +987,10 @@ canvas { display: block; width: 100%; }
 <!-- ═════════════════════ TAB: SIGNALS ═════════════════════ -->
 <div class="tab-pane" id="tab-signals">
   <div class="mblock-4">
-    <div class="mblock"><div class="stat-label">Total Signals</div><div class="display-num">733</div><div class="stat-sub">345 LONG · 388 SHORT</div></div>
-    <div class="mblock"><div class="stat-label">Overall Hit Rate H10</div><div class="display-num amber">39.1%</div><div class="stat-sub">204 HIT · 313 MISS</div></div>
+    <div class="mblock"><div class="stat-label">Total Signals</div><div class="display-num">734</div><div class="stat-sub">346 LONG · 388 SHORT</div></div>
+    <div class="mblock"><div class="stat-label">Overall Hit Rate H10</div><div class="display-num amber">39.2%</div><div class="stat-sub">204 HIT · 313 MISS</div></div>
     <div class="mblock"><div class="stat-label">SHORT Hit Rate H10</div><div class="display-num sage">48.5%</div><div class="stat-sub">133 HIT · 141 MISS</div></div>
-    <div class="mblock"><div class="stat-label">LONG Hit Rate H10</div><div class="display-num blood">29.3%</div><div class="stat-sub">77 HIT · 186 MISS</div></div>
+    <div class="mblock"><div class="stat-label">LONG Hit Rate H10</div><div class="display-num blood">29.5%</div><div class="stat-sub">78 HIT · 186 MISS</div></div>
   </div>
   <div class="col2">
     <div class="panel">
@@ -992,50 +1014,50 @@ canvas { display: block; width: 100%; }
     <div id="hf-list2"><div class="hf-row">
   <span class="hf-hor">1m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:33.9%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">33.9%</span>
+    <div class="hf-bar-fill" style="width:49.7%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">49.7%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">5m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:55.6%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">55.6%</span>
+    <div class="hf-bar-fill" style="width:55.5%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">55.5%</span>
   </div>
   <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">15m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:67.9%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">67.9%</span>
+    <div class="hf-bar-fill" style="width:54.4%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">54.4%</span>
   </div>
   <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">30m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:64.8%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">64.8%</span>
-  </div>
-  <span class="hf-lbl"><span class="tag up">UP</span></span>
-</div><div class="hf-row">
-  <span class="hf-hor">1h</span>
-  <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:59.8%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">59.8%</span>
-  </div>
-  <span class="hf-lbl"><span class="tag up">UP</span></span>
-</div><div class="hf-row">
-  <span class="hf-hor">4h</span>
-  <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:43.3%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">43.3%</span>
+    <div class="hf-bar-fill" style="width:48.6%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">48.6%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
+  <span class="hf-hor">1h</span>
+  <div class="hf-bar-track">
+    <div class="hf-bar-fill" style="width:43.4%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">43.4%</span>
+  </div>
+  <span class="hf-lbl"><span class="tag no">NOUP</span></span>
+</div><div class="hf-row">
+  <span class="hf-hor">4h</span>
+  <div class="hf-bar-track">
+    <div class="hf-bar-fill" style="width:54.2%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">54.2%</span>
+  </div>
+  <span class="hf-lbl"><span class="tag up">UP</span></span>
+</div><div class="hf-row">
   <span class="hf-hor">24h</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:49.0%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">49.0%</span>
+    <div class="hf-bar-fill" style="width:15.7%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">15.7%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div></div>
@@ -1048,9 +1070,9 @@ canvas { display: block; width: 100%; }
 <!-- ═════════════════════ TAB: UP vs DOWN ═════════════════════ -->
 <div class="tab-pane" id="tab-updown">
   <div class="mblock-4">
-    <div class="mblock"><div class="stat-label">Total UP Outcomes</div><div class="display-num sage">278</div><div class="stat-sub">Avg delta +3.89%</div></div>
-    <div class="mblock"><div class="stat-label">Total DOWN Outcomes</div><div class="display-num blood">300</div><div class="stat-sub">Avg delta -3.83%</div></div>
-    <div class="mblock"><div class="stat-label">UP Rate</div><div class="display-num amber">48.0%</div><div class="stat-sub">DOWN-biased dataset</div></div>
+    <div class="mblock"><div class="stat-label">Total UP Outcomes</div><div class="display-num sage">292</div><div class="stat-sub">Avg delta +3.91%</div></div>
+    <div class="mblock"><div class="stat-label">Total DOWN Outcomes</div><div class="display-num blood">301</div><div class="stat-sub">Avg delta -3.82%</div></div>
+    <div class="mblock"><div class="stat-label">UP Rate</div><div class="display-num amber">49.2%</div><div class="stat-sub">DOWN-biased dataset</div></div>
     <div class="mblock"><div class="stat-label">Max UP Delta</div><div class="display-num">+46.8%</div><div class="stat-sub">Max DOWN −29.1%</div></div>
   </div>
   <div class="col2">
@@ -1148,7 +1170,7 @@ canvas { display: block; width: 100%; }
 <!-- ═════════════════════ TAB: TRADES ═════════════════════ -->
 <div class="tab-pane" id="tab-trades">
   <div class="mblock-4">
-    <div class="mblock"><div class="stat-label">Total Deployed</div><div class="display-num">$6,000</div><div class="stat-sub">6 trades · all closed</div></div>
+    <div class="mblock"><div class="stat-label">Total Deployed</div><div class="display-num">$7,000</div><div class="stat-sub">7 trades · all closed</div></div>
     <div class="mblock"><div class="stat-label">Net P&amp;L</div><div class="display-num blood">−$8.24</div><div class="stat-sub">−0.14% return</div></div>
     <div class="mblock"><div class="stat-label">Win Rate</div><div class="display-num amber">33.3%</div><div class="stat-sub">2W · 2L · 2 flat</div></div>
     <div class="mblock"><div class="stat-label">Best Trade</div><div class="display-num sage">+$22.60</div><div class="stat-sub">TAO · +2.26% · Mar 02</div></div>
@@ -1156,7 +1178,7 @@ canvas { display: block; width: 100%; }
   <div class="col32">
     <div class="panel mb">
       <div class="ph"><div class="ph-t">Trade Log — All Closed Positions</div></div>
-      <div class="tl-row tl-hdr"><div>Date</div><div>Coin</div><div>Entry</div><div>Regime</div><div>Tier</div><div>Status</div><div class="tl-pnl">Return</div><div class="tl-pnl">P&amp;L</div></div>
+      <div class="tl-row tl-hdr"><div>Date</div><div>Coin</div><div>Entry</div><div>Regime</div><div>Tier</div><div class="tl-pnl">Kelly $</div><div class="tl-pnl">Return</div><div class="tl-pnl">P&amp;L</div><div class="tl-pnl">Cum P&amp;L</div></div>
       <div id="tl-body"></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;">
@@ -1202,23 +1224,23 @@ function switchTab(id){
 }
 
 // ── DATA ──
-const sniperRows=[{"rank": 1, "sym": "FET", "price": 0.2141, "ret": 0.03131021194605021, "va": 0.6731491081413793, "rs": 0.1134533397001045, "ts": 1.53701215805089, "prob": 0.3100346705948995, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 2, "sym": "ZEC", "price": 234.01, "ret": 0.008837730643214359, "va": 1.842424204881332, "rs": 0.04929582592331982, "ts": 0.6772731264950114, "prob": 0.4403305519648955, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 3, "sym": "BTC", "price": 73789.36, "ret": 0.005866629297922366, "va": 1.34487893808145, "rs": 0.02818142796920053, "ts": 0.6378581148945641, "prob": 0.4183106626717844, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 4, "sym": "TAO", "price": 287.75, "ret": -0.001041485853150559, "va": 1.045200339707791, "rs": 0.09139736095267437, "ts": 0.4999776299178328, "prob": 0.3035795946102783, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 5, "sym": "ETH", "price": 2276.57, "ret": 0.003867184055031281, "va": 0.8967699795719865, "rs": 0.06855919270457567, "ts": 0.3599741438203216, "prob": 0.3598219939030696, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 6, "sym": "LINK", "price": 9.719, "ret": 0.006628689798032106, "va": 0.9678404598235707, "rs": 0.04860807401339273, "ts": 0.3153408593498466, "prob": 0.4011706069818259, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 7, "sym": "SOL", "price": 93.85, "ret": 0.003635974762057348, "va": 0.861850953246828, "rs": 0.05262701990747076, "ts": 0.05793793954822465, "prob": 0.3730139209545211, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 8, "sym": "ADA", "price": 0.2868, "ret": -0.004512322110378442, "va": 0.9562489361107634, "rs": 0.07196930068837748, "ts": -0.05017063942503837, "prob": 0.3558587157726602, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 9, "sym": "SUI", "price": 1.0586, "ret": -0.001038029631027726, "va": 0.7807894076674978, "rs": 0.04668197597683754, "ts": -0.05260791917994404, "prob": 0.3851709428314109, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 10, "sym": "XAN", "price": 0.01067, "ret": 0.0009380863039401, "va": 0.9508367374257347, "rs": 0.01367389723970325, "ts": -0.07797588766098949, "prob": 0.4696031447217514, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 11, "sym": "HYPE", "price": 39.29, "ret": 0.003832396525293769, "va": 0.322495933269033, "rs": 0.04051755669159229, "ts": -0.1494016135851401, "prob": 0.326105874865716, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 12, "sym": "HBAR", "price": 0.09813, "ret": -0.002236908998474951, "va": 1.071245349216567, "rs": 0.03229505255536314, "ts": -0.1558889082483454, "prob": 0.471582044937829, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 13, "sym": "LTC", "price": 57.48, "ret": 0.0, "va": 0.7114283060856664, "rs": 0.03577585769995006, "ts": -0.2492690584950091, "prob": 0.4430660752947433, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 14, "sym": "XLM", "price": 0.17216, "ret": -0.002999803101726872, "va": 1.069749638082186, "rs": 0.02874998881940605, "ts": -0.2886878361610814, "prob": 0.4960120109508284, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 15, "sym": "TRUMP", "price": 3.89, "ret": -0.01017811704834604, "va": 1.455561179212817, "rs": -0.03178759761403893, "ts": -0.3123847209908299, "prob": 0.5867082002758266, "lbl": "UP", "alloc": "SKIP"}];
-const symWRs=[{"s": "HBAR-USD", "t": 31, "w": 0.7097}, {"s": "PEPE-USD", "t": 10, "w": 0.7}, {"s": "HYPE-USD", "t": 13, "w": 0.6923}, {"s": "XRP-USD", "t": 29, "w": 0.6552}, {"s": "NEAR-USD", "t": 8, "w": 0.625}, {"s": "BERA-USD", "t": 5, "w": 0.6}, {"s": "BCH-USD", "t": 5, "w": 0.6}, {"s": "BTC-USD", "t": 30, "w": 0.5667}, {"s": "ADA-USD", "t": 30, "w": 0.5333}, {"s": "SUI-USD", "t": 25, "w": 0.52}, {"s": "DOGE-USD", "t": 25, "w": 0.52}, {"s": "LTC-USD", "t": 31, "w": 0.5161}, {"s": "AVAX-USD", "t": 20, "w": 0.5}, {"s": "BNKR-USD", "t": 6, "w": 0.5}, {"s": "ZRO-USD", "t": 13, "w": 0.4615}, {"s": "ZEC-USD", "t": 26, "w": 0.4615}, {"s": "PENGU-USD", "t": 20, "w": 0.45}, {"s": "VVV-USD", "t": 18, "w": 0.4444}, {"s": "ETH-USD", "t": 32, "w": 0.4375}, {"s": "SOL-USD", "t": 32, "w": 0.4375}, {"s": "TAO-USD", "t": 25, "w": 0.4}, {"s": "LINK-USD", "t": 28, "w": 0.3929}, {"s": "XLM-USD", "t": 17, "w": 0.3529}, {"s": "PUMP-USD", "t": 12, "w": 0.3333}];
-const regHist=[{"ts": "02/24", "p": 63073.56, "s": "Neutral"}, {"ts": "02/25", "p": 65825.75, "s": "Bullish"}, {"ts": "02/26", "p": 68041.47, "s": "Neutral"}, {"ts": "02/27", "p": 66002.93, "s": "Neutral"}, {"ts": "02/28", "p": 64762.56, "s": "Neutral"}, {"ts": "03/01", "p": 66922.53, "s": "Bullish"}, {"ts": "03/02", "p": 66340.8, "s": "Neutral"}, {"ts": "03/03", "p": 67740.17, "s": "Neutral"}, {"ts": "03/06", "p": 68535.19, "s": "Neutral"}, {"ts": "03/07", "p": 68026.49, "s": "Neutral"}, {"ts": "03/08", "p": 67685.69, "s": "Bearish"}, {"ts": "03/09", "p": 67701.65, "s": "Neutral"}, {"ts": "03/10", "p": 70796.02, "s": "Neutral"}, {"ts": "03/11", "p": 69524.0, "s": "Bullish"}, {"ts": "03/12", "p": 69945.76, "s": "Neutral"}, {"ts": "03/13", "p": 72096.76, "s": "Neutral"}, {"ts": "03/14", "p": 70482.52, "s": "Neutral"}, {"ts": "03/14", "p": 70572.02, "s": "Neutral"}, {"ts": "03/15", "p": 71707.59, "s": "Bullish"}, {"ts": "03/16", "p": 73245.16, "s": "Bullish"}];
-const aucHist=[{"d": "02/06", "auc": null, "acc": 1.0}, {"d": "02/07", "auc": 0.2777777777777778, "acc": 0.2667}, {"d": "02/08", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 1.0, "acc": 0.8095}, {"d": "02/12", "auc": 0.9305555555555555, "acc": 0.5}, {"d": "02/13", "auc": 0.4382716049382716, "acc": 0.4444}, {"d": "02/14", "auc": 0.8311111111111111, "acc": 0.7667}, {"d": "02/15", "auc": 0.7396694214876033, "acc": 0.697}, {"d": "02/16", "auc": 0.6439628482972136, "acc": 0.6944}, {"d": "02/17", "auc": 0.5267379679144385, "acc": 0.6154}, {"d": "02/18", "auc": 0.5341176470588236, "acc": 0.5}, {"d": "02/19", "auc": 0.4377880184331797, "acc": 0.5556}, {"d": "02/20", "auc": 0.5851851851851853, "acc": 0.5833}, {"d": "02/21", "auc": 0.5092307692307693, "acc": 0.5294}, {"d": "02/22", "auc": 0.4717241379310345, "acc": 0.5}, {"d": "02/23", "auc": 0.5470967741935484, "acc": 0.5893}, {"d": "02/24", "auc": 0.553030303030303, "acc": 0.5763}, {"d": "02/25", "auc": 0.8047619047619047, "acc": 0.6774}, {"d": "02/26", "auc": 0.5946745562130178, "acc": 0.6462}, {"d": "02/27", "auc": 0.5691056910569106, "acc": 0.6618}, {"d": "02/28", "auc": 0.5249169435215947, "acc": 0.5493}, {"d": "03/01", "auc": 0.3422619047619048, "acc": 0.4324}, {"d": "03/02", "auc": 0.2465277777777778, "acc": 0.4156}, {"d": "03/03", "auc": 0.3629916183107672, "acc": 0.5125}, {"d": "03/06", "auc": 0.3578616352201258, "acc": 0.5422}, {"d": "03/07", "auc": 0.3532608695652174, "acc": 0.4884}, {"d": "03/08", "auc": 0.3239795918367347, "acc": 0.4157}, {"d": "03/09", "auc": 0.3096274794388002, "acc": 0.3696}, {"d": "03/10", "auc": 0.3164444444444445, "acc": 0.3789}, {"d": "03/11", "auc": 0.3729662077596996, "acc": 0.4388}, {"d": "03/12", "auc": 0.4496031746031746, "acc": 0.4455}, {"d": "03/13", "auc": 0.4812091503267974, "acc": 0.4231}, {"d": "03/14", "auc": 0.5886699507389161, "acc": 0.5047}, {"d": "03/14", "auc": 0.6414565826330532, "acc": 0.5091}, {"d": "03/15", "auc": 0.7126315789473684, "acc": 0.5221}, {"d": "03/16", "auc": 0.6787547040711598, "acc": 0.4914}];
-const horizForecast=[{"h": "1m", "prob": 0.3389, "lbl": "DOWN"}, {"h": "5m", "prob": 0.5561, "lbl": "UP"}, {"h": "15m", "prob": 0.6792, "lbl": "UP"}, {"h": "30m", "prob": 0.6484, "lbl": "UP"}, {"h": "1h", "prob": 0.5982, "lbl": "UP"}, {"h": "4h", "prob": 0.4326, "lbl": "DOWN"}, {"h": "24h", "prob": 0.4898, "lbl": "DOWN"}];
-const patSummary=[{"L": 3, "up": 41171, "dn": 50618}, {"L": 4, "up": 41171, "dn": 50617}, {"L": 5, "up": 41171, "dn": 50617}, {"L": 6, "up": 41171, "dn": 50616}, {"L": 7, "up": 41171, "dn": 50615}, {"L": 8, "up": 41170, "dn": 50615}, {"L": 9, "up": 41170, "dn": 50614}, {"L": 10, "up": 41170, "dn": 50614}];
-const preUp3=[{"p": "= = =", "c": 5391}, {"p": "= = \u2193", "c": 2142}, {"p": "\u2193 = =", "c": 2094}, {"p": "= \u2193 =", "c": 1883}, {"p": "\u2193 \u2193 \u2193", "c": 1826}, {"p": "\u2193 \u2191 \u2193", "c": 1738}, {"p": "= = \u2191", "c": 1714}, {"p": "\u2191 \u2191 \u2193", "c": 1511}, {"p": "\u2191 \u2193 \u2193", "c": 1477}, {"p": "\u2191 \u2193 \u2191", "c": 1460}];
-const preDn3=[{"p": "= = =", "c": 6655}, {"p": "= = \u2193", "c": 2702}, {"p": "\u2193 \u2193 \u2193", "c": 2453}, {"p": "\u2193 = =", "c": 2375}, {"p": "= = \u2191", "c": 2357}, {"p": "= \u2193 =", "c": 2220}, {"p": "\u2191 = =", "c": 2040}, {"p": "= \u2191 =", "c": 1961}, {"p": "\u2193 \u2191 \u2193", "c": 1884}, {"p": "\u2193 \u2193 \u2191", "c": 1853}];
-const compStats=[{"L": 3, "occ": 40439, "pU": 13.33, "pD": 16.46, "pE": 70.21}, {"L": 4, "occ": 28392, "pU": 12.43, "pD": 15.18, "pE": 72.39}, {"L": 5, "occ": 20553, "pU": 11.41, "pD": 13.8, "pE": 74.78}, {"L": 6, "occ": 15369, "pU": 10.72, "pD": 12.94, "pE": 76.34}, {"L": 7, "occ": 11731, "pU": 10.54, "pD": 12.37, "pE": 77.09}, {"L": 8, "occ": 9043, "pU": 9.97, "pD": 12.13, "pE": 77.89}, {"L": 9, "occ": 7044, "pU": 9.72, "pD": 11.58, "pE": 78.69}, {"L": 10, "occ": 5543, "pU": 9.36, "pD": 11.47, "pE": 79.16}];
-const hrateData=[{"h": 1, "lh": 36, "lm": 73, "sh": 49, "sm": 76}, {"h": 2, "lh": 47, "lm": 113, "sh": 49, "sm": 99}, {"h": 3, "lh": 58, "lm": 138, "sh": 63, "sm": 127}, {"h": 4, "lh": 70, "lm": 159, "sh": 82, "sm": 135}, {"h": 5, "lh": 61, "lm": 170, "sh": 92, "sm": 142}, {"h": 6, "lh": 64, "lm": 181, "sh": 103, "sm": 140}, {"h": 7, "lh": 68, "lm": 187, "sh": 101, "sm": 141}, {"h": 8, "lh": 73, "lm": 191, "sh": 105, "sm": 142}, {"h": 9, "lh": 77, "lm": 189, "sh": 119, "sm": 144}, {"h": 10, "lh": 77, "lm": 186, "sh": 133, "sm": 141}];
-const recentSigs=[{"ts": "Mar 16 07:22", "side": "SHORT", "p": 73768.72, "pct": -0.199, "r": "MISS"}, {"ts": "Mar 15 22:31", "side": "LONG", "p": 72088.4, "pct": 0.314, "r": "TIE"}, {"ts": "Mar 15 10:42", "side": "SHORT", "p": 71822.48, "pct": -0.069, "r": "HIT"}, {"ts": "Mar 15 08:59", "side": "LONG", "p": 71700.0, "pct": 0.078, "r": "HIT"}, {"ts": "Mar 15 06:54", "side": "LONG", "p": 71469.86, "pct": 0.052, "r": "MISS"}, {"ts": "Mar 15 03:49", "side": "SHORT", "p": 71311.18, "pct": -0.155, "r": "MISS"}, {"ts": "Mar 15 01:33", "side": "SHORT", "p": 70895.88, "pct": -0.139, "r": "MISS"}, {"ts": "Mar 14 17:29", "side": "LONG", "p": 70729.22, "pct": 0.052, "r": "MISS"}, {"ts": "Mar 14 16:56", "side": "LONG", "p": 70691.12, "pct": 0.067, "r": "MISS"}, {"ts": "Mar 14 15:46", "side": "SHORT", "p": 70531.64, "pct": -0.089, "r": "TIE"}, {"ts": "Mar 14 11:43", "side": "LONG", "p": 70704.97, "pct": 0.074, "r": "HIT"}, {"ts": "Mar 14 10:44", "side": "LONG", "p": 70525.34, "pct": 0.123, "r": "TIE"}, {"ts": "Mar 14 08:50", "side": "SHORT", "p": 70558.35, "pct": -0.086, "r": "MISS"}, {"ts": "Mar 14 08:37", "side": "SHORT", "p": 70619.27, "pct": -0.065, "r": "TIE"}, {"ts": "Mar 14 07:51", "side": "LONG", "p": 70593.77, "pct": 0.122, "r": "MISS"}, {"ts": "Mar 14 01:35", "side": "SHORT", "p": 70659.93, "pct": -0.153, "r": "HIT"}, {"ts": "Mar 13 20:53", "side": "LONG", "p": 71456.05, "pct": 0.26, "r": "MISS"}, {"ts": "Mar 13 18:47", "side": "SHORT", "p": 71100.0, "pct": -0.154, "r": "TIE"}, {"ts": "Mar 13 11:34", "side": "SHORT", "p": 72365.42, "pct": -0.065, "r": "TIE"}, {"ts": "Mar 12 10:11", "side": "SHORT", "p": 69917.28, "pct": -0.165, "r": "MISS"}, {"ts": "Mar 12 08:44", "side": "SHORT", "p": 69804.33, "pct": -0.058, "r": "MISS"}];
-const featCmp=[{"feat": "median_minute_usd_24h", "up": 40809.24123, "dn": 29104.2421, "mx": 48971.08947}, {"feat": "usd_turnover_24h", "up": 104346925.86208, "dn": 82195111.68136, "mx": 125216311.03449}, {"feat": "volume_accel", "up": 1.3689, "dn": 1.3646, "mx": 1.64268}, {"feat": "vol_breakout", "up": 0.91089, "dn": 0.98057, "mx": 1.17668}, {"feat": "TopMoverScore", "up": 0.21009, "dn": 0.23882, "mx": 0.28658}, {"feat": "rs_7d", "up": -0.00359, "dn": 0.00928, "mx": 0.01113}, {"feat": "ret_1h", "up": 0.00297, "dn": 0.00437, "mx": 0.00524}];
-const latestCoefs=[{"f": "median_minute_usd_24h", "c": 0.8273}, {"f": "usd_turnover_24h", "c": -0.6947}, {"f": "rs_7d", "c": -0.3271}, {"f": "TopMoverScore", "c": 0.2455}, {"f": "vol_breakout", "c": -0.2366}, {"f": "Rank", "c": 0.1837}, {"f": "volume_accel", "c": 0.0939}, {"f": "ret_1h", "c": -0.0834}];
-const coefHist=[{"ts": "Mar 14", "v": {"median_minute_usd_24h": 0.7986, "usd_turnover_24h": -0.6474, "rs_7d": -0.3394, "TopMoverScore": 0.3261, "Rank": 0.2582, "vol_breakout": -0.2012, "volume_accel": 0.0954, "ret_1h": -0.0948}}, {"ts": "Mar 15", "v": {"median_minute_usd_24h": 0.7842, "usd_turnover_24h": -0.639, "rs_7d": -0.3639, "TopMoverScore": 0.3156, "Rank": 0.2564, "vol_breakout": -0.2259, "volume_accel": 0.1119, "ret_1h": -0.0949}}, {"ts": "Mar 16", "v": {"median_minute_usd_24h": 0.8273, "usd_turnover_24h": -0.6947, "rs_7d": -0.3271, "TopMoverScore": 0.2455, "vol_breakout": -0.2366, "Rank": 0.1837, "volume_accel": 0.0939, "ret_1h": -0.0834}}];
-const tradeLog=[{"d": "2026-02-26", "c": "NEAR", "e": 1.146, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0, "pnl": 0.0}, {"d": "2026-03-01", "c": "LINK", "e": 8.999, "r": "STRONG_BULL", "t": "BUY", "ret": -0.0344482720302256, "pnl": -34.4482720302256}, {"d": "2026-03-01", "c": "PENGU", "e": 0.006914, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": -0.01735608909459074, "pnl": -17.35608909459074}, {"d": "2026-03-01", "c": "DOGE", "e": 0.09438, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": 0.0, "pnl": 0.0}, {"d": "2026-03-02", "c": "TAO", "e": 177.9, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.02259696458684646, "pnl": 22.59696458684646}, {"d": "2026-03-02", "c": "BTC", "e": 66326.0, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0209667400416127, "pnl": 20.9667400416127}];
-const consHist=[{"ts": "Mar 04", "p": 70904, "l": "NEUTRAL", "prob": 0.3682489047608098, "a": 57.14}, {"ts": "Mar 05", "p": 72911, "l": "DOWN", "prob": 0.401207893001453, "a": 85.71}, {"ts": "Mar 06", "p": 70267, "l": "NEUTRAL", "prob": 0.4316505341136588, "a": 57.14}, {"ts": "Mar 06", "p": 68586, "l": "UP", "prob": 0.5866758810504761, "a": 100.0}, {"ts": "Mar 07", "p": 67996, "l": "NEUTRAL", "prob": 0.481755936542925, "a": 57.14}, {"ts": "Mar 08", "p": 67677, "l": "NEUTRAL", "prob": 0.4579616036984484, "a": 57.14}, {"ts": "Mar 09", "p": 67579, "l": "NEUTRAL", "prob": 0.4714727765208011, "a": 57.14}, {"ts": "Mar 10", "p": 70759, "l": "NEUTRAL", "prob": 0.3856814479994208, "a": 57.14}, {"ts": "Mar 11", "p": 69520, "l": "DOWN", "prob": 0.3352444946640563, "a": 100.0}, {"ts": "Mar 12", "p": 70032, "l": "DOWN", "prob": 0.3944252441662967, "a": 85.71}, {"ts": "Mar 13", "p": 71994, "l": "DOWN", "prob": 0.2798910961098509, "a": 100.0}, {"ts": "Mar 14", "p": 70438, "l": "NEUTRAL", "prob": 0.4978344965791395, "a": 57.14}, {"ts": "Mar 14", "p": 70594, "l": "DOWN", "prob": 0.3668237818638402, "a": 71.43}, {"ts": "Mar 15", "p": 71765, "l": "UP", "prob": 0.5550917115614457, "a": 85.71}, {"ts": "Mar 16", "p": 73287, "l": "NEUTRAL", "prob": 0.5321464801509528, "a": 57.14}];
-const dailyDir=[{"d": "02/27", "u": 1, "dn": 14}, {"d": "02/28", "u": 15, "dn": 0}, {"d": "03/01", "u": 2, "dn": 13}, {"d": "03/02", "u": 10, "dn": 5}, {"d": "03/03", "u": 2, "dn": 13}, {"d": "03/06", "u": 11, "dn": 4}, {"d": "03/07", "u": 1, "dn": 14}, {"d": "03/08", "u": 11, "dn": 4}, {"d": "03/09", "u": 15, "dn": 0}, {"d": "03/10", "u": 1, "dn": 14}, {"d": "03/11", "u": 15, "dn": 0}, {"d": "03/12", "u": 14, "dn": 1}, {"d": "03/13", "u": 0, "dn": 15}, {"d": "03/14", "u": 24, "dn": 6}, {"d": "03/15", "u": 13, "dn": 1}];
+const sniperRows=[{"rank": 1, "sym": "FET", "price": 0.2141, "ret": 0.03131021194605021, "va": 0.6731491081413793, "rs": 0.1134533397001045, "ts": 1.53701215805089, "prob": 0.3100346705948995, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 2, "sym": "ZEC", "price": 234.01, "ret": 0.008837730643214359, "va": 1.842424204881332, "rs": 0.04929582592331982, "ts": 0.6772731264950114, "prob": 0.4403305519648955, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 3, "sym": "BTC", "price": 73789.36, "ret": 0.005866629297922366, "va": 1.34487893808145, "rs": 0.02818142796920053, "ts": 0.6378581148945641, "prob": 0.4183106626717844, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 4, "sym": "TAO", "price": 287.75, "ret": -0.001041485853150559, "va": 1.045200339707791, "rs": 0.09139736095267437, "ts": 0.4999776299178328, "prob": 0.3035795946102783, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 5, "sym": "ETH", "price": 2276.57, "ret": 0.003867184055031281, "va": 0.8967699795719865, "rs": 0.06855919270457567, "ts": 0.3599741438203216, "prob": 0.3598219939030696, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 6, "sym": "LINK", "price": 9.719, "ret": 0.006628689798032106, "va": 0.9678404598235707, "rs": 0.04860807401339273, "ts": 0.3153408593498466, "prob": 0.4011706069818259, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 7, "sym": "SOL", "price": 93.85, "ret": 0.003635974762057348, "va": 0.861850953246828, "rs": 0.05262701990747076, "ts": 0.05793793954822465, "prob": 0.3730139209545211, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 8, "sym": "ADA", "price": 0.2868, "ret": -0.004512322110378442, "va": 0.9562489361107634, "rs": 0.07196930068837748, "ts": -0.05017063942503837, "prob": 0.3558587157726602, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 9, "sym": "SUI", "price": 1.0586, "ret": -0.001038029631027726, "va": 0.7807894076674978, "rs": 0.04668197597683754, "ts": -0.05260791917994404, "prob": 0.3851709428314109, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 10, "sym": "XAN", "price": 0.01067, "ret": 0.0009380863039401, "va": 0.9508367374257347, "rs": 0.01367389723970325, "ts": -0.07797588766098949, "prob": 0.4696031447217514, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 11, "sym": "HYPE", "price": 39.29, "ret": 0.003832396525293769, "va": 0.322495933269033, "rs": 0.04051755669159229, "ts": -0.1494016135851401, "prob": 0.326105874865716, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 12, "sym": "HBAR", "price": 0.09813, "ret": -0.002236908998474951, "va": 1.071245349216567, "rs": 0.03229505255536314, "ts": -0.1558889082483454, "prob": 0.471582044937829, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 13, "sym": "LTC", "price": 57.48, "ret": 0.0, "va": 0.7114283060856664, "rs": 0.03577585769995006, "ts": -0.2492690584950091, "prob": 0.4430660752947433, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 14, "sym": "XLM", "price": 0.17216, "ret": -0.002999803101726872, "va": 1.069749638082186, "rs": 0.02874998881940605, "ts": -0.2886878361610814, "prob": 0.4960120109508284, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 15, "sym": "TRUMP", "price": 3.89, "ret": -0.01017811704834604, "va": 1.455561179212817, "rs": -0.03178759761403893, "ts": -0.3123847209908299, "prob": 0.5867082002758266, "lbl": "UP", "alloc": "SKIP"}, {"rank": 1, "sym": "FARTCOIN", "price": 0.2027, "ret": 0.02684903748733536, "va": 0.7716828904991831, "rs": 0.1538819179941262, "ts": 1.892553175857635, "prob": 0.2866466145220661, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 2, "sym": "DOT", "price": 1.652, "ret": 0.01101591187270512, "va": 1.519659961944518, "rs": 0.09585896152195694, "ts": 1.081202870505819, "prob": 0.4000129281671388, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 3, "sym": "NEAR", "price": 1.505, "ret": 0.007362784471218076, "va": 1.221441471895538, "rs": 0.08542861286428627, "ts": 1.030809206055024, "prob": 0.3624866346124432, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 4, "sym": "XRP", "price": 1.547, "ret": 0.003763301323643997, "va": 1.261622540381484, "rs": 0.06480522628873331, "ts": 0.5702942931379099, "prob": 0.4045229609596533, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 5, "sym": "TRUMP", "price": 3.92, "ret": 0.00512820512820511, "va": 1.54632975514482, "rs": -0.0157682727510895, "ts": 0.5501013020764267, "prob": 0.5322526969433425, "lbl": "UP", "alloc": "SKIP"}, {"rank": 6, "sym": "HYPE", "price": 40.94, "ret": -0.008956669087388125, "va": 1.528965159746614, "rs": 0.07017484096031179, "ts": 0.4339744162730818, "prob": 0.3611190048943133, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 7, "sym": "AVAX", "price": 10.5, "ret": 0.005747126436781658, "va": 0.8132831926076693, "rs": 0.04558590281235397, "ts": 0.4338322591536853, "prob": 0.4164557775461123, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 8, "sym": "ADA", "price": 0.2912, "ret": 0.002064693737095613, "va": 1.307158463977176, "rs": 0.06064101596610572, "ts": 0.4142160362737019, "prob": 0.4521462831352875, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 9, "sym": "BONK", "price": 6.65e-06, "ret": -0.004491017964071919, "va": 1.537183713886934, "rs": 0.05436596064392818, "ts": 0.1779740438918999, "prob": 0.4634834245102993, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 10, "sym": "ZEC", "price": 283.33, "ret": -0.01398990777797127, "va": 0.8521500021690827, "rs": 0.210586157354727, "ts": 0.174966553182083, "prob": 0.1981335205037773, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 11, "sym": "PEPE", "price": 4.01e-06, "ret": 0.005012531328320691, "va": 0.8285640315255784, "rs": 0.0734337410879613, "ts": 0.1126126855309969, "prob": 0.443187369600516, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 12, "sym": "HBAR", "price": 0.10035, "ret": -0.0007965747286667879, "va": 0.8151402676804792, "rs": 0.03606711500581317, "ts": 0.03410645297698349, "prob": 0.457839566015571, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 13, "sym": "DOGE", "price": 0.10298, "ret": -0.0009701202949166099, "va": 0.9549374888786077, "rs": 0.04776464394638658, "ts": -0.004716783735462225, "prob": 0.473044203052762, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 14, "sym": "LTC", "price": 58.72, "ret": -0.002039428959891287, "va": 0.8796273461205353, "rs": 0.04041800399768913, "ts": -0.03862090359461979, "prob": 0.4815111970378062, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 15, "sym": "RENDER", "price": 1.961, "ret": -0.004568527918781706, "va": 0.4889616072730477, "rs": 0.04700253912358843, "ts": -0.1594892101573074, "prob": 0.3829713147283303, "lbl": "NOUP", "alloc": "SKIP"}];
+const symWRs=[{"s": "PEPE-USD", "t": 10, "w": 0.7}, {"s": "HBAR-USD", "t": 32, "w": 0.6875}, {"s": "XRP-USD", "t": 29, "w": 0.6552}, {"s": "HYPE-USD", "t": 14, "w": 0.6429}, {"s": "NEAR-USD", "t": 8, "w": 0.625}, {"s": "BERA-USD", "t": 5, "w": 0.6}, {"s": "BCH-USD", "t": 5, "w": 0.6}, {"s": "BTC-USD", "t": 31, "w": 0.5484}, {"s": "DOGE-USD", "t": 25, "w": 0.52}, {"s": "ADA-USD", "t": 31, "w": 0.5161}, {"s": "AVAX-USD", "t": 20, "w": 0.5}, {"s": "BNKR-USD", "t": 6, "w": 0.5}, {"s": "SUI-USD", "t": 26, "w": 0.5}, {"s": "LTC-USD", "t": 32, "w": 0.5}, {"s": "ZRO-USD", "t": 13, "w": 0.4615}, {"s": "PENGU-USD", "t": 20, "w": 0.45}, {"s": "ZEC-USD", "t": 27, "w": 0.4444}, {"s": "VVV-USD", "t": 18, "w": 0.4444}, {"s": "ETH-USD", "t": 33, "w": 0.4242}, {"s": "SOL-USD", "t": 33, "w": 0.4242}, {"s": "TAO-USD", "t": 26, "w": 0.4231}, {"s": "LINK-USD", "t": 29, "w": 0.3793}, {"s": "PUMP-USD", "t": 12, "w": 0.3333}, {"s": "XLM-USD", "t": 18, "w": 0.3333}];
+const regHist=[{"ts": "02/25", "p": 65825.75, "s": "Bullish"}, {"ts": "02/26", "p": 68041.47, "s": "Neutral"}, {"ts": "02/27", "p": 66002.93, "s": "Neutral"}, {"ts": "02/28", "p": 64762.56, "s": "Neutral"}, {"ts": "03/01", "p": 66922.53, "s": "Bullish"}, {"ts": "03/02", "p": 66340.8, "s": "Neutral"}, {"ts": "03/03", "p": 67740.17, "s": "Neutral"}, {"ts": "03/06", "p": 68535.19, "s": "Neutral"}, {"ts": "03/07", "p": 68026.49, "s": "Neutral"}, {"ts": "03/08", "p": 67685.69, "s": "Bearish"}, {"ts": "03/09", "p": 67701.65, "s": "Neutral"}, {"ts": "03/10", "p": 70796.02, "s": "Neutral"}, {"ts": "03/11", "p": 69524.0, "s": "Bullish"}, {"ts": "03/12", "p": 69945.76, "s": "Neutral"}, {"ts": "03/13", "p": 72096.76, "s": "Neutral"}, {"ts": "03/14", "p": 70482.52, "s": "Neutral"}, {"ts": "03/14", "p": 70572.02, "s": "Neutral"}, {"ts": "03/15", "p": 71707.59, "s": "Bullish"}, {"ts": "03/16", "p": 73245.16, "s": "Bullish"}, {"ts": "03/16", "p": 74503.18, "s": "Bullish"}];
+const aucHist=[{"d": "02/06", "auc": null, "acc": 1.0}, {"d": "02/07", "auc": 0.2777777777777778, "acc": 0.2667}, {"d": "02/08", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 1.0, "acc": 0.8095}, {"d": "02/12", "auc": 0.9305555555555555, "acc": 0.5}, {"d": "02/13", "auc": 0.4382716049382716, "acc": 0.4444}, {"d": "02/14", "auc": 0.8311111111111111, "acc": 0.7667}, {"d": "02/15", "auc": 0.7396694214876033, "acc": 0.697}, {"d": "02/16", "auc": 0.6439628482972136, "acc": 0.6944}, {"d": "02/17", "auc": 0.5267379679144385, "acc": 0.6154}, {"d": "02/18", "auc": 0.5341176470588236, "acc": 0.5}, {"d": "02/19", "auc": 0.4377880184331797, "acc": 0.5556}, {"d": "02/20", "auc": 0.5851851851851853, "acc": 0.5833}, {"d": "02/21", "auc": 0.5092307692307693, "acc": 0.5294}, {"d": "02/22", "auc": 0.4717241379310345, "acc": 0.5}, {"d": "02/23", "auc": 0.5470967741935484, "acc": 0.5893}, {"d": "02/24", "auc": 0.553030303030303, "acc": 0.5763}, {"d": "02/25", "auc": 0.8047619047619047, "acc": 0.6774}, {"d": "02/26", "auc": 0.5946745562130178, "acc": 0.6462}, {"d": "02/27", "auc": 0.5691056910569106, "acc": 0.6618}, {"d": "02/28", "auc": 0.5249169435215947, "acc": 0.5493}, {"d": "03/01", "auc": 0.3422619047619048, "acc": 0.4324}, {"d": "03/02", "auc": 0.2465277777777778, "acc": 0.4156}, {"d": "03/03", "auc": 0.3629916183107672, "acc": 0.5125}, {"d": "03/06", "auc": 0.3578616352201258, "acc": 0.5422}, {"d": "03/07", "auc": 0.3532608695652174, "acc": 0.4884}, {"d": "03/08", "auc": 0.3239795918367347, "acc": 0.4157}, {"d": "03/09", "auc": 0.3096274794388002, "acc": 0.3696}, {"d": "03/10", "auc": 0.3164444444444445, "acc": 0.3789}, {"d": "03/11", "auc": 0.3729662077596996, "acc": 0.4388}, {"d": "03/12", "auc": 0.4496031746031746, "acc": 0.4455}, {"d": "03/13", "auc": 0.4812091503267974, "acc": 0.4231}, {"d": "03/14", "auc": 0.5886699507389161, "acc": 0.5047}, {"d": "03/14", "auc": 0.6414565826330532, "acc": 0.5091}, {"d": "03/15", "auc": 0.7126315789473684, "acc": 0.5221}, {"d": "03/16", "auc": 0.6787547040711598, "acc": 0.4914}, {"d": "03/16", "auc": 0.6692657569850552, "acc": 0.5378}];
+const horizForecast=[{"h": "1m", "prob": 0.4968, "lbl": "DOWN"}, {"h": "5m", "prob": 0.5551, "lbl": "UP"}, {"h": "15m", "prob": 0.5441, "lbl": "UP"}, {"h": "30m", "prob": 0.4857, "lbl": "DOWN"}, {"h": "1h", "prob": 0.4337, "lbl": "DOWN"}, {"h": "4h", "prob": 0.5425, "lbl": "UP"}, {"h": "24h", "prob": 0.1566, "lbl": "DOWN"}];
+const patSummary=[{"L": 3, "up": 41414, "dn": 50839}, {"L": 4, "up": 41414, "dn": 50838}, {"L": 5, "up": 41414, "dn": 50838}, {"L": 6, "up": 41414, "dn": 50837}, {"L": 7, "up": 41414, "dn": 50836}, {"L": 8, "up": 41413, "dn": 50836}, {"L": 9, "up": 41413, "dn": 50835}, {"L": 10, "up": 41413, "dn": 50835}];
+const preUp3=[{"p": "= = =", "c": 5406}, {"p": "= = \u2193", "c": 2149}, {"p": "\u2193 = =", "c": 2103}, {"p": "= \u2193 =", "c": 1897}, {"p": "\u2193 \u2193 \u2193", "c": 1834}, {"p": "\u2193 \u2191 \u2193", "c": 1750}, {"p": "= = \u2191", "c": 1724}, {"p": "\u2191 \u2191 \u2193", "c": 1524}, {"p": "\u2191 \u2193 \u2193", "c": 1488}, {"p": "\u2191 \u2193 \u2191", "c": 1470}];
+const preDn3=[{"p": "= = =", "c": 6672}, {"p": "= = \u2193", "c": 2710}, {"p": "\u2193 \u2193 \u2193", "c": 2459}, {"p": "\u2193 = =", "c": 2387}, {"p": "= = \u2191", "c": 2364}, {"p": "= \u2193 =", "c": 2225}, {"p": "\u2191 = =", "c": 2046}, {"p": "= \u2191 =", "c": 1968}, {"p": "\u2193 \u2191 \u2193", "c": 1894}, {"p": "\u2193 \u2193 \u2191", "c": 1863}];
+const compStats=[{"L": 3, "occ": 40510, "pU": 13.34, "pD": 16.47, "pE": 70.19}, {"L": 4, "occ": 28432, "pU": 12.44, "pD": 15.2, "pE": 72.36}, {"L": 5, "occ": 20574, "pU": 11.42, "pD": 13.8, "pE": 74.77}, {"L": 6, "occ": 15384, "pU": 10.73, "pD": 12.95, "pE": 76.32}, {"L": 7, "occ": 11741, "pU": 10.55, "pD": 12.38, "pE": 77.07}, {"L": 8, "occ": 9049, "pU": 9.98, "pD": 12.13, "pE": 77.89}, {"L": 9, "occ": 7048, "pU": 9.73, "pD": 11.59, "pE": 78.67}, {"L": 10, "occ": 5545, "pU": 9.38, "pD": 11.47, "pE": 79.15}];
+const hrateData=[{"h": 1, "lh": 36, "lm": 73, "sh": 49, "sm": 76}, {"h": 2, "lh": 48, "lm": 113, "sh": 49, "sm": 99}, {"h": 3, "lh": 59, "lm": 138, "sh": 63, "sm": 127}, {"h": 4, "lh": 71, "lm": 159, "sh": 82, "sm": 135}, {"h": 5, "lh": 62, "lm": 170, "sh": 92, "sm": 142}, {"h": 6, "lh": 65, "lm": 181, "sh": 103, "sm": 140}, {"h": 7, "lh": 69, "lm": 187, "sh": 101, "sm": 141}, {"h": 8, "lh": 74, "lm": 191, "sh": 105, "sm": 142}, {"h": 9, "lh": 78, "lm": 189, "sh": 119, "sm": 144}, {"h": 10, "lh": 78, "lm": 186, "sh": 133, "sm": 141}];
+const recentSigs=[{"ts": "Mar 16 10:47", "side": "LONG", "p": 73377.14, "pct": 0.123, "r": "HIT"}, {"ts": "Mar 16 07:22", "side": "SHORT", "p": 73768.72, "pct": -0.199, "r": "MISS"}, {"ts": "Mar 15 22:31", "side": "LONG", "p": 72088.4, "pct": 0.314, "r": "TIE"}, {"ts": "Mar 15 10:42", "side": "SHORT", "p": 71822.48, "pct": -0.069, "r": "HIT"}, {"ts": "Mar 15 08:59", "side": "LONG", "p": 71700.0, "pct": 0.078, "r": "HIT"}, {"ts": "Mar 15 06:54", "side": "LONG", "p": 71469.86, "pct": 0.052, "r": "MISS"}, {"ts": "Mar 15 03:49", "side": "SHORT", "p": 71311.18, "pct": -0.155, "r": "MISS"}, {"ts": "Mar 15 01:33", "side": "SHORT", "p": 70895.88, "pct": -0.139, "r": "MISS"}, {"ts": "Mar 14 17:29", "side": "LONG", "p": 70729.22, "pct": 0.052, "r": "MISS"}, {"ts": "Mar 14 16:56", "side": "LONG", "p": 70691.12, "pct": 0.067, "r": "MISS"}, {"ts": "Mar 14 15:46", "side": "SHORT", "p": 70531.64, "pct": -0.089, "r": "TIE"}, {"ts": "Mar 14 11:43", "side": "LONG", "p": 70704.97, "pct": 0.074, "r": "HIT"}, {"ts": "Mar 14 10:44", "side": "LONG", "p": 70525.34, "pct": 0.123, "r": "TIE"}, {"ts": "Mar 14 08:50", "side": "SHORT", "p": 70558.35, "pct": -0.086, "r": "MISS"}, {"ts": "Mar 14 08:37", "side": "SHORT", "p": 70619.27, "pct": -0.065, "r": "TIE"}, {"ts": "Mar 14 07:51", "side": "LONG", "p": 70593.77, "pct": 0.122, "r": "MISS"}, {"ts": "Mar 14 01:35", "side": "SHORT", "p": 70659.93, "pct": -0.153, "r": "HIT"}, {"ts": "Mar 13 20:53", "side": "LONG", "p": 71456.05, "pct": 0.26, "r": "MISS"}, {"ts": "Mar 13 18:47", "side": "SHORT", "p": 71100.0, "pct": -0.154, "r": "TIE"}, {"ts": "Mar 13 11:34", "side": "SHORT", "p": 72365.42, "pct": -0.065, "r": "TIE"}, {"ts": "Mar 12 10:11", "side": "SHORT", "p": 69917.28, "pct": -0.165, "r": "MISS"}];
+const featCmp=[{"feat": "median_minute_usd_24h", "up": 40402.70006, "dn": 29047.24419, "mx": 48483.24007}, {"feat": "usd_turnover_24h", "up": 103788218.01969, "dn": 82041292.92792, "mx": 124545861.62363}, {"feat": "volume_accel", "up": 1.35089, "dn": 1.36354, "mx": 1.63625}, {"feat": "vol_breakout", "up": 0.91293, "dn": 0.98131, "mx": 1.17757}, {"feat": "TopMoverScore", "up": 0.20772, "dn": 0.23969, "mx": 0.28762}, {"feat": "rs_7d", "up": -0.00137, "dn": 0.00955, "mx": 0.01146}, {"feat": "ret_1h", "up": 0.00298, "dn": 0.00435, "mx": 0.00522}];
+const latestCoefs=[{"f": "median_minute_usd_24h", "c": 0.7816}, {"f": "usd_turnover_24h", "c": -0.651}, {"f": "rs_7d", "c": -0.2579}, {"f": "vol_breakout", "c": -0.219}, {"f": "TopMoverScore", "c": 0.2135}, {"f": "Rank", "c": 0.163}, {"f": "ret_1h", "c": -0.08}, {"f": "volume_accel", "c": 0.0634}];
+const coefHist=[{"ts": "Mar 15", "v": {"median_minute_usd_24h": 0.7842, "usd_turnover_24h": -0.639, "rs_7d": -0.3639, "TopMoverScore": 0.3156, "Rank": 0.2564, "vol_breakout": -0.2259, "volume_accel": 0.1119, "ret_1h": -0.0949}}, {"ts": "Mar 16", "v": {"median_minute_usd_24h": 0.8273, "usd_turnover_24h": -0.6947, "rs_7d": -0.3271, "TopMoverScore": 0.2455, "vol_breakout": -0.2366, "Rank": 0.1837, "volume_accel": 0.0939, "ret_1h": -0.0834}}, {"ts": "Mar 16", "v": {"median_minute_usd_24h": 0.7816, "usd_turnover_24h": -0.651, "rs_7d": -0.2579, "vol_breakout": -0.219, "TopMoverScore": 0.2135, "Rank": 0.163, "ret_1h": -0.08, "volume_accel": 0.0634}}];
+const tradeLog=[{"d": "2026-02-26", "c": "NEAR", "e": 1.146, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0, "pnl": 0.0, "kel": null, "cum": 0.0}, {"d": "2026-03-01", "c": "LINK", "e": 8.999, "r": "STRONG_BULL", "t": "BUY", "ret": -0.0344482720302256, "pnl": -34.4482720302256, "kel": null, "cum": -34.45}, {"d": "2026-03-01", "c": "PENGU", "e": 0.006914, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": -0.01735608909459074, "pnl": -17.35608909459074, "kel": null, "cum": -51.8}, {"d": "2026-03-01", "c": "DOGE", "e": 0.09438, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": 0.0, "pnl": 0.0, "kel": null, "cum": -51.8}, {"d": "2026-03-02", "c": "TAO", "e": 177.9, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.02259696458684646, "pnl": 22.59696458684646, "kel": null, "cum": -29.21}, {"d": "2026-03-02", "c": "BTC", "e": 66326.0, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0209667400416127, "pnl": 20.9667400416127, "kel": null, "cum": -8.24}, {"d": "2026-03-16", "c": "TRUMP", "e": 3.92, "r": "STRONG_BULL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 3225.27, "cum": -8.24}];
+const consHist=[{"ts": "Mar 05", "p": 72911, "l": "DOWN", "prob": 0.401207893001453, "a": 85.71}, {"ts": "Mar 06", "p": 70267, "l": "NEUTRAL", "prob": 0.4316505341136588, "a": 57.14}, {"ts": "Mar 06", "p": 68586, "l": "UP", "prob": 0.5866758810504761, "a": 100.0}, {"ts": "Mar 07", "p": 67996, "l": "NEUTRAL", "prob": 0.481755936542925, "a": 57.14}, {"ts": "Mar 08", "p": 67677, "l": "NEUTRAL", "prob": 0.4579616036984484, "a": 57.14}, {"ts": "Mar 09", "p": 67579, "l": "NEUTRAL", "prob": 0.4714727765208011, "a": 57.14}, {"ts": "Mar 10", "p": 70759, "l": "NEUTRAL", "prob": 0.3856814479994208, "a": 57.14}, {"ts": "Mar 11", "p": 69520, "l": "DOWN", "prob": 0.3352444946640563, "a": 100.0}, {"ts": "Mar 12", "p": 70032, "l": "DOWN", "prob": 0.3944252441662967, "a": 85.71}, {"ts": "Mar 13", "p": 71994, "l": "DOWN", "prob": 0.2798910961098509, "a": 100.0}, {"ts": "Mar 14", "p": 70438, "l": "NEUTRAL", "prob": 0.4978344965791395, "a": 57.14}, {"ts": "Mar 14", "p": 70594, "l": "DOWN", "prob": 0.3668237818638402, "a": 71.43}, {"ts": "Mar 15", "p": 71765, "l": "UP", "prob": 0.5550917115614457, "a": 85.71}, {"ts": "Mar 16", "p": 73287, "l": "NEUTRAL", "prob": 0.5321464801509528, "a": 57.14}, {"ts": "Mar 16", "p": 74519, "l": "NEUTRAL", "prob": 0.4361338369346383, "a": 57.14}];
+const dailyDir=[{"d": "02/28", "u": 15, "dn": 0}, {"d": "03/01", "u": 2, "dn": 13}, {"d": "03/02", "u": 10, "dn": 5}, {"d": "03/03", "u": 2, "dn": 13}, {"d": "03/06", "u": 11, "dn": 4}, {"d": "03/07", "u": 1, "dn": 14}, {"d": "03/08", "u": 11, "dn": 4}, {"d": "03/09", "u": 15, "dn": 0}, {"d": "03/10", "u": 1, "dn": 14}, {"d": "03/11", "u": 15, "dn": 0}, {"d": "03/12", "u": 14, "dn": 1}, {"d": "03/13", "u": 0, "dn": 15}, {"d": "03/14", "u": 24, "dn": 6}, {"d": "03/15", "u": 13, "dn": 1}, {"d": "03/16", "u": 14, "dn": 1}];
 
 // ── HELPERS ──
 const ink='#f0e4c8', amber='#f0a020', blood='#e8442a', sage='#44cc70', pale='#2a2010', warm='#151008', ghost='#6a5e48', dim='#9a8e78', dimer='#7a6e58';
@@ -1231,7 +1253,7 @@ function rTag(r){const c=r==='HIT'?'hit':r==='MISS'?'miss':r==='TIE'?'tie':'pend
 // ── RENDER ──
 // Sniper table
 const sb=document.getElementById('s-body');
-sniperRows.forEach((r,i)=>{
+if(sb) sniperRows.forEach((r,i)=>{
   const tr=document.createElement('tr');
   tr.style.animation=`reveal .2s ${i*.02}s ease both`;
   tr.innerHTML=`<td class="rnk">${r.rank}</td><td><span class="sym">${r.sym}</span></td><td class="r">${fp(r.price)}</td><td class="r">${pct(r.ret)}</td><td class="r" style="${r.va>=1.5?'color:var(--amber)':''}">${r.va.toFixed(3)}x</td><td class="r">${pct(r.rs)}</td><td>${sbar(r.ts)}</td><td class="r">${probTag(r.prob)}</td><td class="c"><span class="tag ${r.lbl==='UP'?'up':'no'}">${r.lbl}</span></td><td class="c"><span class="tag skip">SKIP</span></td>`;
@@ -1526,8 +1548,120 @@ function chartPnl(){
   lbls.forEach((l,i)=>ctx.fillText(l,px(i),pad.t+h+13));
 }
 
+
+// ── PERFORMANCE CHART ──
+function chartPerf(){
+  const el=document.getElementById('perfChart');if(!el)return;
+  const dpr=window.devicePixelRatio||1;
+  const W=Math.max(el.parentElement.clientWidth-26,200);
+  const H=130;
+  el.width=W*dpr;el.height=H*dpr;el.style.width=W+'px';el.style.height=H+'px';
+  const ctx=el.getContext('2d');ctx.scale(dpr,dpr);
+
+  if(!tradeLog||!tradeLog.length){
+    ctx.fillStyle='rgba(180,168,144,.4)';
+    ctx.font='10px IBM Plex Mono,monospace';
+    ctx.textAlign='center';
+    ctx.fillText('No trade data yet — run pipeline to populate',W/2,H/2);
+    return;
+  }
+
+  // Build equity curve from tradeLog cumulative P&L
+  const points=[{x:0,y:100000}]; // start at $100k
+  tradeLog.forEach((t,i)=>{
+    if(t.cum!=null) points.push({x:i+1,y:100000+t.cum});
+  });
+
+  const pad={l:52,r:14,t:14,b:22};
+  const w=W-pad.l-pad.r,h=H-pad.t-pad.b;
+  const n=points.length;
+  if(n<2)return;
+
+  const vals=points.map(p=>p.y);
+  const minV=Math.min(...vals)*0.998;
+  const maxV=Math.max(...vals)*1.002;
+  const px=i=>pad.l+(i/(n-1))*w;
+  const py=v=>pad.t+(1-(v-minV)/(maxV-minV))*h;
+
+  // Grid
+  [0,.5,1].forEach(f=>{
+    const v=minV+f*(maxV-minV);
+    ctx.strokeStyle='rgba(180,168,144,.2)';ctx.lineWidth=.5;
+    ctx.beginPath();ctx.moveTo(pad.l,py(v));ctx.lineTo(pad.l+w,py(v));ctx.stroke();
+    ctx.fillStyle='rgba(180,168,144,.6)';ctx.font='8px monospace';ctx.textAlign='right';
+    ctx.fillText('$'+(v/1000).toFixed(0)+'k',pad.l-4,py(v)+3);
+  });
+
+  // Baseline $100k
+  const y100=py(100000);
+  ctx.beginPath();ctx.moveTo(pad.l,y100);ctx.lineTo(pad.l+w,y100);
+  ctx.strokeStyle='rgba(240,160,32,.4)';ctx.lineWidth=1;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+
+  // Area fill
+  const lastVal=points[n-1].y;
+  const isProfit=lastVal>=100000;
+  const grad=ctx.createLinearGradient(0,pad.t,0,pad.t+h);
+  grad.addColorStop(0,isProfit?'rgba(68,204,112,.2)':'rgba(232,68,42,.15)');
+  grad.addColorStop(1,'rgba(12,10,6,0)');
+
+  ctx.beginPath();ctx.moveTo(px(0),py(points[0].y));
+  points.forEach((_,i)=>{if(i>0)ctx.lineTo(px(i),py(points[i].y));});
+  ctx.lineTo(px(n-1),pad.t+h);ctx.lineTo(px(0),pad.t+h);
+  ctx.closePath();ctx.fillStyle=grad;ctx.fill();
+
+  // Line
+  ctx.beginPath();ctx.moveTo(px(0),py(points[0].y));
+  points.forEach((_,i)=>{if(i>0)ctx.lineTo(px(i),py(points[i].y));});
+  ctx.strokeStyle=isProfit?'var(--sage)':'var(--blood)';ctx.lineWidth=2;ctx.stroke();
+
+  // Dots
+  points.forEach((p,i)=>{
+    ctx.beginPath();ctx.arc(px(i),py(p.y),3,0,Math.PI*2);
+    ctx.fillStyle=p.y>=100000?sage:blood;ctx.fill();
+  });
+
+  // Update stats
+  const current=points[n-1].y;
+  const roi=((current-100000)/100000*100).toFixed(1);
+  const wins=tradeLog.filter(t=>t.pnl!=null&&t.pnl>0).length;
+  const total=tradeLog.filter(t=>t.pnl!=null).length;
+  const wr=total>0?(wins/total*100).toFixed(0)+'%':'—';
+  const roiCol=current>=100000?'color:var(--sage)':'color:var(--blood)';
+
+  document.getElementById('perf-current').innerHTML=
+    `<span style="${roiCol}">Current: $${current.toLocaleString('en-US',{maximumFractionDigits:0})}</span>`;
+  document.getElementById('perf-roi').innerHTML=
+    `<span style="${roiCol}">ROI: ${roi>=0?'+':''}${roi}%</span>`;
+  document.getElementById('perf-wr').innerHTML=`Win Rate: ${wr}`;
+}
+
+// Recent trades mini list
+function renderRecentTrades(){
+  const el=document.getElementById('recent-trades-list');if(!el)return;
+  const countEl=document.getElementById('recent-trade-count');
+  if(!tradeLog||!tradeLog.length){
+    el.innerHTML='<div style="padding:12px 13px;font-size:10px;color:var(--dim);font-style:italic">No trades yet</div>';
+    return;
+  }
+  if(countEl) countEl.textContent=tradeLog.length+' trades';
+  const recent=[...tradeLog].reverse().slice(0,10);
+  el.innerHTML='';
+  recent.forEach(t=>{
+    const pc=t.pnl>0?'win':t.pnl<0?'loss':'flat';
+    const ps=t.pnl!=null?(t.pnl>=0?'+$':'-$')+Math.abs(t.pnl).toFixed(0):'—';
+    const tier=t.t?t.t.replace(/_/g,' '):'—';
+    const tierCol=t.t==='PAPER_TRADE'?'color:var(--ghost)':t.t==='STRONG_BUY'?'color:var(--sage)':'color:var(--amber)';
+    el.innerHTML+=`<div style="display:flex;align-items:center;gap:8px;padding:6px 13px;border-bottom:1px solid rgba(180,168,144,.3);font-size:10px;">
+      <span style="color:var(--ghost);min-width:58px">${t.d}</span>
+      <span style="font-family:var(--display);font-size:13px;min-width:50px">${t.c}</span>
+      <span style="font-size:9px;${tierCol};min-width:72px">${tier}</span>
+      <span style="font-variant-numeric:tabular-nums;flex:1;text-align:right" class="${pc}">${ps}</span>
+    </div>`;
+  });
+}
+
 function drawAll(){
-  chartBTC();chartAUC('aucChart',115);chartAUC('fullAucChart',145);
+  chartPerf();renderRecentTrades();chartBTC();chartAUC('aucChart',115);chartAUC('fullAucChart',145);
   chartPat();chartHrate();chartDelta();chartPnl();
 }
 
