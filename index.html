@@ -685,6 +685,178 @@ canvas { display: block; width: 100%; }
 
 
 
+/* ═══════════════════════════ ACORN ALPHA — EXTENDED STYLES ═══════════════════════════ */
+
+/* Hour heatmap grid */
+.hr-hmap { display: grid; grid-template-columns: repeat(24,1fr); gap:2px; margin-bottom:5px; }
+.hr-hcell { height:26px; border-radius:1px; display:flex; align-items:center; justify-content:center;
+  font-family:var(--cond); font-size:7px; font-weight:600; letter-spacing:.05em;
+  color:rgba(255,255,255,.85); }
+
+/* Feature importance bars */
+.feat-bar-row { display:flex; align-items:center; gap:8px; margin-bottom:7px; }
+.feat-bar-lbl { font-family:var(--cond); font-size:8px; font-weight:300; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--ghost); width:150px; flex-shrink:0; text-align:right; }
+.feat-bar-track { flex:1; height:5px; background:var(--pale); }
+.feat-bar-fill { height:100%; }
+.feat-bar-val { font-family:var(--mono); font-size:9px; color:var(--dimer); width:40px; }
+
+/* Strategy cards */
+.strat-card { border:1px solid var(--pale); border-left:3px solid; background:var(--warm);
+  padding:13px 16px; margin-bottom:10px; }
+.strat-card-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
+.strat-card-name { font-family:var(--cond); font-size:11px; font-weight:600; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink); }
+.strat-card-pnl { font-family:var(--display); font-size:22px; letter-spacing:.04em; }
+.strat-card-meta { display:flex; gap:14px; font-family:var(--cond); font-size:8px;
+  font-weight:300; letter-spacing:.15em; text-transform:uppercase; color:var(--ghost); margin-bottom:6px; }
+.strat-card-body { font-family:var(--mono); font-size:9px; color:var(--dimer); line-height:1.8; }
+.strat-card-body strong { color:var(--ink); font-weight:700; }
+
+/* Phase annotation */
+.phase-ann { border:1px solid var(--pale); border-left:3px solid; background:var(--warm);
+  padding:10px 13px; margin-bottom:8px; }
+.phase-ann-title { font-family:var(--cond); font-size:9px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; margin-bottom:3px; }
+.phase-ann-body { font-family:var(--mono); font-size:9px; color:var(--dimer); line-height:1.7; }
+
+/* Horizon forecast cells */
+.hz-grid { display:grid; grid-template-columns:repeat(8,1fr); gap:6px; margin:10px 0; }
+.hz-cell { background:var(--warm); border:1px solid var(--pale); padding:10px 6px; text-align:center; }
+.hz-cell-lbl { font-family:var(--cond); font-size:8px; font-weight:300; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ghost); }
+.hz-cell-prob { font-family:var(--display); font-size:18px; letter-spacing:.04em; margin:5px 0 3px; }
+.hz-cell-dir { font-family:var(--cond); font-size:8px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; }
+
+/* Combo table for DOW+HOUR */
+.combo-row { display:grid; grid-template-columns:55px 55px 70px 55px auto;
+  padding:5px 11px; border-bottom:1px solid rgba(180,168,144,.3); font-size:10px; align-items:center; }
+.combo-row:last-child { border-bottom:none; }
+.combo-hdr { font-family:var(--cond); font-size:8px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ghost); background:var(--warm);
+  border-bottom:1px solid var(--pale); }
+
+/* Interval table */
+.int-row { display:grid; grid-template-columns:80px 60px 60px 55px 65px 60px 75px auto;
+  padding:5px 11px; border-bottom:1px solid rgba(180,168,144,.3); font-size:10px; align-items:center; }
+.int-row:last-child { border-bottom:none; }
+.int-hdr { font-family:var(--cond); font-size:8px; font-weight:600; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ghost); background:var(--warm);
+  border-bottom:1px solid var(--pale); }
+
+/* Acorn inline chart canvases */
+.acorn-chart-wrap canvas { display:block; width:100%!important; }
+
+/* ═══ DISCLAIMER MODAL ═══ */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.85);
+  z-index: 9998; display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-box {
+  background: var(--warm); border: 1px solid var(--amber);
+  max-width: 620px; width: 100%; padding: 32px 36px;
+  position: relative;
+}
+.modal-logo {
+  font-family: var(--display); font-size: 22px; letter-spacing: .18em;
+  color: var(--ink); margin-bottom: 4px;
+}
+.modal-sub {
+  font-family: var(--cond); font-size: 9px; letter-spacing: .4em;
+  color: var(--ghost); text-transform: uppercase; margin-bottom: 20px;
+}
+.modal-body {
+  font-family: var(--mono); font-size: 10px; color: var(--dimer);
+  line-height: 1.9; margin-bottom: 20px; border-top: 1px solid var(--pale);
+  padding-top: 16px;
+}
+.modal-body strong { color: var(--ink); }
+.modal-body .warn-line {
+  color: var(--amber); font-weight: 700; margin-bottom: 10px; display: block;
+}
+.modal-check-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-family: var(--mono); font-size: 10px; color: var(--dim);
+  margin-bottom: 18px; cursor: pointer;
+}
+.modal-check-row input[type=checkbox] { margin-top: 2px; accent-color: var(--amber); }
+.modal-check-row span { line-height: 1.6; }
+.modal-btn {
+  display: inline-block; font-family: var(--display); font-size: 13px;
+  letter-spacing: .1em; padding: 11px 28px;
+  background: var(--amber); color: #0c0a06;
+  text-decoration: none; cursor: pointer; border: none;
+  opacity: .35; pointer-events: none; transition: opacity .15s;
+}
+.modal-btn.enabled { opacity: 1; pointer-events: all; }
+.modal-btn:hover { background: var(--amber2); }
+.modal-close {
+  position: absolute; top: 14px; right: 18px;
+  font-family: var(--mono); font-size: 9px; color: var(--ghost);
+  cursor: pointer; letter-spacing: .1em; background: none; border: none;
+}
+.modal-close:hover { color: var(--ink); }
+
+/* ═══ PICKS LOCKED CARD ═══ */
+.picks-locked {
+  border: 1px solid var(--pale); border-left: 3px solid var(--amber);
+  background: var(--warm); padding: 0; overflow: hidden; margin-bottom: 16px;
+}
+.picks-locked-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 24px; gap: 20px;
+}
+.picks-locked-left {}
+.picks-locked-title {
+  font-family: var(--display); font-size: 22px; letter-spacing: .08em;
+  color: var(--ink); margin-bottom: 4px;
+}
+.picks-locked-desc {
+  font-family: var(--mono); font-size: 10px; color: var(--dimer); line-height: 1.8;
+  max-width: 480px;
+}
+.picks-locked-desc strong { color: var(--dim); }
+.picks-unlock-btn {
+  font-family: var(--display); font-size: 13px; letter-spacing: .1em;
+  padding: 12px 28px; background: var(--amber); color: #0c0a06;
+  border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  transition: background .15s;
+}
+.picks-unlock-btn:hover { background: var(--amber2); }
+.picks-preview {
+  border-top: 1px solid var(--pale); padding: 10px 24px;
+  display: flex; gap: 24px; overflow: hidden; position: relative;
+}
+.picks-preview::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 0%, var(--warm) 70%);
+  pointer-events: none;
+}
+.picks-preview-coin {
+  font-family: var(--display); font-size: 16px; color: var(--ghost);
+  filter: blur(4px); user-select: none; flex-shrink: 0;
+}
+
+/* ═══ TAB INTRO BANNERS ═══ */
+.tab-intro {
+  border: 1px solid var(--pale); border-left: 3px solid var(--amber);
+  background: var(--warm); padding: 14px 18px; margin-bottom: 18px;
+}
+.tab-intro-title {
+  font-family: var(--cond); font-size: 10px; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--amber);
+  margin-bottom: 7px;
+}
+.tab-intro-body {
+  font-family: var(--mono); font-size: 10px; color: var(--dimer);
+  line-height: 1.85;
+}
+.tab-intro-body strong { color: var(--ink); }
+.tab-intro-body .hl-green { color: var(--sage); font-weight: 700; }
+.tab-intro-body .hl-red { color: var(--blood); font-weight: 700; }
+.tab-intro-body .hl-amber { color: var(--amber); font-weight: 700; }
+
 /* ═══ FLOAT SUBSCRIBE ═══ */
 .fsub {
   position: fixed;
@@ -739,7 +911,7 @@ canvas { display: block; width: 100%; }
     <span class="logo-sub">Crypto Engine</span>
   </div>
   <div class="masthead-right">
-    <span style="color:var(--ghost)">2026-03-21 · 12:36 UTC · 669 labeled</span><br>
+    <span style="color:var(--ghost)">2026-03-21 · 18:39 UTC · 684 labeled</span><br>
     <span class="live-indicator"><span class="pulse"></span>Pipeline active</span>
   </div>
 </div>
@@ -754,12 +926,12 @@ canvas { display: block; width: 100%; }
   <div class="tic">
     <div class="tic-lbl">BTC / USD</div>
     <div class="tic-val">67,701</div>
-    <div class="tic-sub">+$434.57 vs prev</div>
+    <div class="tic-sub">$-354.03 vs prev</div>
   </div>
   <div class="tic accent-sage">
     <div class="tic-lbl">Prob Up 24h</div>
-    <div class="tic-val sage">50.0%</div>
-    <div class="tic-sub">Down: 50.0%</div>
+    <div class="tic-val sage">66.8%</div>
+    <div class="tic-sub">Down: 33.2%</div>
   </div>
   <div class="tic accent-blood">
     <div class="tic-lbl">Fear &amp; Greed</div>
@@ -769,22 +941,36 @@ canvas { display: block; width: 100%; }
   <div class="tic">
     <div class="tic-lbl">Intraday Bias</div>
     <div class="tic-val amber">CHOP</div>
-    <div class="tic-sub">↑15.3% / ↓11.9%</div>
+    <div class="tic-sub">↑22.0% / ↓27.1%</div>
   </div>
   <div class="tic accent-blood">
     <div class="tic-lbl">Model AUC</div>
-    <div class="tic-val blood">0.487</div>
+    <div class="tic-val blood">0.465</div>
     <div class="tic-sub">Degrading — prev peak</div>
   </div>
   <div class="tic">
     <div class="tic-lbl">Signal Hit Rate H10</div>
-    <div class="tic-val">39.9%</div>
-    <div class="tic-sub">222 HIT · 334 MISS</div>
+    <div class="tic-val">40.1%</div>
+    <div class="tic-sub">224 HIT · 335 MISS</div>
   </div>
   <div class="tic accent-amber">
     <div class="tic-lbl">BTC Consensus</div>
     <div class="tic-val amber">Neutral</div>
-    <div class="tic-sub">Consensus DOWN · Prob UP 48.1% · Agreement 86%</div>
+    <div class="tic-sub">Consensus NEUTRAL · Prob UP 55.7% · Agreement 57%</div>
+  </div>
+</div>
+
+<!-- ENTRY TIMING ALERT BAR -->
+<div id="timing-bar" style="display:flex;align-items:stretch;border-bottom:1px solid var(--pale);background:var(--warm);font-family:var(--mono);">
+  <div style="padding:7px 16px;border-right:1px solid var(--pale);display:flex;align-items:center;gap:8px;">
+    <span style="font-family:var(--cond);font-size:8px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ghost)">Entry Clock</span>
+    <span id="timing-clock" style="font-size:11px;color:var(--ink);font-variant-numeric:tabular-nums">--:-- UTC</span>
+  </div>
+  <div id="timing-dow" style="padding:7px 14px;border-right:1px solid var(--pale);display:flex;align-items:center;gap:6px;font-size:10px;"></div>
+  <div id="timing-window" style="padding:7px 14px;border-right:1px solid var(--pale);display:flex;align-items:center;gap:6px;font-size:10px;"></div>
+  <div id="timing-action" style="padding:7px 14px;display:flex;align-items:center;gap:6px;font-size:10px;flex:1;"></div>
+  <div style="padding:7px 14px;border-left:1px solid var(--pale);display:flex;align-items:center;">
+    <span style="font-family:var(--cond);font-size:8px;letter-spacing:.15em;color:var(--ghost);text-transform:uppercase;cursor:pointer" onclick="switchTab('acorn-entry',document.querySelectorAll('.nav-tab')[8])">View Patterns →</span>
   </div>
 </div>
 
@@ -795,16 +981,47 @@ canvas { display: block; width: 100%; }
   <div class="nav-tab" onclick="switchTab('signals')">Signals &amp; Horizons</div>
   <div class="nav-tab" onclick="switchTab('updown')">UP vs DOWN</div>
   <div class="nav-tab" onclick="switchTab('model')">Model Explainer</div>
+  <div class="nav-tab" onclick="switchTab('acorn-pnl')">Acorn P&amp;L</div>
+  <div class="nav-tab" onclick="switchTab('acorn-model')">Acorn Model</div>
+  <div class="nav-tab" onclick="switchTab('acorn-entry')">Entry Patterns</div>
   <div class="nav-tab" onclick="switchTab('trades')">Trade Log</div>
 </div>
 
 <!-- ═════════════════════ TAB: OVERVIEW ═════════════════════ -->
 
 
-</div>
-
 <div class="tab-pane active" id="tab-overview">
-  <!-- PERFORMANCE CHART — TOP OF OVERVIEW -->
+
+  <!-- INTRO BANNER -->
+  <div class="tab-intro">
+    <div class="tab-intro-title">What is this page?</div>
+    <div class="tab-intro-body">
+      This is the <strong>RRP TECH Crypto Engine</strong> — a fully automated quantitative dashboard that scans the top 15 crypto coins every day, analyses BTC's market regime, and scores each coin using momentum and volume signals. It does <strong>not</strong> give financial advice. What it does is show you the raw data and model outputs transparently so you can make your own informed decisions.<br><br>
+      <span class="hl-green">Green = bullish signal</span> &nbsp;·&nbsp; <span class="hl-red">Red = bearish signal</span> &nbsp;·&nbsp; <span class="hl-amber">Amber = neutral or caution</span> &nbsp;·&nbsp; The <strong>P&amp;L chart</strong> tracks how a hypothetical $100k portfolio would have performed following every UP signal the model generated, sized using the Kelly Criterion (a mathematical bet-sizing formula). <strong>This is simulated, not real money.</strong>
+    </div>
+  </div>
+
+  <!-- PICKS OF THE DAY — LOCKED -->
+  <div class="picks-locked">
+    <div class="picks-locked-inner">
+      <div class="picks-locked-left">
+        <div class="picks-locked-title">Today's Picks</div>
+        <div class="picks-locked-desc">
+          The model's <strong>top-ranked coins for today</strong>, filtered by regime, momentum, volume, and probability threshold. Includes entry price, allocation tier, Kelly-sized position, and the model's confidence score. Updated every time the pipeline runs.<br>
+          <span style="color:var(--amber);margin-top:4px;display:inline-block">⬦ Subscribe to unlock daily picks + trade alerts.</span>
+        </div>
+      </div>
+      <button class="picks-unlock-btn" onclick="openDisclaimer()">⬦ Unlock Picks — $19.99 / mo</button>
+    </div>
+    <div class="picks-preview">
+      <span class="picks-preview-coin">BTC-USD</span>
+      <span class="picks-preview-coin">SOL-USD</span>
+      <span class="picks-preview-coin">HYPE-USD</span>
+      <span class="picks-preview-coin">AVAX-USD</span>
+      <span class="picks-preview-coin">SUI-USD</span>
+      <span class="picks-preview-coin">ETH-USD</span>
+    </div>
+  </div>
   <div class="col2 mb">
     <div class="panel">
       <div class="ph">
@@ -840,27 +1057,27 @@ canvas { display: block; width: 100%; }
         <div class="ph"><div class="ph-t">BTC Regime Engine</div><span class="badge amber">Bear → Neutral</span></div>
         <div class="regime-hero">
           <div style="font-family:var(--cond);font-size:9px;letter-spacing:.3em;color:var(--ghost);text-transform:uppercase;margin-bottom:6px">BTC / USD · Coinbase</div>
-          <div class="btc-price-disp">$70,683.65</div>
-          <div style="font-size:11px;margin-top:5px"><span class="pos">+$434.57</span><span class="muted" style="margin-left:8px;font-style:italic">vs prev $70,248.29</span></div>
+          <div class="btc-price-disp">$70,329.65</div>
+          <div style="font-size:11px;margin-top:5px"><span class="pos">$-354.03</span><span class="muted" style="margin-left:8px;font-style:italic">vs prev $70,682.86</span></div>
           <div style="display:flex;align-items:center;gap:10px;margin-top:10px;">
             <div class="sig-pill Neutral">Neutral</div>
             <div style="flex:1">
               <div class="prob-bars">
-                <div class="pb-up" style="width:50.0%">58.7% ↑</div>
+                <div class="pb-up" style="width:66.8%">58.7% ↑</div>
                 <div class="pb-down" style="flex:1">41.3% ↓</div>
               </div>
             </div>
           </div>
         </div>
-        <div class="score-line"><span class="sl-name">ETH/BTC Δ (+0.31%)</span><span class="sl-score z">+0</span></div>
-        <div class="score-line"><span class="sl-name">Momentum 3D (-0.79%)</span><span class="sl-score z">+0</span></div>
-        <div class="score-line"><span class="sl-name">Orderbook (-0.358)</span><span class="sl-score n">-1</span></div>
+        <div class="score-line"><span class="sl-name">ETH/BTC Δ (+0.34%)</span><span class="sl-score z">+0</span></div>
+        <div class="score-line"><span class="sl-name">Momentum 3D (-1.32%)</span><span class="sl-score z">+0</span></div>
+        <div class="score-line"><span class="sl-name">Orderbook (0.277)</span><span class="sl-score p">+1</span></div>
         <div class="score-line"><span class="sl-name">Fear &amp; Greed (12 — Extreme Fear)</span><span class="sl-score p">+1</span></div>
         <div class="score-line"><span class="sl-name">Hashrate (N/A)</span><span class="sl-score z">+0</span></div>
-        <div class="score-line"><span class="sl-name">USDT Flow (-0.01%)</span><span class="sl-score z">+0</span></div>
+        <div class="score-line"><span class="sl-name">USDT Flow (+0.00%)</span><span class="sl-score z">+0</span></div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--warm);border-top:1px solid var(--pale);">
-          <span style="font-family:var(--cond);font-size:9px;letter-spacing:.2em;color:var(--ghost);text-transform:uppercase">Total Score · Confidence 0.0%</span>
-          <span style="font-family:var(--display);font-size:22px;color:var(--amber)">+0 / 6</span>
+          <span style="font-family:var(--cond);font-size:9px;letter-spacing:.2em;color:var(--ghost);text-transform:uppercase">Total Score · Confidence 33.3%</span>
+          <span style="font-family:var(--display);font-size:22px;color:var(--amber)">+2 / 6</span>
         </div>
       </div>
       <!-- 1m micro -->
@@ -893,50 +1110,50 @@ canvas { display: block; width: 100%; }
       <div id="hf-list"><div class="hf-row">
   <span class="hf-hor">1m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:32.2%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">32.2%</span>
+    <div class="hf-bar-fill" style="width:49.8%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">49.8%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">5m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:45.2%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">45.2%</span>
+    <div class="hf-bar-fill" style="width:45.1%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">45.1%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">15m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:44.1%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">44.1%</span>
+    <div class="hf-bar-fill" style="width:46.4%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">46.4%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">30m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:42.7%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">42.7%</span>
+    <div class="hf-bar-fill" style="width:50.7%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">50.7%</span>
   </div>
-  <span class="hf-lbl"><span class="tag no">NOUP</span></span>
+  <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">1h</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:47.5%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">47.5%</span>
+    <div class="hf-bar-fill" style="width:52.1%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">52.1%</span>
   </div>
-  <span class="hf-lbl"><span class="tag no">NOUP</span></span>
+  <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">4h</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:44.9%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">44.9%</span>
+    <div class="hf-bar-fill" style="width:46.2%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">46.2%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">24h</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:66.8%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">66.8%</span>
+    <div class="hf-bar-fill" style="width:84.0%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">84.0%</span>
   </div>
   <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div></div>
@@ -952,7 +1169,13 @@ canvas { display: block; width: 100%; }
 
 <!-- ═════════════════════ TAB: PATTERNS ═════════════════════ -->
 <div class="tab-pane" id="tab-patterns">
-  <div class="col3">
+  <div class="tab-intro">
+    <div class="tab-intro-title">Pattern Recognition — What Are We Looking At?</div>
+    <div class="tab-intro-body">
+      This tab analyses <strong>190,000+ one-minute BTC price bars</strong> to find repeating patterns. Every bar is labelled UP (↑), DOWN (↓), or FLAT (=) based on whether price moved up, down, or stayed the same that minute. We then look at what sequences of bars tend to appear <em>before</em> a move in either direction.<br><br>
+      <strong>Key finding:</strong> BTC has a persistent <span class="hl-red">downward micro-bias</span> — after any sequence of flat bars, price breaks down ~1.2× more often than it breaks up. The <strong>Compression Stats</strong> table shows this clearly: after 8 flat bars in a row, there's only a 10% chance of going up vs 12% chance of going down. The other 78% of the time it just stays flat. <strong>This is why the sniper only fires when volume spikes confirm a real move.</strong>
+    </div>
+  </div>
     <div class="panel">
       <div class="ph"><div class="ph-t">Global UP/DOWN Bias</div><div class="badge blood">DOWN-biased</div></div>
       <div id="ps-list"></div>
@@ -980,17 +1203,24 @@ canvas { display: block; width: 100%; }
     <div class="panel mb">
       <div class="ph"><div class="ph-t">UP vs DOWN Count by Pattern Length</div><div class="badge">86,600 observations</div></div>
       <div class="chart-wrap" style="height:155px"><canvas id="patChart" height="125"></canvas></div>
-    </div>
-  </div>
+</div>
+
 </div>
 
 <!-- ═════════════════════ TAB: SIGNALS ═════════════════════ -->
 <div class="tab-pane" id="tab-signals">
-  <div class="mblock-4">
-    <div class="mblock"><div class="stat-label">Total Signals</div><div class="display-num">758</div><div class="stat-sub">351 LONG · 407 SHORT</div></div>
-    <div class="mblock"><div class="stat-label">Overall Hit Rate H10</div><div class="display-num amber">39.9%</div><div class="stat-sub">204 HIT · 313 MISS</div></div>
-    <div class="mblock"><div class="stat-label">SHORT Hit Rate H10</div><div class="display-num sage">48.8%</div><div class="stat-sub">141 HIT · 148 MISS</div></div>
-    <div class="mblock"><div class="stat-label">LONG Hit Rate H10</div><div class="display-num blood">30.3%</div><div class="stat-sub">81 HIT · 186 MISS</div></div>
+  <div class="tab-intro">
+    <div class="tab-intro-title">Signals &amp; Horizons — What Is a Signal?</div>
+    <div class="tab-intro-body">
+      A <strong>signal</strong> is generated when BTC sits flat for 8+ consecutive minutes and then breaks out with a significant price move accompanied by elevated volume. The system places a <strong>LONG</strong> (betting price goes up) or <strong>SHORT</strong> (betting price goes down) based on the direction of the breakout.<br><br>
+      The <strong>hit rate</strong> measures how often the signal was correct at various time horizons — e.g. H3 means "was the call right 3 minutes later?", H10 means "10 minutes later". A <strong>HIT</strong> means price moved in the predicted direction, a <strong>MISS</strong> means it moved the other way, a <strong>TIE</strong> means price was flat.<br><br>
+      <strong>Key finding:</strong> <span class="hl-red">SHORT signals dramatically outperform LONG signals</span> (49.2% vs 29.2% hit rate at H10). This aligns with BTC's persistent downward micro-bias shown on the Pattern tab. The <strong>BTC Horizon Forecast</strong> shows the model's directional probability for the next 1 minute through 24 hours.
+    </div>
+  </div>
+    <div class="mblock"><div class="stat-label">Total Signals</div><div class="display-num">762</div><div class="stat-sub">353 LONG · 409 SHORT</div></div>
+    <div class="mblock"><div class="stat-label">Overall Hit Rate H10</div><div class="display-num amber">40.1%</div><div class="stat-sub">204 HIT · 313 MISS</div></div>
+    <div class="mblock"><div class="stat-label">SHORT Hit Rate H10</div><div class="display-num sage">48.8%</div><div class="stat-sub">142 HIT · 149 MISS</div></div>
+    <div class="mblock"><div class="stat-label">LONG Hit Rate H10</div><div class="display-num blood">30.6%</div><div class="stat-sub">82 HIT · 186 MISS</div></div>
   </div>
   <div class="col2">
     <div class="panel">
@@ -1014,65 +1244,72 @@ canvas { display: block; width: 100%; }
     <div id="hf-list2"><div class="hf-row">
   <span class="hf-hor">1m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:32.2%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">32.2%</span>
+    <div class="hf-bar-fill" style="width:49.8%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">49.8%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">5m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:45.2%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">45.2%</span>
+    <div class="hf-bar-fill" style="width:45.1%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">45.1%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">15m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:44.1%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">44.1%</span>
+    <div class="hf-bar-fill" style="width:46.4%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">46.4%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">30m</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:42.7%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">42.7%</span>
+    <div class="hf-bar-fill" style="width:50.7%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">50.7%</span>
   </div>
-  <span class="hf-lbl"><span class="tag no">NOUP</span></span>
+  <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">1h</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:47.5%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">47.5%</span>
+    <div class="hf-bar-fill" style="width:52.1%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">52.1%</span>
   </div>
-  <span class="hf-lbl"><span class="tag no">NOUP</span></span>
+  <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">4h</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:44.9%;background:var(--blood);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--blood)">44.9%</span>
+    <div class="hf-bar-fill" style="width:46.2%;background:var(--blood);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--blood)">46.2%</span>
   </div>
   <span class="hf-lbl"><span class="tag no">NOUP</span></span>
 </div><div class="hf-row">
   <span class="hf-hor">24h</span>
   <div class="hf-bar-track">
-    <div class="hf-bar-fill" style="width:66.8%;background:var(--sage);opacity:.18"></div>
-    <span class="hf-prob" style="color:var(--sage)">66.8%</span>
+    <div class="hf-bar-fill" style="width:84.0%;background:var(--sage);opacity:.18"></div>
+    <span class="hf-prob" style="color:var(--sage)">84.0%</span>
   </div>
   <span class="hf-lbl"><span class="tag up">UP</span></span>
 </div></div>
     <div style="padding:10px 13px;border-top:1px solid var(--pale);font-family:var(--mono);font-size:9px;color:var(--dimer);line-height:1.8">
       Weights: 1m×1.0 · 5m×1.0 · 15m×1.25 · 30m×1.25 · 1h×1.5 · 4h×1.75 · 24h×2.0. Agreement threshold 60%. The 24h model (DOWN 26.8%) is pulling consensus to NEUTRAL.
-    </div>
-  </div>
+</div>
+
 </div>
 
 <!-- ═════════════════════ TAB: UP vs DOWN ═════════════════════ -->
 <div class="tab-pane" id="tab-updown">
-  <div class="mblock-4">
-    <div class="mblock"><div class="stat-label">Total UP Outcomes</div><div class="display-num sage">310</div><div class="stat-sub">Avg delta +3.74%</div></div>
-    <div class="mblock"><div class="stat-label">Total DOWN Outcomes</div><div class="display-num blood">357</div><div class="stat-sub">Avg delta -3.77%</div></div>
-    <div class="mblock"><div class="stat-label">UP Rate</div><div class="display-num amber">46.3%</div><div class="stat-sub">DOWN-biased dataset</div></div>
+  <div class="tab-intro">
+    <div class="tab-intro-title">UP vs DOWN — How Does the Model Tell Them Apart?</div>
+    <div class="tab-intro-body">
+      Every coin in the sniper universe gets labelled <strong>UP</strong> or <strong>DOWN</strong> based on its 24-hour price move. This tab shows what makes UP coins different from DOWN coins on average, using the features the model actually trains on.<br><br>
+      <strong>Feature Means</strong> compares the average value of each signal for UP coins vs DOWN coins. The bar length shows how different they are. For example: coins that go UP tend to have <strong>higher per-minute dollar volume</strong> (median_minute_usd_24h) — this is the model's single strongest signal. <strong>DOW</strong> here means Day of Week — not a company. <strong>AUC</strong> (Area Under Curve) is a standard accuracy metric: 0.5 = random guessing, 1.0 = perfect, below 0.5 = worse than random.<br><br>
+      The <strong>return distribution</strong> chart shows the spread of actual price moves — UP coins can swing wildly in either direction, but on average they drift higher.
+    </div>
+  </div>
+    <div class="mblock"><div class="stat-label">Total UP Outcomes</div><div class="display-num sage">316</div><div class="stat-sub">Avg delta +3.69%</div></div>
+    <div class="mblock"><div class="stat-label">Total DOWN Outcomes</div><div class="display-num blood">366</div><div class="stat-sub">Avg delta -3.68%</div></div>
+    <div class="mblock"><div class="stat-label">UP Rate</div><div class="display-num amber">46.2%</div><div class="stat-sub">DOWN-biased dataset</div></div>
     <div class="mblock"><div class="stat-label">Max UP Delta</div><div class="display-num">+46.8%</div><div class="stat-sub">Max DOWN −29.1%</div></div>
   </div>
   <div class="col2">
@@ -1105,12 +1342,24 @@ canvas { display: block; width: 100%; }
     <div class="panel mb">
       <div class="ph"><div class="ph-t">Feature Coefficient History — Last 3 Runs</div></div>
       <div id="coef-hist-list"></div>
-    </div>
-  </div>
+</div>
+
 </div>
 
 <!-- ═════════════════════ TAB: MODEL EXPLAINER ═════════════════════ -->
 <div class="tab-pane" id="tab-model">
+  <div class="tab-intro">
+    <div class="tab-intro-title">Model Explainer — How Does the Engine Work?</div>
+    <div class="tab-intro-body">
+      The RRP TECH engine runs a fully automated 5-step pipeline once a day. Here's what each step does in plain English:<br><br>
+      <strong>1. Data Collection</strong> — Downloads every 1-minute BTC price candle from Binance. Currently has 190,000+ candles going back to November 2025.<br>
+      <strong>2. BTC Regime Engine</strong> — Scores 6 macro signals (ETH/BTC ratio, 3-day momentum, order book imbalance, Fear &amp; Greed index, hashrate change, USDT flows) each on a −1/0/+1 scale. Total score determines if we're in a Bull, Bear, or Neutral regime. <strong>This acts as the master gate</strong> — if BTC is bearish, no buys are made.<br>
+      <strong>3. BTC Prediction Engine</strong> — A Random Forest (an ensemble of 800 decision trees) trained on 89 technical features predicts BTC's direction at 7 different time horizons (1 min to 24 hours).<br>
+      <strong>4. Sniper Scanner</strong> — Ranks the top 15 liquid coins by a composite momentum + volume score called <strong>TopMoverScore</strong>. Each coin gets a direction label (UP/NOUP) from a second logistic regression model.<br>
+      <strong>5. Alpha Dashboard</strong> — Combines regime + model confidence to assign an allocation tier (STRONG_BUY → SKIP) and a <strong>Kelly Criterion</strong> position size (a mathematically optimal bet-sizing formula that risks more when confidence is higher).<br><br>
+      <strong>AUC</strong> = Area Under Curve — the model's ability to distinguish UP from DOWN coins. 0.5 = coin flip, 1.0 = perfect. <strong>Brier Score</strong> = how calibrated the probabilities are — lower is better. <strong>Val Recall</strong> = out of all the actual UP coins, how many did the model correctly identify.
+    </div>
+  </div>
   <div class="panel mb">
     <div class="ph"><div class="ph-t">Pipeline Architecture</div><div class="badge">5 engines · daily run</div></div>
     <div class="flow">
@@ -1164,15 +1413,414 @@ canvas { display: block; width: 100%; }
   <div class="panel mb">
     <div class="ph"><div class="ph-t">Full Model Performance History — 29 Runs</div><div class="badge blood">AUC trend: ↓</div></div>
     <div class="chart-wrap" style="height:175px"><canvas id="fullAucChart" height="145"></canvas></div>
+</div>
+
+</div>
+
+<!-- ═════════════════════ TAB: ACORN P&L ═════════════════════ -->
+<div class="tab-pane" id="tab-acorn-pnl">
+  <div class="tab-intro">
+    <div class="tab-intro-title">Acorn P&amp;L — How Has the Strategy Actually Performed?</div>
+    <div class="tab-intro-body">
+      This tab shows the real backtested performance of the Acorn Alpha sniper strategy across every trade it has logged. <strong>All figures use $1,000 per position</strong> as a standard unit so you can compare days and coins fairly — this is not real deployed capital.<br><br>
+      <strong>Win Rate</strong> is how often a trade closed higher than it opened. <strong>Cumulative P&amp;L</strong> is the running total if you had placed $1,000 on every single signal. The <strong>By Rank</strong> table shows whether higher-ranked coins (Rank 1 = the model's top pick) actually outperform lower-ranked ones — a key test of whether the scoring is meaningful.<br><br>
+      <strong>Important findings:</strong> The <span class="hl-amber">$10–$100 price tier</span> (SOL, HYPE range) has the best win rate at 56.5%. The <span class="hl-red">$0.10–$1 tier</span> is the worst — 44.8% win rate and the largest losses. <strong>Consensus label days matter:</strong> UP-label days produce +$1,101 on average vs NEUTRAL days which lose −$489. The sweet spot for BTC probability is <span class="hl-green">55–60%</span> — above 70% is actually the worst bucket (0% win rate).
+    </div>
   </div>
+    <div class="mblock"><div class="stat-label">Total P&amp;L · 39 Days</div><div class="display-num blood">−$479</div><div class="stat-sub">609 closed · $1k/trade</div></div>
+    <div class="mblock"><div class="stat-label">Overall Win Rate</div><div class="display-num amber">48.1%</div><div class="stat-sub">vs 50% base rate</div></div>
+    <div class="mblock"><div class="stat-label">Best Day</div><div class="display-num sage">+$1,403</div><div class="stat-sub">Feb 13 · 100% win rate</div></div>
+    <div class="mblock"><div class="stat-label">Worst Day</div><div class="display-num blood">−$1,203</div><div class="stat-sub">Feb 4 · 6.7% win rate</div></div>
+  </div>
+
+  <div class="col2">
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Cumulative P&amp;L — $1,000 / position</div><div class="badge">38 trading days</div></div>
+      <div class="acorn-chart-wrap" style="padding:4px 0"><canvas id="acornCumPnl" height="160"></canvas></div>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Daily P&amp;L</div><div class="badge">19 positive · 19 negative</div></div>
+      <div class="acorn-chart-wrap" style="padding:4px 0"><canvas id="acornDailyPnl" height="160"></canvas></div>
+    </div>
+  </div>
+
+  <div class="col3">
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">P&amp;L by Rank</div><div class="badge">15 slots</div></div>
+      <table>
+        <thead><tr><th>Rank</th><th class="r">Avg Ret</th><th class="r">Win%</th><th class="r">P&amp;L</th></tr></thead>
+        <tbody id="acorn-rank-tbl"></tbody>
+      </table>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Top 10 Coins</div><div class="badge sage">best</div></div>
+      <table>
+        <thead><tr><th>Coin</th><th class="r">N</th><th class="r">Win%</th><th class="r">P&amp;L</th></tr></thead>
+        <tbody id="acorn-top-coins"></tbody>
+      </table>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Bottom 10 Coins</div><div class="badge blood">worst</div></div>
+      <table>
+        <thead><tr><th>Coin</th><th class="r">N</th><th class="r">Win%</th><th class="r">P&amp;L</th></tr></thead>
+        <tbody id="acorn-bot-coins"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col3">
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">TopMoverScore Quartiles</div></div>
+      <table>
+        <thead><tr><th>Quartile</th><th class="r">Win%</th><th class="r">Avg Ret</th><th class="r">P&amp;L</th></tr></thead>
+        <tbody id="tms-quartile-tbl"></tbody>
+      </table>
+      <div class="info-block" style="margin:10px;border-left-color:var(--amber)">
+        <div class="info-body">Q2 mid-range scores outperform Q4 highest by $1,926. <strong>Very high scores = momentum exhaustion.</strong></div>
+      </div>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Volume Acceleration Quartiles</div></div>
+      <table>
+        <thead><tr><th>Quartile</th><th class="r">Win%</th><th class="r">Avg Ret</th><th class="r">P&amp;L</th></tr></thead>
+        <tbody id="va-quartile-tbl"></tbody>
+      </table>
+      <div class="info-block" style="margin:10px;border-left-color:var(--sage)">
+        <div class="info-body"><strong>Only Q4 high vol acceleration reliably profits.</strong> Low and mid-range volume = losers.</div>
+      </div>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">RS_7d Momentum Quartiles</div></div>
+      <table>
+        <thead><tr><th>Quartile</th><th class="r">Win%</th><th class="r">Avg Ret</th><th class="r">P&amp;L</th></tr></thead>
+        <tbody id="rs-quartile-tbl"></tbody>
+      </table>
+      <div class="info-block warn" style="margin:10px">
+        <div class="info-body"><strong>Mean reversion dominates.</strong> Weakest 7d momentum beats strongest by $1,625. High RS_7d = overextended.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-block warn mb">
+    <div class="info-title">⚠ Pred_Correct Inversion Detected</div>
+    <div class="info-body">Trades labeled <strong>Pred_Correct=1</strong> return avg −0.8% (−$8.19). Trades labeled <strong>Pred_Correct=0</strong> return avg +1.5% (+$15.42). Consistent across both mean and median. Likely causes: (1) exit timestamp misalignment, (2) model predicts short-term UP that then fades before exit, (3) Pred_Correct benchmark mismatched to actual hold period. <strong>The live accuracy metric of 50.6% is measuring the wrong thing.</strong></div>
+  </div>
+
+  <div class="panel mb">
+    <div class="ph"><div class="ph-t">Performance by Price Tier</div><div class="badge">entry price brackets · $1k/trade</div></div>
+    <table>
+      <thead><tr><th>Price Tier</th><th class="r">N</th><th class="r">Win%</th><th class="r">Avg Ret</th><th class="r">Total P&amp;L</th></tr></thead>
+      <tbody id="price-tier-tbl"></tbody>
+    </table>
+    <div style="padding:9px 13px;border-top:1px solid var(--pale);font-family:var(--mono);font-size:9px;color:var(--dimer);line-height:1.8">
+      ★ $10–$100 tier (SOL, HYPE, AVAX range) = best performer · ✗ $0.10–$1 tier = worst · Kelly wager now adjusted by price tier multiplier (1.25× for best, 0.50× for worst)
+    </div>
+  </div>
+
+  <!-- REGIME CONDITIONAL SECTION -->
+  <div class="section-head" style="display:flex;align-items:center;gap:12px;margin:20px 0 12px;border-top:1px solid var(--pale);padding-top:16px">
+    <span style="font-family:var(--cond);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--ghost)">Regime-Conditional Performance</span>
+    <div style="flex:1;height:1px;background:var(--pale)"></div>
+    <span class="badge">399 trades with consensus data</span>
+  </div>
+
+  <div class="col3" style="margin-bottom:16px">
+    <div class="panel">
+      <div class="ph"><div class="ph-t">Win Rate by Consensus Label</div></div>
+      <table>
+        <thead><tr><th>Label</th><th class="r">N</th><th class="r">Win%</th><th class="r">Avg Ret</th><th class="r">Total P&amp;L</th></tr></thead>
+        <tbody id="regime-label-tbl"></tbody>
+      </table>
+      <div class="info-block" style="margin:10px;border-left-color:var(--amber)">
+        <div class="info-body"><strong>NEUTRAL is the worst regime to trade.</strong> UP consensus days produce +$1,101. Counterintuitively DOWN days also profit — alts decouple or mean-revert while BTC falls.</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div class="ph-t">Win Rate by BTC Prob Up Bucket</div></div>
+      <table>
+        <thead><tr><th>BTC Prob Up</th><th class="r">N</th><th class="r">Win%</th><th class="r">Total P&amp;L</th></tr></thead>
+        <tbody id="regime-prob-tbl"></tbody>
+      </table>
+      <div class="info-block warn" style="margin:10px">
+        <div class="info-body"><strong>Sweet spot: 55–60% prob up.</strong> 88.6% win rate. Above 70% = 0% win rate — extreme bullish consensus is where alts get wrecked. Avoid deploying when BTC prob &gt; 70%.</div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div class="ph-t">Win Rate by Regime Strength</div></div>
+      <table>
+        <thead><tr><th>Regime Strength</th><th class="r">N</th><th class="r">Win%</th><th class="r">Total P&amp;L</th></tr></thead>
+        <tbody>
+          <tr><td>Bear (&lt;−0.05)</td><td class="r muted">—</td><td class="r muted">—</td><td class="r muted">—</td></tr>
+          <tr><td style="color:var(--sage)">Weak (−0.05–0.05) ★</td><td class="r muted">3</td><td class="r pos">66.7%</td><td class="r pos">+$44</td></tr>
+          <tr><td>Mod Bull (0.05–0.25)</td><td class="r muted">4</td><td class="r neg">0.0%</td><td class="r neg">−$216</td></tr>
+        </tbody>
+      </table>
+      <div class="info-block" style="margin:10px;border-left-color:var(--slate)">
+        <div class="info-body">Limited closed trade data. Broader pattern from 399 merged trades: <strong>weak/transitional regimes outperform strong bullish regimes.</strong> Strong bull = overshoot risk for alts. Current regime strength: 0.112 (weak bull).</div>
+      </div>
+      <div class="ph" style="margin-top:1px"><div class="ph-t">Deploy Gate Summary</div></div>
+      <div class="score-line"><span class="sl-name">Best condition</span><span class="sl-score p">UP label + 55–60% prob</span></div>
+      <div class="score-line"><span class="sl-name">Worst condition</span><span class="sl-score n">BTC prob &gt;70%</span></div>
+      <div class="score-line"><span class="sl-name">Avoid entirely</span><span class="sl-score n">NEUTRAL label days</span></div>
+      <div class="score-line"><span class="sl-name">Current label</span><span class="sl-score" style="color:var(--amber)">NEUTRAL ⚠</span></div>
+      <div class="score-line"><span class="sl-name">Current prob up</span><span class="sl-score" style="color:var(--amber)">66.8% — above sweet spot</span></div>
+</div>
+
+</div>
+
+<!-- ═════════════════════ TAB: ACORN MODEL ═════════════════════ -->
+<div class="tab-pane" id="tab-acorn-model">
+  <div class="tab-intro">
+    <div class="tab-intro-title">Acorn Model Health — Is the AI Getting Better?</div>
+    <div class="tab-intro-body">
+      The sniper model (a Logistic Regression classifier) retrains itself every time the pipeline runs, adding the latest batch of trades to its training data. This tab tracks whether the model is actually improving over time.<br><br>
+      <strong>AUC</strong> (Area Under Curve) is the headline accuracy metric — think of it as a score from 0 to 1 measuring how well the model separates winning coins from losing ones. <span class="hl-red">Below 0.5 = worse than random</span>, <span class="hl-amber">0.5–0.65 = weak edge</span>, <span class="hl-green">above 0.65 = meaningful edge</span>. The chart shows every training run so you can see the model's journey.<br><br>
+      <strong>Brier Score</strong> measures probability calibration — when the model says "60% chance of going up", does it actually go up 60% of the time? Lower Brier = more trustworthy probabilities. This is the <span class="hl-green">most consistently improving metric</span> — down from 0.46 early February to 0.243 now.<br><br>
+      <strong>Recall</strong> = out of all coins that actually went UP, what % did the model correctly flag? <strong>Precision</strong> = out of all the coins the model flagged as UP, what % actually went UP. High recall with lower precision means the model casts a wide net — it catches most winners but also some losers. <strong>Feature importance</strong> shows which signals the model is leaning on most — liquidity (median_minute_usd) now dominates, which may be a concern as the model grows.
+    </div>
+  </div>
+    <div class="mblock"><div class="stat-label">Latest AUC (Run 38)</div><div class="display-num amber">0.738</div><div class="stat-sub">122-row holdout</div></div>
+    <div class="mblock"><div class="stat-label">Brier Score</div><div class="display-num sage">0.243</div><div class="stat-sub">↓ from 0.464 early Feb</div></div>
+    <div class="mblock"><div class="stat-label">Val Recall</div><div class="display-num sage">85.7%</div><div class="stat-sub">Strongest recall yet</div></div>
+    <div class="mblock"><div class="stat-label">Live Pred Acc</div><div class="display-num amber">50.6%</div><div class="stat-sub">No trend (p=0.91)</div></div>
+  </div>
+
+  <div class="col2">
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Validation AUC — All 38 Training Runs</div><div class="badge">grey = tiny holdout (&lt;30 rows)</div></div>
+      <div class="acorn-chart-wrap" style="padding:4px 0"><canvas id="acornAUC" height="160"></canvas></div>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Brier Score — Probability Calibration</div><div class="badge sage">lower = better</div></div>
+      <div class="acorn-chart-wrap" style="padding:4px 0"><canvas id="acornBrier" height="160"></canvas></div>
+    </div>
+  </div>
+
+  <div class="col3">
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Live Daily Pred Accuracy</div></div>
+      <div class="acorn-chart-wrap" style="padding:4px 0"><canvas id="acornLiveAcc" height="160"></canvas></div>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Rolling 5-Run Windows</div></div>
+      <div class="acorn-chart-wrap" style="padding:4px 0"><canvas id="acornRolling" height="160"></canvas></div>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Feature Importance — Latest Run</div></div>
+      <div style="padding:14px 16px" id="acorn-feat-bars"></div>
+    </div>
+  </div>
+
+  <div class="col2">
+    <div>
+      <div class="phase-ann" style="border-left-color:var(--ghost)">
+        <div class="phase-ann-title" style="color:var(--ghost)">Early Runs 1–6 · Tiny Holdout</div>
+        <div class="phase-ann-body">15–27 row holdouts. AUC swings 0.28→1.0 are sampling noise, not real signal. Ignore.</div>
+      </div>
+      <div class="phase-ann" style="border-left-color:var(--sage)">
+        <div class="phase-ann-title" style="color:var(--sage)">Ramp-Up · Runs 7–21</div>
+        <div class="phase-ann-body">AUC stabilises ~0.58. Brier improves steadily. Model learning real patterns from growing data.</div>
+      </div>
+      <div class="phase-ann" style="border-left-color:var(--blood)">
+        <div class="phase-ann-title" style="color:var(--blood)">Regime Trough · Runs 22–30</div>
+        <div class="phase-ann-body">March 1–9 bearish shift. Holdout went DOWN-heavy while training stayed bullish — distributional mismatch. AUC crashed to 0.247.</div>
+      </div>
+      <div class="phase-ann" style="border-left-color:var(--slate)">
+        <div class="phase-ann-title" style="color:var(--slate)">Recovery · Runs 31–38</div>
+        <div class="phase-ann-body">AUC 0.645 avg, Brier 0.252, Recall climbing to 0.86. Best sustained stretch. Still only 122-row holdout — needs more data.</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="ph"><div class="ph-t">Run 38 — Full Metrics</div><div class="badge sage">latest</div></div>
+      <div class="score-line"><span class="sl-name">Holdout Rows</span><span class="sl-score" style="color:var(--ink)">0</span></div>
+      <div class="score-line"><span class="sl-name">Train Rows</span><span class="sl-score" style="color:var(--ink)">0</span></div>
+      <div class="score-line"><span class="sl-name">Holdout Up Rate</span><span class="sl-score" style="color:var(--amber)">67.2%</span></div>
+      <div class="score-line"><span class="sl-name">Val AUC</span><span class="sl-score" style="color:var(--amber)">0.738</span></div>
+      <div class="score-line"><span class="sl-name">Val Accuracy</span><span class="sl-score p">81.0%</span></div>
+      <div class="score-line"><span class="sl-name">Val Precision</span><span class="sl-score" style="color:var(--amber)">57.4%</span></div>
+      <div class="score-line"><span class="sl-name">Val Recall</span><span class="sl-score p">85.7%</span></div>
+      <div class="score-line"><span class="sl-name">Brier Score</span><span class="sl-score p">0.243</span></div>
+      <div class="score-line"><span class="sl-name">Avg Precision</span><span class="sl-score" style="color:var(--ink)">0.795</span></div>
+      <div class="score-line"><span class="sl-name">Model Type</span><span class="sl-score" style="color:var(--ghost)">RandomForest</span></div>
+      <div class="score-line"><span class="sl-name">n_estimators</span><span class="sl-score" style="color:var(--ghost)">800</span></div>
+      <div class="score-line"><span class="sl-name">Prob Threshold</span><span class="sl-score" style="color:var(--ghost)">0.50</span></div>
+</div>
+
+</div>
+
+<!-- ═════════════════════ TAB: ENTRY PATTERNS ═════════════════════ -->
+<div class="tab-pane" id="tab-acorn-entry">
+
+  <div class="tab-intro">
+    <div class="tab-intro-title">Entry Patterns — When Is the Best Time to Trade?</div>
+    <div class="tab-intro-body">
+      This tab answers a simple but powerful question: <strong>does it matter what time of day or day of the week you enter a trade?</strong> The answer, based on 190,000+ one-minute BTC bars, is yes — significantly.<br><br>
+      <strong>Hour of Day</strong> (UTC) — The heatmap shows average 60-minute returns for each hour. <span class="hl-green">Green hours are historically profitable entry points</span> (20:00–21:00 UTC is the best single window). <span class="hl-red">Red hours are negative on average</span> (2:00–5:00 UTC, 14:00 UTC on Thursdays).<br><br>
+      <strong>DOW</strong> = Day of Week. <strong>Tuesday 15:00 UTC</strong> is the single best repeating weekly setup — 88.9% win rate across 18 Tuesdays in the dataset. <strong>Thursday 14:00 UTC</strong> is the worst slot (36.2% win rate — better to sit out or short).<br><br>
+      <strong>Interval simulation</strong> tests what happens if you enter every N minutes and hold for H minutes, with no other filter. The only profitable combinations are <span class="hl-green">enter every 60m / hold 45m</span> and <span class="hl-green">enter every 30m / hold 45m</span>. Everything else loses money — which shows that <strong>timing matters more than frequency</strong>. The <strong>Entry Clock</strong> bar at the top of the page shows your current UTC time and whether you're in a good or bad window right now.
+    </div>
+  </div>
+
+  <!-- HORIZON ACCURACY SECTION -->
+  <div class="section-head" style="display:flex;align-items:center;gap:12px;margin:0 0 12px;padding-bottom:0">
+    <span style="font-family:var(--cond);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--ghost)">Horizon Forecast Accuracy Backtest</span>
+    <div style="flex:1;height:1px;background:var(--pale)"></div>
+    <span class="badge">208 predictions evaluated vs actual BTC price</span>
+  </div>
+
+  <div class="col2" style="margin-bottom:16px">
+    <div class="panel">
+      <div class="ph"><div class="ph-t">Accuracy by Horizon</div><div class="badge blood">30 predictions per horizon</div></div>
+      <table>
+        <thead><tr><th>Horizon</th><th class="r">N</th><th class="r">Accuracy</th><th class="r">UP calls</th><th class="r">DOWN calls</th><th class="r">Actual UP</th></tr></thead>
+        <tbody id="horizon-acc-tbl"></tbody>
+      </table>
+      <div class="info-block warn" style="margin:10px">
+        <div class="info-body">The 1m model is the only horizon beating random at 73.3% — but it's mainly accurate because it <strong>heavily favours DOWN calls (21/30)</strong> and DOWN has been the dominant 1m direction in this dataset. 5m through 4h are all below random. <strong>Don't trust the 5m–4h forecasts for timing entries.</strong></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="ph"><div class="ph-t">Accuracy by Direction Called</div><div class="badge">UP vs DOWN prediction accuracy</div></div>
+      <table>
+        <thead><tr><th>Horizon</th><th>Called</th><th class="r">N</th><th class="r">Accuracy</th><th>Verdict</th></tr></thead>
+        <tbody id="horizon-dir-tbl"></tbody>
+      </table>
+      <div class="info-block" style="margin:10px;border-left-color:var(--slate)">
+        <div class="info-body"><strong>Key finding: UP calls from 5m through 1h are worse than random.</strong> The model is systematically overconfident on upside at these horizons. When it calls UP at 5m/15m/30m/1h, the actual outcome is DOWN more often than not. Consider fading or ignoring UP calls at these horizons. <strong>1m DOWN calls are the only signal worth acting on (81%).</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel mb">
+    <div class="ph"><div class="ph-t">Consensus 24h Accuracy</div><div class="badge blood">0.0% overall — 0/0 correct</div></div>
+    <div class="col3" style="padding:14px 16px;gap:1px;background:var(--pale)" id="cons24-grid">
+      <div style="background:var(--paper);padding:12px 14px">
+        <div class="stat-label">UP calls</div>
+        <div class="display-num sage" style="font-size:32px" id="cons24-up-acc">—</div>
+        <div class="stat-sub" id="cons24-up-n">— / — correct next-day</div>
+      </div>
+      <div style="background:var(--paper);padding:12px 14px">
+        <div class="stat-label">DOWN calls</div>
+        <div class="display-num amber" style="font-size:32px" id="cons24-dn-acc">—</div>
+        <div class="stat-sub" id="cons24-dn-n">— / — correct next-day</div>
+      </div>
+      <div style="background:var(--paper);padding:12px 14px">
+        <div class="stat-label">NEUTRAL calls</div>
+        <div class="display-num blood" style="font-size:32px" id="cons24-neu-acc">—</div>
+        <div class="stat-sub" id="cons24-neu-n">0% correct — no predictive value</div>
+      </div>
+    </div>
+    <div class="info-block warn" style="margin:10px">
+      <div class="info-body">Overall 24h consensus accuracy is 35.7% — <strong>worse than random.</strong> NEUTRAL calls have zero predictive value for next-day direction. UP calls are the only usable signal at 58.3%. Current consensus label is <strong>NEUTRAL</strong> — today's forecast carries no directional value.</div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid var(--pale);padding-top:16px;margin-bottom:12px">
+    <span style="font-family:var(--cond);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--ghost)">Entry Timing Strategies</span>
+  </div>
+    <div class="mblock"><div class="stat-label">Best Long Strategy</div><div class="display-num sage">+$135</div><div class="stat-sub">Tue 15:00 UTC · 60m hold</div></div>
+    <div class="mblock"><div class="stat-label">Best Short Strategy</div><div class="display-num sage">+$95</div><div class="stat-sub">Thu 14:00 UTC · 60m hold</div></div>
+    <div class="mblock"><div class="stat-label">Daily Cadence</div><div class="display-num sage">+$96</div><div class="stat-sub">21:00 UTC · 60m · 132 trades</div></div>
+    <div class="mblock"><div class="stat-label">Blind 60m Entry</div><div class="display-num blood">−$36</div><div class="stat-sub">20:00 UTC daily · no filter</div></div>
+  </div>
+
+  <!-- Strategy cards -->
+  <div class="strat-card" style="border-left-color:var(--sage)">
+    <div class="strat-card-head">
+      <div>
+        <div class="strat-card-name">Strategy A — Long · Tuesday 15:00 UTC → hold 60m (weekly)</div>
+        <div class="strat-card-meta"><span>18 trades</span><span style="color:var(--sage)">Win rate: 88.9%</span><span>16/18 profitable</span><span>Avg +0.527% / trade</span></div>
+      </div>
+      <div class="strat-card-pnl" style="color:var(--sage)">+$135.31</div>
+    </div>
+    <div class="strat-card-body">Enter once per week every Tuesday at 15:00 UTC, exit at 16:00. This is the Asian→European liquidity handoff window — the tape drifts with low resistance. <strong>Best sniper use: run scan at 14:45 UTC Tuesdays, enter top-ranked coins at 15:00.</strong> Only 2 losing Tuesdays in the entire dataset.</div>
+  </div>
+
+  <div class="strat-card" style="border-left-color:var(--blood)">
+    <div class="strat-card-head">
+      <div>
+        <div class="strat-card-name">Strategy B — Short · Thursday 14:00 UTC → hold 60m (weekly)</div>
+        <div class="strat-card-meta"><span>19 trades</span><span style="color:var(--sage)">Win rate: 78.9%</span><span>15/19 profitable as short</span><span>Avg +0.49% / trade</span></div>
+      </div>
+      <div class="strat-card-pnl" style="color:var(--sage)">+$94.57</div>
+    </div>
+    <div class="strat-card-body">Short BTC (or reduce longs) every Thursday 14:00 UTC, cover at 15:00. Pre-NY-open Thursday pressure is remarkably consistent. Avg loss on the 4 losers: −0.32% vs avg gain +0.62% on winners. <strong>Actionable: skip or undersize sniper on Thursday 14:00–15:00 UTC window.</strong></div>
+  </div>
+
+  <div class="strat-card" style="border-left-color:var(--slate)">
+    <div class="strat-card-head">
+      <div>
+        <div class="strat-card-name">Strategy C — Long · 21:00 UTC daily → hold 60m</div>
+        <div class="strat-card-meta"><span>132 trades (daily)</span><span style="color:var(--sage)">Win rate: 59.1%</span><span>Best single hour in dataset</span><span>Avg +0.036% / bar</span></div>
+      </div>
+      <div class="strat-card-pnl" style="color:var(--sage)">+$95.63</div>
+    </div>
+    <div class="strat-card-body">Enter every night at 21:00 UTC, exit at 22:00. The 21:00–22:00 UTC block is the highest-performing 60-minute window across 190,462 bars. <strong>Recommended sniper trigger: fire at 20:45 UTC daily. Add vol_ratio &gt; 2 filter to lift win rate from 54.4% → higher.</strong></div>
+  </div>
+
+  <div class="col2">
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Hour of Day · Avg 60m Return (UTC)</div><div class="badge">190k bars</div></div>
+      <div style="padding:12px 14px">
+        <div id="acorn-hmap" class="hr-hmap"></div>
+        <div style="display:flex;justify-content:space-between;font-family:var(--cond);font-size:7px;letter-spacing:.1em;color:var(--ghost);margin-top:3px"><span>00:00</span><span>12:00</span><span>23:00</span></div>
+      </div>
+      <div class="acorn-chart-wrap" style="padding:0 4px 4px"><canvas id="acornHourly" height="130"></canvas></div>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Interval Simulation · Enter every N · Hold H minutes</div></div>
+      <div class="int-row int-hdr"><div>Entry Every</div><div>Hold</div><div>N Trades</div><div>Win%</div><div>Avg Ret</div><div>Sharpe</div><div>Total P&amp;L</div><div>Verdict</div></div>
+      <div id="acorn-interval-rows"></div>
+      <div class="info-block" style="margin:10px;border-left-color:var(--amber)">
+        <div class="info-body">Only 2 of 60+ combinations are net positive: <strong>60m entry / 45m hold</strong> and <strong>30m entry / 45m hold</strong>. The 45-minute hold is the dataset sweet spot — captures momentum without mean-reversion drag. <strong>Run sniper every 45–60 min, hold 45 min.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col3">
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Best DOW × Hour Combos · 60m hold</div><div class="badge sage">long</div></div>
+      <div class="combo-row combo-hdr"><div>Day</div><div>Hour</div><div>Avg Ret</div><div>Win%</div><div>Edge</div></div>
+      <div id="dow-long-tbl"></div>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Short Opportunities · 60m hold</div><div class="badge blood">short</div></div>
+      <div class="combo-row combo-hdr"><div>Day</div><div>Hour</div><div>Avg Ret</div><div>Win%</div><div>Edge</div></div>
+      <div id="dow-short-tbl"></div>
+    </div>
+    <div class="panel mb">
+      <div class="ph"><div class="ph-t">Conditioned Entry Edges</div></div>
+      <div class="score-line"><span class="sl-name">After 3 down bars · 60m</span><span class="sl-score p">52.4% win</span></div>
+      <div class="score-line"><span class="sl-name">After 3 up bars · 60m</span><span class="sl-score n">48.7% win</span></div>
+      <div class="score-line"><span class="sl-name">Vol spike &gt;3× · 30m hold</span><span class="sl-score p">51.4% win</span></div>
+      <div class="score-line"><span class="sl-name">Vol spike &gt;3× · 240m hold</span><span class="sl-score n">50.1% win</span></div>
+      <div class="score-line"><span class="sl-name">20–22 UTC + Vol &gt;2× · 60m</span><span class="sl-score p">54.4% win</span></div>
+      <div class="score-line"><span class="sl-name">00–01 UTC + Vol &gt;2× · 30m</span><span class="sl-score p">54.4% win</span></div>
+      <div class="score-line"><span class="sl-name">Flat after ≥8 bars · next bar</span><span class="sl-score n">↓ bias 1.22×</span></div>
+      <div class="score-line"><span class="sl-name">Best interval (blind)</span><span class="sl-score p">60m/45m hold</span></div>
+      <div class="info-block" style="margin:10px;border-left-color:var(--slate)">
+        <div class="info-body">Mean reversion after 3 consecutive down bars is the most consistent micro-edge. <strong>Combine: 20–22 UTC + vol &gt;2× + ≥3 down bars for additive effect.</strong></div>
+      </div>
+</div>
+
 </div>
 
 <!-- ═════════════════════ TAB: TRADES ═════════════════════ -->
 <div class="tab-pane" id="tab-trades">
-  <div class="mblock-4">
-    <div class="mblock"><div class="stat-label">Total Deployed</div><div class="display-num">$69,000</div><div class="stat-sub">69 trades · all closed</div></div>
-    <div class="mblock"><div class="stat-label">Net P&amp;L</div><div class="display-num blood">−$4,497.97</div><div class="stat-sub">−0.14% return</div></div>
-    <div class="mblock"><div class="stat-label">Win Rate</div><div class="display-num amber">26.8%</div><div class="stat-sub">2W · 2L · 2 flat</div></div>
+  <div class="tab-intro">
+    <div class="tab-intro-title">Trade Log — Every Signal the System Has Acted On</div>
+    <div class="tab-intro-body">
+      This is the complete, unfiltered record of every trade the Acorn Alpha engine has generated — including both <strong>paper trades</strong> (simulated, for tracking) and <strong>real trades</strong>. Nothing is hidden or cherry-picked. A <strong>paper trade</strong> means the system logged the signal and tracked what would have happened, but no real money was deployed — it's how we evaluate the model before trusting it with capital.<br><br>
+      <strong>Alloc Tier</strong> tells you how confident the system was: <span class="hl-green">STRONG_BUY</span> = highest conviction (regime bullish + high probability), <span class="hl-green">BUY</span> = good conviction, <span class="hl-amber">SMALL_BUY</span> = moderate, <span class="hl-amber">PAPER_TRADE</span> = signal exists but conditions not strong enough for real capital. <strong>SKIP</strong> = model said no.<br><br>
+      <strong>Kelly $</strong> is the mathematically optimal position size based on the model's win probability — it sizes larger when confidence is higher, smaller when it's marginal. It is now also adjusted by <strong>price tier</strong>: coins in the $10–$100 range get a 1.25× boost (best historical performance), coins in the $0.10–$1 range get a 0.5× penalty (worst historical performance). <strong>Return %</strong> is the actual price move from entry to the next day's price. <strong>P&amp;L</strong> is that return applied to the Kelly position size.
+    </div>
+  </div>
+    <div class="mblock"><div class="stat-label">Total Deployed</div><div class="display-num">$71,000</div><div class="stat-sub">71 trades · all closed</div></div>
+    <div class="mblock"><div class="stat-label">Net P&amp;L</div><div class="display-num blood">−$4,383.43</div><div class="stat-sub">−0.14% return</div></div>
+    <div class="mblock"><div class="stat-label">Win Rate</div><div class="display-num amber">30.4%</div><div class="stat-sub">2W · 2L · 2 flat</div></div>
     <div class="mblock"><div class="stat-label">Best Trade</div><div class="display-num sage">+$317.55</div><div class="stat-sub">TAO · +2.26% · Mar 02</div></div>
   </div>
   <div class="col32">
@@ -1191,11 +1839,6 @@ canvas { display: block; width: 100%; }
         <div class="scroll-y" style="max-height:215px" id="cons-list"></div>
       </div>
     </div>
-  </div>
-</div>
-
-
-
 </div><!-- /wrap -->
 
 
@@ -1217,30 +1860,513 @@ canvas { display: block; width: 100%; }
 <script>
 // ── TAB SWITCHING ──
 function switchTab(id){
-  const ids=['overview','patterns','signals','updown','model','trades'];
-  document.querySelectorAll('.nav-tab').forEach((t,i)=>t.classList.toggle('active',ids[i]===id));
-  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.toggle('active',p.id==='tab-'+id));
+  // Deactivate all tabs and panes
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  // Activate the clicked one
+  const pane = document.getElementById('tab-' + id);
+  if(pane) pane.classList.add('active');
+  // Find matching nav tab by its onclick attribute
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    if(t.getAttribute('onclick') === "switchTab('" + id + "')") t.classList.add('active');
+  });
+  window.scrollTo(0, 0);
   setTimeout(drawAll, 60);
+  setTimeout(drawAcorn, 120);
 }
 
+// ── ACORN DATA ──
+const acornDaily=[];
+const acornAucData=[];
+const acornBrierData=[];
+const acornHoldout=[];
+const acornLiveAcc=[];
+const acornLiveDates=[];
+const acornRollingLbls=['R7–11','R10–14','R13–17','R16–20','R19–23','R22–26','R25–29','R28–32','R31–35','R34–38'];
+const acornRollingAUC=[0.655,0.519,0.533,0.614,0.455,0.333,0.332,0.386,0.575,0.688];
+const acornRollingBrier=[0.270,0.285,0.262,0.242,0.294,0.324,0.306,0.290,0.256,0.246];
+const acornRankData=[];
+const acornTopCoins=[];
+const acornBotCoins=[];
+const acornH60=[0.0742,0.0192,-0.0405,0.0072,-0.0421,-0.0586,0.0016,0.0154,0.0162,-0.0012,-0.0171,-0.0192,-0.0037,0.0007,-0.0397,-0.0166,-0.0771,-0.0189,-0.0101,-0.0192,0.0467,0.0362,0.0011,-0.0600];
+const acornFeats=[];
+const acornIntervals=[
+  {ev:'60m',h:'45m',n:3174,wr:51.8,avg:0.0122,sh:0.0248,pnl:38.70,ok:true},
+  {ev:'30m',h:'45m',n:6348,wr:51.5,avg:0.0064,sh:0.0130,pnl:40.85,ok:true},
+  {ev:'60m',h:'60m',n:3174,wr:50.3,avg:-0.0086,sh:-0.0147,pnl:-27.25,ok:false},
+  {ev:'45m',h:'45m',n:4232,wr:50.3,avg:-0.0064,sh:-0.0127,pnl:-27.22,ok:false},
+  {ev:'15m',h:'45m',n:12695,wr:50.3,avg:-0.0064,sh:-0.0129,pnl:-81.43,ok:false},
+  {ev:'4h',h:'4h',n:793,wr:51.1,avg:-0.0338,sh:-0.0300,pnl:-26.81,ok:false},
+  {ev:'24h',h:'24h',n:132,wr:49.2,avg:-0.089,sh:-0.041,pnl:-117.0,ok:false},
+];
+const acornLongCombos=[
+  {d:'Tue',h:'15:00',avg:'+0.527%',wr:'74.7%'},{d:'Tue',h:'14:00',avg:'+0.289%',wr:'57.7%'},
+  {d:'Wed',h:'00:00',avg:'+0.202%',wr:'60.6%'},{d:'Fri',h:'12:00',avg:'+0.186%',wr:'62.5%'},
+  {d:'Sun',h:'01:00',avg:'+0.168%',wr:'56.1%'},{d:'Wed',h:'12:00',avg:'+0.148%',wr:'62.4%'},
+  {d:'Fri',h:'00:00',avg:'+0.147%',wr:'52.6%'},{d:'Wed',h:'13:00',avg:'+0.130%',wr:'56.1%'},
+  {d:'Mon',h:'20:00',avg:'+0.125%',wr:'59.6%'},{d:'Mon',h:'21:00',avg:'+0.119%',wr:'56.0%'},
+];
+const acornShortCombos=[
+  {d:'Thu',h:'14:00',avg:'−0.491%',wr:'36.2%'},{d:'Thu',h:'15:00',avg:'−0.308%',wr:'43.7%'},
+  {d:'Thu',h:'16:00',avg:'−0.267%',wr:'47.4%'},{d:'Tue',h:'02:00',avg:'−0.240%',wr:'30.4%'},
+  {d:'Sat',h:'06:00',avg:'−0.237%',wr:'39.7%'},
+];
+
+// ── Live-injected data variables (replaced by generator on every run) ──
+const regimeByLabel=[];
+const regimeByProb=[];
+const horizonAcc=[];
+const horizonDir=[];
+const cons24Data=[];
+const priceTierData=[];
+const tmsQuartiles=[];
+const vaQuartiles=[];
+const rsQuartiles=[];
+const dowLongCombos=[];
+const dowShortCombos=[];
+
+// ── Render functions for live tables ──
+function renderRegimeTables(){
+  // By label
+  const labelTbl = document.getElementById('regime-label-tbl');
+  if(labelTbl && !labelTbl.children.length){
+    const labelOrder = {UP:0, DOWN:1, NEUTRAL:2};
+    [...regimeByLabel].sort((a,b)=>(labelOrder[a.label]??9)-(labelOrder[b.label]??9)).forEach(r=>{
+      const lc=r.label==='UP'?'up':r.label==='DOWN'?'no':'neu';
+      const pc=r.total_pnl>0?'pos':'neg';
+      const wc=r.win_rate>=50?'pos':r.win_rate>=45?'':'neg';
+      labelTbl.innerHTML+=`<tr>
+        <td><span class="tag ${lc}">${r.label}</span></td>
+        <td class="r muted">${r.n}</td>
+        <td class="r ${wc}">${r.win_rate.toFixed(1)}%</td>
+        <td class="r ${r.avg_ret>0?'pos':'neg'}">${r.avg_ret>0?'+':''}${r.avg_ret.toFixed(3)}%</td>
+        <td class="r ${pc}">${r.total_pnl>0?'+$':'-$'}${Math.abs(r.total_pnl).toLocaleString()}</td>
+      </tr>`;
+    });
+  }
+  // By prob bucket
+  const probTbl = document.getElementById('regime-prob-tbl');
+  if(probTbl && !probTbl.children.length){
+    regimeByProb.forEach(r=>{
+      const best=r.bucket==='55-60%';
+      const worst=r.bucket==='>70%';
+      probTbl.innerHTML+=`<tr>
+        <td style="${best?'color:var(--sage);font-weight:700':worst?'color:var(--blood);':''}">${r.bucket}${best?' ★':worst?' ✗':''}</td>
+        <td class="r muted">${r.n}</td>
+        <td class="r ${r.win_rate>=50?'pos':r.win_rate>=40?'':'neg'}" ${best?'style="font-weight:700"':''}>${r.win_rate.toFixed(1)}%</td>
+        <td class="r ${r.total_pnl>0?'pos':'neg'}" ${best||worst?'style="font-weight:700"':''}>${r.total_pnl>0?'+$':'-$'}${Math.abs(r.total_pnl).toLocaleString()}</td>
+      </tr>`;
+    });
+  }
+}
+
+function renderHorizonTables(){
+  const hzMap = {1:'1m',5:'5m',15:'15m',30:'30m',60:'1h',240:'4h',1440:'24h'};
+  // Overall accuracy
+  const accTbl = document.getElementById('horizon-acc-tbl');
+  if(accTbl && !accTbl.children.length){
+    horizonAcc.forEach(r=>{
+      const best=r.hm===1;
+      const lbl=hzMap[r.hm]||r.hm+'m';
+      accTbl.innerHTML+=`<tr>
+        <td style="${best?'color:var(--sage);font-weight:700':''}">${lbl}${best?' ★':''}</td>
+        <td class="r muted">${r.n}</td>
+        <td class="r ${r.acc>=50?'pos':'neg'}" ${best?'style="font-weight:700"':''}>${r.acc.toFixed(1)}%</td>
+        <td class="r muted">${r.n_up}</td><td class="r muted">${r.n_dn}</td><td class="r muted">${r.n_up_actual}</td>
+      </tr>`;
+    });
+  }
+  // By direction
+  const dirTbl = document.getElementById('horizon-dir-tbl');
+  if(dirTbl && !dirTbl.children.length){
+    horizonDir.forEach(r=>{
+      const lbl=hzMap[r.hm]||r.hm+'m';
+      const reliable=r.acc>=65; const inverse=r.acc<35;
+      const verdict=reliable?'✓ Reliable':inverse?'✗ Inverse':'~ Weak edge';
+      const vc=reliable?'pos':inverse?'neg':'';
+      dirTbl.innerHTML+=`<tr>
+        <td>${lbl}</td>
+        <td><span class="tag ${r.pred==='UP'?'up':'no'}" style="font-size:7px">${r.pred}</span></td>
+        <td class="r muted">${r.n}</td>
+        <td class="r ${r.acc>=50?'pos':'neg'}">${r.acc.toFixed(1)}%</td>
+        <td style="font-size:9px;color:var(--${reliable?'sage':inverse?'blood':'ghost'})">${verdict}</td>
+      </tr>`;
+    });
+  }
+  // Consensus 24h stat boxes
+  ['UP','DOWN','NEUTRAL'].forEach(lbl=>{
+    const row = cons24Data.find(r=>r.label===lbl)||{acc:0,n:0};
+    const idMap={UP:'cons24-up',DOWN:'cons24-dn',NEUTRAL:'cons24-neu'};
+    const prefix=idMap[lbl];
+    const accEl=document.getElementById(prefix+'-acc');
+    const nEl=document.getElementById(prefix+'-n');
+    if(accEl) accEl.textContent=row.acc.toFixed(1)+'%';
+    if(nEl){
+      const hits=Math.round(row.acc/100*row.n);
+      nEl.textContent=hits+'/'+row.n+' correct next-day';
+    }
+  });
+  // Consensus 24h table
+  const cons24Tbl = document.getElementById('cons24-tbl');
+  if(cons24Tbl && !cons24Tbl.children.length){
+    const labelOrder = {UP:0, DOWN:1, NEUTRAL:2};
+    [...cons24Data].sort((a,b)=>(labelOrder[a.label]??9)-(labelOrder[b.label]??9)).forEach(r=>{
+      cons24Tbl.innerHTML+=`<tr>
+        <td><span class="tag ${r.label==='UP'?'up':r.label==='DOWN'?'no':'neu'}" style="font-size:8px">${r.label}</span></td>
+        <td class="r muted">${r.n}</td>
+        <td class="r ${r.acc>=50?'pos':'neg'}">${r.acc.toFixed(1)}%</td>
+      </tr>`;
+    });
+  }
+}
+
+function renderPriceTierTable(){
+  const tbl = document.getElementById('price-tier-tbl');
+  if(tbl && !tbl.children.length){
+    priceTierData.forEach(r=>{
+      const best=r.tier==='$10–$100'; const worst=r.tier==='$0.10–$1';
+      tbl.innerHTML+=`<tr>
+        <td style="${best?'color:var(--sage);font-weight:700':worst?'color:var(--blood);font-weight:700':''}">${r.tier}${best?' ★':worst?' ✗':''}</td>
+        <td class="r muted">${r.n}</td>
+        <td class="r ${r.win_rate>=50?'pos':'neg'}">${r.win_rate.toFixed(1)}%</td>
+        <td class="r ${r.avg_ret>0?'pos':'neg'}">${r.avg_ret>0?'+':''}${r.avg_ret.toFixed(3)}%</td>
+        <td class="r ${r.total_pnl>0?'pos':'neg'}">${r.total_pnl>0?'+$':'-$'}${Math.abs(r.total_pnl).toLocaleString()}</td>
+      </tr>`;
+    });
+  }
+}
+
+function renderQuartileTables(){
+  const pairs = [
+    ['tms-quartile-tbl', tmsQuartiles, 'Q2'],
+    ['va-quartile-tbl',  vaQuartiles,  'Q4 High'],
+    ['rs-quartile-tbl',  rsQuartiles,  'Q1 Weak']
+  ];
+  pairs.forEach(([id, data, star])=>{
+    const tbl = document.getElementById(id);
+    if(tbl && !tbl.children.length){
+      data.forEach(r=>{
+        const best=r.q===star;
+        tbl.innerHTML+=`<tr>
+          <td style="${best?'color:var(--sage);font-weight:700':''}">${r.q}${best?' ★':''}</td>
+          <td class="r muted">${r.n}</td>
+          <td class="r ${r.win_rate>=50?'pos':'neg'}">${r.win_rate.toFixed(1)}%</td>
+          <td class="r ${r.avg_ret>0?'pos':'neg'}">${r.avg_ret>0?'+':''}${r.avg_ret.toFixed(3)}%</td>
+          <td class="r ${r.total_pnl>0?'pos':'neg'}">${r.total_pnl>0?'+$':'-$'}${Math.abs(r.total_pnl).toLocaleString()}</td>
+        </tr>`;
+      });
+    }
+  });
+}
+
+function renderDowCombos(){
+  const ld = document.getElementById('dow-long-tbl');
+  if(ld && !ld.children.length){
+    dowLongCombos.forEach(r=>{
+      const h=String(r.hour).padStart(2,'0')+':00';
+      ld.innerHTML+=`<div class="combo-row">
+        <div>${r.dow}</div>
+        <div>${h}</div>
+        <div class="pos">+${r.avg.toFixed(4)}%</div>
+        <div class="pos">${r.win.toFixed(1)}%</div>
+        <div><span class="tag up" style="font-size:7px">LONG</span></div>
+      </div>`;
+    });
+  }
+  const sd = document.getElementById('dow-short-tbl');
+  if(sd && !sd.children.length){
+    [...dowShortCombos].reverse().forEach(r=>{
+      const h=String(r.hour).padStart(2,'0')+':00';
+      sd.innerHTML+=`<div class="combo-row">
+        <div>${r.dow}</div>
+        <div>${h}</div>
+        <div class="neg">${r.avg.toFixed(4)}%</div>
+        <div class="neg">${r.win.toFixed(1)}%</div>
+        <div><span class="tag no" style="font-size:7px">SHORT</span></div>
+      </div>`;
+    });
+  }
+}
+
+const acornDrawn={};
+
+function drawAcorn(){
+  const activePanes=['tab-acorn-pnl','tab-acorn-model','tab-acorn-entry'];
+  const anyActive=activePanes.some(id=>{const el=document.getElementById(id);return el&&el.classList.contains('active');});
+  if(!anyActive)return;
+
+  const amber=getComputedStyle(document.documentElement).getPropertyValue('--amber').trim()||'#f0a020';
+  const sage=getComputedStyle(document.documentElement).getPropertyValue('--sage').trim()||'#44cc70';
+  const blood=getComputedStyle(document.documentElement).getPropertyValue('--blood').trim()||'#e8442a';
+  const ghost=getComputedStyle(document.documentElement).getPropertyValue('--ghost').trim()||'#6a5e48';
+  const pale=getComputedStyle(document.documentElement).getPropertyValue('--pale').trim()||'#2a2010';
+  const slate=getComputedStyle(document.documentElement).getPropertyValue('--slate').trim()||'#8ab0d0';
+
+  function mkCtxA(id,h){
+    const el=document.getElementById(id);if(!el)return[null,0,0];
+    const parent=el.closest('.panel,.acorn-chart-wrap')||el.parentElement;
+    const W=parent.offsetWidth-28;
+    if(W<50)return[null,0,0]; // parent still hidden, skip
+    if(acornDrawn[id]&&el._lastW===W)return[null,0,0]; // already drawn at this width
+    acornDrawn[id]=true;el._lastW=W;
+    const dpr=window.devicePixelRatio||1;
+    el.width=W*dpr;el.height=h*dpr;el.style.width=W+'px';el.style.height=h+'px';
+    const ctx=el.getContext('2d');ctx.scale(dpr,dpr);return[ctx,W,h];
+  }
+
+  function gridLines(ctx,pad,w,h,minV,maxV,n=4,fmt=v=>v.toFixed(0)){
+    for(let i=0;i<=n;i++){
+      const f=i/n,v=minV+f*(maxV-minV),y=pad.t+(1-f)*h;
+      ctx.strokeStyle=pale;ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+w,y);ctx.stroke();
+      ctx.fillStyle=ghost;ctx.font='8px IBM Plex Mono,monospace';ctx.textAlign='right';
+      ctx.fillText(fmt(v),pad.l-4,y+3);
+    }
+  }
+
+  // ── Cumulative PnL ──
+  {
+    const[ctx,W,H]=mkCtxA('acornCumPnl',160);if(ctx){
+      const pad={l:44,r:10,t:12,b:20};const w=W-pad.l-pad.r,h=H-pad.t-pad.b;
+      const vals=acornDaily.map(d=>d.cum);
+      const minV=Math.min(...vals)-50,maxV=Math.max(...vals)+50,n=vals.length;
+      const px=i=>pad.l+(i/(n-1))*w,py=v=>pad.t+(1-(v-minV)/(maxV-minV))*h;
+      gridLines(ctx,pad,w,h,minV,maxV,4,v=>'$'+v.toFixed(0));
+      const y0=py(0);ctx.beginPath();ctx.moveTo(pad.l,y0);ctx.lineTo(pad.l+w,y0);
+      ctx.strokeStyle=amber;ctx.lineWidth=.8;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+      const grad=ctx.createLinearGradient(0,pad.t,0,pad.t+h);
+      grad.addColorStop(0,'rgba(68,204,112,.08)');grad.addColorStop(1,'rgba(12,10,6,0)');
+      ctx.beginPath();ctx.moveTo(px(0),py(vals[0]));vals.forEach((_,i)=>{if(i>0)ctx.lineTo(px(i),py(vals[i]));});
+      ctx.lineTo(px(n-1),pad.t+h);ctx.lineTo(px(0),pad.t+h);ctx.closePath();ctx.fillStyle=grad;ctx.fill();
+      ctx.beginPath();ctx.moveTo(px(0),py(vals[0]));vals.forEach((_,i)=>{if(i>0)ctx.lineTo(px(i),py(vals[i]));});
+      ctx.strokeStyle=blood;ctx.lineWidth=2;ctx.stroke();
+      ctx.fillStyle=ghost;ctx.font='7px IBM Plex Mono,monospace';ctx.textAlign='center';
+      const step=Math.ceil(n/8);acornDaily.forEach((d,i)=>{if(i%step===0)ctx.fillText(d.d,px(i),pad.t+h+12);});
+    }
+  }
+
+  // ── Daily PnL bars ──
+  {
+    const[ctx,W,H]=mkCtxA('acornDailyPnl',160);if(ctx){
+      const pad={l:44,r:10,t:12,b:20};const w=W-pad.l-pad.r,h=H-pad.t-pad.b;
+      const vals=acornDaily.map(d=>d.pnl);
+      const maxAbs=Math.max(...vals.map(Math.abs))+50;
+      const n=vals.length,bW=w/n*.7,gap=w/n;
+      const py=v=>pad.t+(1-((v+maxAbs)/(2*maxAbs)))*h;
+      const y0=py(0);
+      ctx.beginPath();ctx.moveTo(pad.l,y0);ctx.lineTo(pad.l+w,y0);
+      ctx.strokeStyle=amber;ctx.lineWidth=.8;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+      [-maxAbs,0,maxAbs].forEach(v=>{
+        ctx.fillStyle=ghost;ctx.font='8px IBM Plex Mono,monospace';ctx.textAlign='right';
+        ctx.fillText('$'+v.toFixed(0),pad.l-4,py(v)+3);
+      });
+      vals.forEach((v,i)=>{
+        const x=pad.l+i*gap+gap/2-bW/2,bH=Math.abs(py(v)-y0);
+        ctx.fillStyle=v>=0?'rgba(68,204,112,.7)':'rgba(232,68,42,.65)';
+        ctx.fillRect(x,v>=0?y0-bH:y0,bW,bH);
+      });
+      ctx.fillStyle=ghost;ctx.font='7px IBM Plex Mono,monospace';ctx.textAlign='center';
+      const step=Math.ceil(n/8);acornDaily.forEach((d,i)=>{if(i%step===0)ctx.fillText(d.d,pad.l+i*gap+gap/2,pad.t+h+12);});
+    }
+  }
+
+  // ── AUC chart ──
+  {
+    const[ctx,W,H]=mkCtxA('acornAUC',160);if(ctx){
+      const pad={l:30,r:10,t:12,b:18};const w=W-pad.l-pad.r,h=H-pad.t-pad.b,n=acornAucData.length;
+      gridLines(ctx,pad,w,h,0,1.1,5,v=>v.toFixed(1));
+      const py=v=>pad.t+(1-v/1.1)*h,px=i=>pad.l+(i/(n-1))*w;
+      ctx.beginPath();ctx.moveTo(pad.l,py(.5));ctx.lineTo(pad.l+w,py(.5));
+      ctx.strokeStyle=amber;ctx.lineWidth=.8;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+      acornAucData.forEach((v,i)=>{
+        const x=px(i),y=py(v),col=acornHoldout[i]<30?ghost:(v>=0.65?sage:v>=0.5?amber:blood);
+        ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fillStyle=col;ctx.globalAlpha=.85;ctx.fill();ctx.globalAlpha=1;
+      });
+      ctx.fillStyle=ghost;ctx.font='8px IBM Plex Mono,monospace';ctx.textAlign='center';
+      [1,10,20,30,38].forEach(i=>{const idx=i-1;if(idx<n)ctx.fillText('R'+i,px(idx),pad.t+h+12);});
+    }
+  }
+
+  // ── Brier chart ──
+  {
+    const[ctx,W,H]=mkCtxA('acornBrier',160);if(ctx){
+      const pad={l:34,r:10,t:12,b:18};const w=W-pad.l-pad.r,h=H-pad.t-pad.b,n=acornBrierData.length;
+      gridLines(ctx,pad,w,h,0,0.55,5,v=>v.toFixed(2));
+      const py=v=>pad.t+(1-v/0.55)*h,px=i=>pad.l+(i/(n-1))*w;
+      ctx.beginPath();ctx.moveTo(pad.l,py(.25));ctx.lineTo(pad.l+w,py(.25));
+      ctx.strokeStyle=sage;ctx.lineWidth=.8;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+      ctx.beginPath();ctx.moveTo(px(0),py(acornBrierData[0]));
+      acornBrierData.forEach((v,i)=>{if(i>0)ctx.lineTo(px(i),py(v));});
+      ctx.strokeStyle=slate;ctx.lineWidth=2;ctx.stroke();
+      acornBrierData.forEach((v,i)=>{
+        const col=v<0.27?sage:v>0.35?blood:amber;
+        ctx.beginPath();ctx.arc(px(i),py(v),2.5,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
+      });
+      ctx.fillStyle=ghost;ctx.font='8px IBM Plex Mono,monospace';ctx.textAlign='center';
+      [1,10,20,30,38].forEach(i=>{const idx=i-1;if(idx<n)ctx.fillText('R'+i,px(idx),pad.t+h+12);});
+    }
+  }
+
+  // ── Live accuracy ──
+  {
+    const[ctx,W,H]=mkCtxA('acornLiveAcc',160);if(ctx){
+      const pad={l:28,r:10,t:12,b:18};const w=W-pad.l-pad.r,h=H-pad.t-pad.b,n=acornLiveAcc.length;
+      const bW=w/n*.72,gap=w/n,py=v=>pad.t+(1-v/100)*h;
+      ctx.beginPath();ctx.moveTo(pad.l,py(50));ctx.lineTo(pad.l+w,py(50));
+      ctx.strokeStyle=amber;ctx.lineWidth=.8;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+      [0,50,100].forEach(v=>{ctx.fillStyle=ghost;ctx.font='8px IBM Plex Mono,monospace';ctx.textAlign='right';ctx.fillText(v+'%',pad.l-4,py(v)+3);});
+      acornLiveAcc.forEach((v,i)=>{
+        const x=pad.l+i*gap+gap/2-bW/2;
+        ctx.fillStyle=v>=50?'rgba(68,204,112,.7)':'rgba(232,68,42,.65)';
+        ctx.fillRect(x,py(v),bW,py(0)-py(v));
+      });
+      ctx.fillStyle=ghost;ctx.font='7px IBM Plex Mono,monospace';ctx.textAlign='center';
+      const step=Math.ceil(n/7);acornLiveDates.forEach((d,i)=>{if(i%step===0)ctx.fillText(d,pad.l+i*gap+gap/2,pad.t+h+12);});
+    }
+  }
+
+  // ── Rolling windows ──
+  {
+    const[ctx,W,H]=mkCtxA('acornRolling',160);if(ctx){
+      const pad={l:32,r:10,t:12,b:18};const w=W-pad.l-pad.r,h=H-pad.t-pad.b,n=acornRollingAUC.length;
+      const py=v=>pad.t+(1-(v-.2)/(.85-.2))*h,px=i=>pad.l+(i/(n-1))*w;
+      gridLines(ctx,pad,w,h,.2,.85,5,v=>v.toFixed(2));
+      ctx.beginPath();ctx.moveTo(pad.l,py(.5));ctx.lineTo(pad.l+w,py(.5));
+      ctx.strokeStyle=amber;ctx.lineWidth=.8;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
+      // AUC line
+      ctx.beginPath();ctx.moveTo(px(0),py(acornRollingAUC[0]));
+      acornRollingAUC.forEach((v,i)=>{if(i>0)ctx.lineTo(px(i),py(v));});
+      ctx.strokeStyle=amber;ctx.lineWidth=2;ctx.stroke();
+      acornRollingAUC.forEach((v,i)=>{ctx.beginPath();ctx.arc(px(i),py(v),3,0,Math.PI*2);ctx.fillStyle=amber;ctx.fill();});
+      // Brier inverted line
+      ctx.beginPath();ctx.moveTo(px(0),py(1-acornRollingBrier[0]));
+      acornRollingBrier.forEach((v,i)=>{if(i>0)ctx.lineTo(px(i),py(1-v));});
+      ctx.strokeStyle=slate;ctx.lineWidth=1.5;ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle=ghost;ctx.font='7px IBM Plex Mono,monospace';ctx.textAlign='center';
+      acornRollingLbls.forEach((l,i)=>ctx.fillText(l,px(i),pad.t+h+12));
+    }
+  }
+
+  // ── Hourly bar chart ──
+  {
+    const[ctx,W,H]=mkCtxA('acornHourly',130);if(ctx){
+      const pad={l:36,r:10,t:10,b:20};const w=W-pad.l-pad.r,h=H-pad.t-pad.b,n=24;
+      const maxA=Math.max(...acornH60.map(Math.abs))+0.01;
+      const bW=w/n*.72,gap=w/n,py=v=>pad.t+(1-((v+maxA)/(2*maxA)))*h,y0=py(0);
+      ctx.beginPath();ctx.moveTo(pad.l,y0);ctx.lineTo(pad.l+w,y0);
+      ctx.strokeStyle=amber;ctx.lineWidth=.8;ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);
+      [-maxA,0,maxA].forEach(v=>{ctx.fillStyle=ghost;ctx.font='8px IBM Plex Mono,monospace';ctx.textAlign='right';ctx.fillText((v*100).toFixed(2)+'%',pad.l-4,py(v)+3);});
+      acornH60.forEach((v,i)=>{
+        const x=pad.l+i*gap+gap/2-bW/2,bH=Math.abs(py(v)-y0);
+        ctx.fillStyle=v>=0?'rgba(68,204,112,.7)':'rgba(232,68,42,.65)';
+        ctx.fillRect(x,v>=0?y0-bH:y0,bW,bH);
+      });
+      ctx.fillStyle=ghost;ctx.font='7px IBM Plex Mono,monospace';ctx.textAlign='center';
+      [0,4,8,12,16,20,23].forEach(h=>ctx.fillText(String(h).padStart(2,'0'),pad.l+h*gap+gap/2,pad.t+(H-pad.t-pad.b)+20));
+    }
+  }
+
+  // ── Heatmap cells (static — render once) ──
+  {
+    const div=document.getElementById('acorn-hmap');
+    if(div&&!div.children.length){
+      const mx=Math.max(...acornH60.map(Math.abs));
+      acornH60.forEach((v,i)=>{
+        const t=v/mx,a=Math.abs(t);
+        const bg=t>0?`rgba(68,204,112,${.15+a*.65})`:`rgba(232,68,42,${.15+a*.65})`;
+        const cell=document.createElement('div');
+        cell.className='hr-hcell';cell.style.background=bg;
+        cell.title=`${String(i).padStart(2,'0')}:00 UTC — ${v>=0?'+':''}${(v).toFixed(4)}%`;
+        cell.textContent=String(i).padStart(2,'0');
+        div.appendChild(cell);
+      });
+    }
+  }
+
+  // ── Feature bars ──
+  {
+    const div=document.getElementById('acorn-feat-bars');if(div&&!div.children.length){
+      const mx=acornFeats[0].v;
+      acornFeats.forEach(f=>{
+        div.innerHTML+=`<div class="feat-bar-row">
+          <span class="feat-bar-lbl">${f.n}</span>
+          <div class="feat-bar-track"><div class="feat-bar-fill" style="width:${f.v/mx*100}%;background:var(--amber)"></div></div>
+          <span class="feat-bar-val">${f.v.toFixed(3)}</span>
+        </div>`;
+      });
+    }
+  }
+
+  // ── Rank table ──
+  {
+    const tbl=document.getElementById('acorn-rank-tbl');if(tbl&&!tbl.children.length){
+      acornRankData.forEach(r=>{
+        const pc=r.pnl>0?'pos':'neg',ac=r.avg>0?'pos':'neg';
+        tbl.innerHTML+=`<tr>
+          <td><span class="rnk">#${r.r}</span></td>
+          <td class="r ${ac}">${r.avg>0?'+':''}${r.avg.toFixed(2)}%</td>
+          <td class="r" style="color:${r.wr>=50?'var(--sage)':r.wr>=40?'var(--amber)':'var(--blood)'}">${r.wr.toFixed(1)}%</td>
+          <td class="r ${pc}">${r.pnl>0?'+$':'-$'}${Math.abs(r.pnl).toFixed(0)}</td>
+        </tr>`;
+      });
+    }
+  }
+
+  // ── Top/bot coin tables ──
+  {
+    const top=document.getElementById('acorn-top-coins');if(top&&!top.children.length){
+      acornTopCoins.forEach(c=>{top.innerHTML+=`<tr><td><span class="sym" style="font-size:12px">${c.s}</span></td><td class="r muted">${c.n}</td><td class="r pos">${c.wr.toFixed(0)}%</td><td class="r pos">+$${c.pnl.toFixed(0)}</td></tr>`;});
+    }
+    const bot=document.getElementById('acorn-bot-coins');if(bot&&!bot.children.length){
+      acornBotCoins.forEach(c=>{bot.innerHTML+=`<tr><td><span class="sym" style="font-size:12px">${c.s}</span></td><td class="r muted">${c.n}</td><td class="r neg">${c.wr.toFixed(0)}%</td><td class="r neg">-$${Math.abs(c.pnl).toFixed(0)}</td></tr>`;});
+    }
+  }
+
+  // ── Interval rows ──
+  {
+    const div=document.getElementById('acorn-interval-rows');if(div&&!div.children.length){
+      acornIntervals.forEach(r=>{
+        const pc=r.pnl>0?'pos':'neg';
+        div.innerHTML+=`<div class="int-row">
+          <div>${r.ev}</div><div>${r.h}</div>
+          <div style="color:var(--ghost)">${r.n.toLocaleString()}</div>
+          <div style="color:${r.wr>=51?'var(--sage)':'var(--amber)'}">${r.wr}%</div>
+          <div class="${r.avg>0?'pos':'neg'}">${r.avg>0?'+':''}${r.avg.toFixed(4)}%</div>
+          <div class="${r.sh>0?'pos':'neg'}">${r.sh>0?'+':''}${r.sh.toFixed(4)}</div>
+          <div class="${pc}">${r.pnl>0?'+$':'-$'}${Math.abs(r.pnl).toFixed(2)}</div>
+          <div><span class="tag ${r.ok?'hit':'skip'}">${r.ok?'BEST':'SKIP'}</span></div>
+        </div>`;
+      });
+    }
+  }
+
+  // ── Render live tables ──
+  renderRegimeTables();
+  renderHorizonTables();
+  renderPriceTierTable();
+  renderQuartileTables();
+  renderDowCombos();
+}
+
+
+
 // ── DATA ──
-const sniperRows=[{"rank": 1, "sym": "HYPE", "price": 40.02, "ret": 0.005780346820809301, "va": 1.56477123984089, "rs": 0.01235296597664326, "ts": 1.185888088758251, "prob": 0.5304478892508134, "lbl": "UP", "alloc": "SKIP"}, {"rank": 2, "sym": "DOGE", "price": 0.09403, "ret": 0.0005320280910832142, "va": 2.170051858185531, "rs": 0.001318119104748883, "ts": 0.5303210756497156, "prob": 0.5358265842108585, "lbl": "UP", "alloc": "SKIP"}, {"rank": 3, "sym": "SOL", "price": 90.06, "ret": 0.001222901612006666, "va": 1.446573169525938, "rs": 0.009147961956637918, "ts": 0.416817385712521, "prob": 0.5145382237494803, "lbl": "UP", "alloc": "SKIP"}, {"rank": 4, "sym": "AVAX", "price": 9.51, "ret": -0.004188481675392763, "va": 1.71072555634988, "rs": 0.0003442199882035535, "ts": 0.3750492756755966, "prob": 0.4880835922448289, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 5, "sym": "XRP", "price": 1.4426, "ret": 0.001666435217331008, "va": 1.246354165350848, "rs": -0.001424631072113325, "ts": 0.3541267180745591, "prob": 0.5308724995469845, "lbl": "UP", "alloc": "SKIP"}, {"rank": 6, "sym": "ETH", "price": 2159.32, "ret": 0.001995341110523352, "va": 1.287929549692096, "rs": 0.007827249239677592, "ts": 0.1651149909859317, "prob": 0.4973504090370581, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 7, "sym": "ADA", "price": 0.2649, "ret": 0.001891074130105919, "va": 0.8960256241722814, "rs": -0.007185405792615285, "ts": 0.09221037741712526, "prob": 0.5366671294710956, "lbl": "UP", "alloc": "SKIP"}, {"rank": 8, "sym": "ZEC", "price": 233.92, "ret": 0.001970358947999573, "va": 0.747056886497752, "rs": -0.00406932964782547, "ts": 0.05476380386409706, "prob": 0.5323032731918644, "lbl": "UP", "alloc": "SKIP"}, {"rank": 9, "sym": "NEAR", "price": 1.311, "ret": -0.006818181818181945, "va": 2.612473531230063, "rs": -0.016527812928263, "ts": 0.009312176604001104, "prob": 0.5516818564793575, "lbl": "UP", "alloc": "SKIP"}, {"rank": 10, "sym": "LTC", "price": 56.03, "ret": -0.0003568242640499264, "va": 0.6722023121247352, "rs": 0.004725268592575604, "ts": -0.0211622166268645, "prob": 0.5277881034835119, "lbl": "UP", "alloc": "SKIP"}, {"rank": 11, "sym": "SUI", "price": 0.9618, "ret": -0.0002079002079001802, "va": 0.8193760991424839, "rs": -0.0006943772478151811, "ts": -0.1634898241226596, "prob": 0.5470147729321644, "lbl": "UP", "alloc": "SKIP"}, {"rank": 12, "sym": "LINK", "price": 9.111, "ret": 0.001649076517150405, "va": 0.3142600684219717, "rs": 0.004590310739750469, "ts": -0.3358618859893987, "prob": 0.5254124400929786, "lbl": "UP", "alloc": "SKIP"}, {"rank": 13, "sym": "BTC", "price": 70752.65, "ret": 0.002423720183084566, "va": 0.4402449877316748, "rs": 0.006464982419603915, "ts": -0.3650446326309394, "prob": 0.5432419715619833, "lbl": "UP", "alloc": "SKIP"}, {"rank": 14, "sym": "TAO", "price": 270.1, "ret": 0.001594541476619638, "va": 0.2920376078957413, "rs": -0.009845670659831662, "ts": -0.3919899202645446, "prob": 0.5334669403946206, "lbl": "UP", "alloc": "SKIP"}, {"rank": 15, "sym": "ZRO", "price": 2.013, "ret": -0.01032448377581119, "va": 1.0211778982547, "rs": -0.01626646071120796, "ts": -0.9219447557809719, "prob": 0.5238799081319209, "lbl": "UP", "alloc": "SKIP"}];
-const symWRs=[{"s": "HBAR-USD", "t": 36, "w": 0.6667}, {"s": "PEPE-USD", "t": 12, "w": 0.6667}, {"s": "HYPE-USD", "t": 19, "w": 0.6316}, {"s": "XRP-USD", "t": 33, "w": 0.6061}, {"s": "BERA-USD", "t": 5, "w": 0.6}, {"s": "BCH-USD", "t": 5, "w": 0.6}, {"s": "TRUMP-USD", "t": 5, "w": 0.6}, {"s": "BTC-USD", "t": 33, "w": 0.5758}, {"s": "BNKR-USD", "t": 6, "w": 0.5}, {"s": "ADA-USD", "t": 36, "w": 0.5}, {"s": "NEAR-USD", "t": 12, "w": 0.5}, {"s": "SUI-USD", "t": 30, "w": 0.5}, {"s": "DOGE-USD", "t": 28, "w": 0.5}, {"s": "FARTCOIN-USD", "t": 6, "w": 0.5}, {"s": "LTC-USD", "t": 34, "w": 0.5}, {"s": "PENGU-USD", "t": 21, "w": 0.4762}, {"s": "AVAX-USD", "t": 24, "w": 0.4583}, {"s": "ZEC-USD", "t": 31, "w": 0.4516}, {"s": "ETH-USD", "t": 36, "w": 0.4444}, {"s": "TAO-USD", "t": 28, "w": 0.4286}, {"s": "VVV-USD", "t": 19, "w": 0.4211}, {"s": "SOL-USD", "t": 37, "w": 0.4054}, {"s": "LINK-USD", "t": 30, "w": 0.3667}, {"s": "ZRO-USD", "t": 17, "w": 0.3529}, {"s": "PUMP-USD", "t": 12, "w": 0.3333}, {"s": "XLM-USD", "t": 19, "w": 0.3158}];
-const regHist=[{"ts": "03/02", "p": 66340.8, "s": "Neutral"}, {"ts": "03/03", "p": 67740.17, "s": "Neutral"}, {"ts": "03/06", "p": 68535.19, "s": "Neutral"}, {"ts": "03/07", "p": 68026.49, "s": "Neutral"}, {"ts": "03/08", "p": 67685.69, "s": "Bearish"}, {"ts": "03/09", "p": 67701.65, "s": "Neutral"}, {"ts": "03/10", "p": 70796.02, "s": "Neutral"}, {"ts": "03/11", "p": 69524.0, "s": "Bullish"}, {"ts": "03/12", "p": 69945.76, "s": "Neutral"}, {"ts": "03/13", "p": 72096.76, "s": "Neutral"}, {"ts": "03/14", "p": 70482.52, "s": "Neutral"}, {"ts": "03/14", "p": 70572.02, "s": "Neutral"}, {"ts": "03/15", "p": 71707.59, "s": "Bullish"}, {"ts": "03/16", "p": 73245.16, "s": "Bullish"}, {"ts": "03/16", "p": 74503.18, "s": "Bullish"}, {"ts": "03/17", "p": 73701.57, "s": "Bullish"}, {"ts": "03/18", "p": 73881.44, "s": "Neutral"}, {"ts": "03/19", "p": 70440.89, "s": "Neutral"}, {"ts": "03/20", "p": 70248.29, "s": "Neutral"}, {"ts": "03/21", "p": 70682.86, "s": "Neutral"}];
-const aucHist=[{"d": "02/06", "auc": null, "acc": 1.0}, {"d": "02/07", "auc": 0.2777777777777778, "acc": 0.2667}, {"d": "02/08", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 1.0, "acc": 0.8095}, {"d": "02/12", "auc": 0.9305555555555555, "acc": 0.5}, {"d": "02/13", "auc": 0.4382716049382716, "acc": 0.4444}, {"d": "02/14", "auc": 0.8311111111111111, "acc": 0.7667}, {"d": "02/15", "auc": 0.7396694214876033, "acc": 0.697}, {"d": "02/16", "auc": 0.6439628482972136, "acc": 0.6944}, {"d": "02/17", "auc": 0.5267379679144385, "acc": 0.6154}, {"d": "02/18", "auc": 0.5341176470588236, "acc": 0.5}, {"d": "02/19", "auc": 0.4377880184331797, "acc": 0.5556}, {"d": "02/20", "auc": 0.5851851851851853, "acc": 0.5833}, {"d": "02/21", "auc": 0.5092307692307693, "acc": 0.5294}, {"d": "02/22", "auc": 0.4717241379310345, "acc": 0.5}, {"d": "02/23", "auc": 0.5470967741935484, "acc": 0.5893}, {"d": "02/24", "auc": 0.553030303030303, "acc": 0.5763}, {"d": "02/25", "auc": 0.8047619047619047, "acc": 0.6774}, {"d": "02/26", "auc": 0.5946745562130178, "acc": 0.6462}, {"d": "02/27", "auc": 0.5691056910569106, "acc": 0.6618}, {"d": "02/28", "auc": 0.5249169435215947, "acc": 0.5493}, {"d": "03/01", "auc": 0.3422619047619048, "acc": 0.4324}, {"d": "03/02", "auc": 0.2465277777777778, "acc": 0.4156}, {"d": "03/03", "auc": 0.3629916183107672, "acc": 0.5125}, {"d": "03/06", "auc": 0.3578616352201258, "acc": 0.5422}, {"d": "03/07", "auc": 0.3532608695652174, "acc": 0.4884}, {"d": "03/08", "auc": 0.3239795918367347, "acc": 0.4157}, {"d": "03/09", "auc": 0.3096274794388002, "acc": 0.3696}, {"d": "03/10", "auc": 0.3164444444444445, "acc": 0.3789}, {"d": "03/11", "auc": 0.3729662077596996, "acc": 0.4388}, {"d": "03/12", "auc": 0.4496031746031746, "acc": 0.4455}, {"d": "03/13", "auc": 0.4812091503267974, "acc": 0.4231}, {"d": "03/14", "auc": 0.5886699507389161, "acc": 0.5047}, {"d": "03/14", "auc": 0.6414565826330532, "acc": 0.5091}, {"d": "03/15", "auc": 0.7126315789473684, "acc": 0.5221}, {"d": "03/16", "auc": 0.6787547040711598, "acc": 0.4914}, {"d": "03/16", "auc": 0.6692657569850552, "acc": 0.5378}, {"d": "03/17", "auc": 0.7381097560975609, "acc": 0.5738}, {"d": "03/18", "auc": 0.6675084175084175, "acc": 0.56}, {"d": "03/19", "auc": 0.5770081061164333, "acc": 0.5625}, {"d": "03/20", "auc": 0.5370629370629372, "acc": 0.5496}, {"d": "03/21", "auc": 0.4874024526198439, "acc": 0.5224}];
-const horizForecast=[{"h": "1m", "prob": 0.3222, "lbl": "DOWN"}, {"h": "5m", "prob": 0.4518, "lbl": "DOWN"}, {"h": "15m", "prob": 0.4413, "lbl": "DOWN"}, {"h": "30m", "prob": 0.4266, "lbl": "DOWN"}, {"h": "1h", "prob": 0.4749, "lbl": "DOWN"}, {"h": "4h", "prob": 0.449, "lbl": "DOWN"}, {"h": "24h", "prob": 0.6678, "lbl": "UP"}];
-const patSummary=[{"L": 3, "up": 43052, "dn": 52560}, {"L": 4, "up": 43052, "dn": 52559}, {"L": 5, "up": 43052, "dn": 52559}, {"L": 6, "up": 43052, "dn": 52558}, {"L": 7, "up": 43052, "dn": 52557}, {"L": 8, "up": 43051, "dn": 52557}, {"L": 9, "up": 43051, "dn": 52556}, {"L": 10, "up": 43051, "dn": 52556}];
-const preUp3=[{"p": "= = =", "c": 5582}, {"p": "= = \u2193", "c": 2217}, {"p": "\u2193 = =", "c": 2170}, {"p": "= \u2193 =", "c": 1974}, {"p": "\u2193 \u2193 \u2193", "c": 1892}, {"p": "\u2193 \u2191 \u2193", "c": 1830}, {"p": "= = \u2191", "c": 1796}, {"p": "\u2191 \u2191 \u2193", "c": 1584}, {"p": "\u2191 \u2193 \u2193", "c": 1554}, {"p": "\u2191 \u2193 \u2191", "c": 1531}];
-const preDn3=[{"p": "= = =", "c": 6871}, {"p": "= = \u2193", "c": 2788}, {"p": "\u2193 \u2193 \u2193", "c": 2522}, {"p": "\u2193 = =", "c": 2455}, {"p": "= = \u2191", "c": 2421}, {"p": "= \u2193 =", "c": 2295}, {"p": "\u2191 = =", "c": 2127}, {"p": "= \u2191 =", "c": 2026}, {"p": "\u2193 \u2191 \u2193", "c": 1951}, {"p": "\u2193 \u2193 \u2191", "c": 1930}];
-const compStats=[{"L": 3, "occ": 41772, "pU": 13.36, "pD": 16.45, "pE": 70.19}, {"L": 4, "occ": 29319, "pU": 12.43, "pD": 15.17, "pE": 72.41}, {"L": 5, "occ": 21229, "pU": 11.36, "pD": 13.77, "pE": 74.87}, {"L": 6, "occ": 15895, "pU": 10.7, "pD": 12.93, "pE": 76.38}, {"L": 7, "occ": 12140, "pU": 10.51, "pD": 12.36, "pE": 77.13}, {"L": 8, "occ": 9363, "pU": 9.93, "pD": 12.05, "pE": 78.02}, {"L": 9, "occ": 7305, "pU": 9.69, "pD": 11.49, "pE": 78.82}, {"L": 10, "occ": 5758, "pU": 9.29, "pD": 11.34, "pE": 79.37}];
-const hrateData=[{"h": 1, "lh": 39, "lm": 73, "sh": 55, "sm": 77}, {"h": 2, "lh": 49, "lm": 113, "sh": 53, "sm": 102}, {"h": 3, "lh": 61, "lm": 138, "sh": 67, "sm": 132}, {"h": 4, "lh": 73, "lm": 159, "sh": 87, "sm": 140}, {"h": 5, "lh": 65, "lm": 170, "sh": 99, "sm": 149}, {"h": 6, "lh": 68, "lm": 181, "sh": 110, "sm": 149}, {"h": 7, "lh": 72, "lm": 187, "sh": 107, "sm": 149}, {"h": 8, "lh": 79, "lm": 191, "sh": 111, "sm": 151}, {"h": 9, "lh": 82, "lm": 189, "sh": 126, "sm": 150}, {"h": 10, "lh": 81, "lm": 186, "sh": 141, "sm": 148}];
-const recentSigs=[{"ts": "Mar 21 08:55", "side": "SHORT", "p": 70573.38, "pct": -0.095, "r": "MISS"}, {"ts": "Mar 21 08:30", "side": "SHORT", "p": 70500.62, "pct": -0.141, "r": "TIE"}, {"ts": "Mar 21 07:44", "side": "SHORT", "p": 70776.04, "pct": -0.067, "r": "TIE"}, {"ts": "Mar 21 03:33", "side": "SHORT", "p": 70650.75, "pct": -0.076, "r": "TIE"}, {"ts": "Mar 20 17:01", "side": "LONG", "p": 69918.63, "pct": 0.34, "r": "TIE"}, {"ts": "Mar 20 10:55", "side": "LONG", "p": 70551.51, "pct": 0.301, "r": "HIT"}, {"ts": "Mar 20 09:00", "side": "SHORT", "p": 70991.96, "pct": -0.244, "r": "HIT"}, {"ts": "Mar 20 07:00", "side": "SHORT", "p": 70343.51, "pct": -0.186, "r": "MISS"}, {"ts": "Mar 20 05:48", "side": "LONG", "p": 70669.53, "pct": 0.118, "r": "TIE"}, {"ts": "Mar 19 19:57", "side": "SHORT", "p": 70239.67, "pct": -0.232, "r": "MISS"}, {"ts": "Mar 19 10:59", "side": "SHORT", "p": 70148.14, "pct": -0.151, "r": "HIT"}, {"ts": "Mar 19 10:41", "side": "SHORT", "p": 70190.61, "pct": -0.223, "r": "MISS"}, {"ts": "Mar 19 10:31", "side": "SHORT", "p": 70348.65, "pct": -0.126, "r": "HIT"}, {"ts": "Mar 19 08:53", "side": "SHORT", "p": 69983.91, "pct": -0.093, "r": "MISS"}, {"ts": "Mar 19 05:29", "side": "SHORT", "p": 70714.14, "pct": -0.239, "r": "MISS"}, {"ts": "Mar 19 01:37", "side": "LONG", "p": 71107.64, "pct": 0.081, "r": "HIT"}, {"ts": "Mar 19 01:26", "side": "SHORT", "p": 70990.78, "pct": -0.09, "r": "MISS"}, {"ts": "Mar 18 10:55", "side": "SHORT", "p": 73841.47, "pct": -0.075, "r": "HIT"}, {"ts": "Mar 18 09:54", "side": "SHORT", "p": 73987.25, "pct": -0.21, "r": "HIT"}, {"ts": "Mar 18 07:46", "side": "SHORT", "p": 73600.4, "pct": -0.196, "r": "TIE"}, {"ts": "Mar 18 07:00", "side": "SHORT", "p": 73958.89, "pct": -0.11, "r": "HIT"}];
-const featCmp=[{"feat": "median_minute_usd_24h", "up": 41799.20755, "dn": 26106.08166, "mx": 50159.04906}, {"feat": "usd_turnover_24h", "up": 107020985.8165, "dn": 74368431.63207, "mx": 128425182.9798}, {"feat": "volume_accel", "up": 1.34147, "dn": 1.35219, "mx": 1.62263}, {"feat": "vol_breakout", "up": 0.90617, "dn": 0.96441, "mx": 1.15729}, {"feat": "TopMoverScore", "up": 0.22006, "dn": 0.24697, "mx": 0.29637}, {"feat": "rs_7d", "up": -0.00092, "dn": 0.00981, "mx": 0.01177}, {"feat": "ret_1h", "up": 0.00289, "dn": 0.00356, "mx": 0.00427}];
-const latestCoefs=[{"f": "median_minute_usd_24h", "c": 0.9162}, {"f": "usd_turnover_24h", "c": -0.6954}, {"f": "rs_7d", "c": -0.2462}, {"f": "vol_breakout", "c": -0.1792}, {"f": "TopMoverScore", "c": 0.1559}, {"f": "Rank", "c": 0.1285}, {"f": "volume_accel", "c": 0.0552}, {"f": "ret_1h", "c": -0.0117}];
-const coefHist=[{"ts": "Mar 19", "v": {"median_minute_usd_24h": 0.8659, "usd_turnover_24h": -0.6829, "rs_7d": -0.2799, "vol_breakout": -0.2014, "TopMoverScore": 0.2007, "Rank": 0.1488, "volume_accel": 0.0311, "ret_1h": -0.0269}}, {"ts": "Mar 20", "v": {"median_minute_usd_24h": 0.9295, "usd_turnover_24h": -0.7223, "rs_7d": -0.2462, "vol_breakout": -0.1888, "TopMoverScore": 0.1787, "Rank": 0.1486, "volume_accel": 0.0518, "ret_1h": -0.0209}}, {"ts": "Mar 21", "v": {"median_minute_usd_24h": 0.9162, "usd_turnover_24h": -0.6954, "rs_7d": -0.2462, "vol_breakout": -0.1792, "TopMoverScore": 0.1559, "Rank": 0.1285, "volume_accel": 0.0552, "ret_1h": -0.0117}}];
-const tradeLog=[{"d": "2026-02-26", "c": "NEAR", "e": 1.146, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0, "pnl": 0.0, "kel": null, "cum": 0.0}, {"d": "2026-03-01", "c": "LINK", "e": 8.999, "r": "STRONG_BULL", "t": "BUY", "ret": -0.0344482720302256, "pnl": -34.4482720302256, "kel": null, "cum": -34.45}, {"d": "2026-03-01", "c": "PENGU", "e": 0.006914, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": -0.01735608909459074, "pnl": -17.35608909459074, "kel": null, "cum": -51.8}, {"d": "2026-03-01", "c": "DOGE", "e": 0.09438, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": 0.0, "pnl": 0.0, "kel": null, "cum": -51.8}, {"d": "2026-03-02", "c": "TAO", "e": 177.9, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.02259696458684646, "pnl": 22.59696458684646, "kel": null, "cum": -29.21}, {"d": "2026-03-02", "c": "BTC", "e": 66326.0, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0209667400416127, "pnl": 20.9667400416127, "kel": null, "cum": -8.24}, {"d": "2026-03-16", "c": "TRUMP", "e": 3.92, "r": "STRONG_BULL", "t": "PAPER_TRADE", "ret": -0.05102040816326525, "pnl": -164.5545918367345, "kel": 3225.27, "cum": -172.8}, {"d": "2026-03-17", "c": "ONDO", "e": 0.28102, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.004056650772186976, "pnl": -27.6152039000779, "kel": 6807.39, "cum": -200.41}, {"d": "2026-03-17", "c": "SOL", "e": 93.55, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.003634420096205293, "pnl": 9.492014965259363, "kel": 2611.7, "cum": -190.92}, {"d": "2026-03-17", "c": "ADA", "e": 0.2866, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.003489183531053763, "pnl": 7.54577808792749, "kel": 2162.62, "cum": -183.37}, {"d": "2026-03-17", "c": "SUI", "e": 1.0228, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.004204145482987753, "pnl": 41.66018087602537, "kel": 9909.31, "cum": -141.71}, {"d": "2026-03-17", "c": "VVV", "e": 5.6405, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.02077829979611745, "pnl": -207.7829979611745, "kel": 10000.0, "cum": -349.5}, {"d": "2026-03-17", "c": "ETH", "e": 2313.43, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.0007823880558304186, "pnl": 6.710597122021408, "kel": 8577.07, "cum": -342.78}, {"d": "2026-03-17", "c": "TRUMP", "e": 3.71, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.01078167115902962, "pnl": -107.8167115902962, "kel": 10000.0, "cum": -450.6}, {"d": "2026-03-17", "c": "RENDER", "e": 1.872, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.03792735042735051, "pnl": -140.9755822649576, "kel": 3716.99, "cum": -591.58}, {"d": "2026-03-17", "c": "BTC", "e": 73745.51, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.003008589946696505, "pnl": 30.08589946696505, "kel": 10000.0, "cum": -561.49}, {"d": "2026-03-17", "c": "AVAX", "e": 10.26, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.002923976608187107, "pnl": -12.15456140350866, "kel": 4156.86, "cum": -573.65}, {"d": "2026-03-17", "c": "HYPE", "e": 40.95, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.01343101343101338, "pnl": 47.24184371184354, "kel": 3517.37, "cum": -526.4}, {"d": "2026-03-17", "c": "HBAR", "e": 0.09889, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.0002022449185963282, "pnl": 0.5082172110423412, "kel": 2512.88, "cum": -525.9}, {"d": "2026-03-18", "c": "XRP", "e": 1.5061, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.02808578447646237, "pnl": -280.8578447646237, "kel": 10000.0, "cum": -806.75}, {"d": "2026-03-18", "c": "ETH", "e": 2309.68, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.05827214159537242, "pnl": -433.4095421010695, "kel": 7437.68, "cum": -1240.16}, {"d": "2026-03-18", "c": "LINK", "e": 9.746, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.06279499281756618, "pnl": -262.0705068746152, "kel": 4173.43, "cum": -1502.23}, {"d": "2026-03-18", "c": "TAO", "e": 277.43, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.1082435208881519, "pnl": -476.7304444364342, "kel": 4404.24, "cum": -1978.96}, {"d": "2026-03-18", "c": "HBAR", "e": 0.09866, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.05128724913845528, "pnl": -240.0248388404621, "kel": 4680.01, "cum": -2218.99}, {"d": "2026-03-18", "c": "DOGE", "e": 0.09905, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.04805653710247348, "pnl": -332.2677031802119, "kel": 6914.1, "cum": -2551.26}, {"d": "2026-03-18", "c": "ZRO", "e": 2.281, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.07759754493643145, "pnl": -73.33433581762391, "kel": 945.06, "cum": -2624.59}, {"d": "2026-03-18", "c": "ADA", "e": 0.288, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.06249999999999989, "pnl": -48.29624999999992, "kel": 772.74, "cum": -2672.89}, {"d": "2026-03-18", "c": "SUI", "e": 1.0235, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.05803615046409394, "pnl": -473.8494987787017, "kel": 8164.73, "cum": -3146.74}, {"d": "2026-03-18", "c": "AVAX", "e": 10.21, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.06464250734573951, "pnl": -555.8169637610189, "kel": 8598.32, "cum": -3702.55}, {"d": "2026-03-18", "c": "NEAR", "e": 1.455, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.06804123711340204, "pnl": -411.6188659793813, "kel": 6049.55, "cum": -4114.17}, {"d": "2026-03-18", "c": "SOL", "e": 93.72, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.04097311139564663, "pnl": -244.2325224071704, "kel": 5960.8, "cum": -4358.41}, {"d": "2026-03-19", "c": "BONK", "e": 6.07e-06, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.008237232289950658, "pnl": -64.16639209225764, "kel": 7789.8, "cum": -4422.57}, {"d": "2026-03-19", "c": "SUI", "e": 0.9625, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.01038961038961039, "pnl": 102.1664415584416, "kel": 9833.52, "cum": -4320.41}, {"d": "2026-03-19", "c": "HYPE", "e": 39.73, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.005033979360684504, "pnl": -46.94125346085971, "kel": 9324.88, "cum": -4367.35}, {"d": "2026-03-19", "c": "ADA", "e": 0.27, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.00333333333333341, "pnl": -27.96426666666731, "kel": 8389.28, "cum": -4395.31}, {"d": "2026-03-19", "c": "XRP", "e": 1.4628, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.00786163522012584, "pnl": -30.24135220125807, "kel": 3846.7, "cum": -4425.55}, {"d": "2026-03-19", "c": "BTC", "e": 70186.0, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.005425298492576891, "pnl": 54.25298492576891, "kel": 10000.0, "cum": -4371.3}, {"d": "2026-03-19", "c": "AVAX", "e": 9.55, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.0, "pnl": 0.0, "kel": 5979.3, "cum": -4371.3}, {"d": "2026-03-19", "c": "HBAR", "e": 0.09378, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.0005331627212625811, "pnl": -4.903401578162131, "kel": 9196.82, "cum": -4376.2}, {"d": "2026-03-19", "c": "PEPE", "e": 3.46e-06, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.00578034682080919, "pnl": -38.12098265895916, "kel": 6594.93, "cum": -4414.32}, {"d": "2026-03-19", "c": "NEAR", "e": 1.357, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.01105379513633009, "pnl": -73.03839351510653, "kel": 6607.54, "cum": -4487.36}, {"d": "2026-03-19", "c": "FET", "e": 0.2182, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.03941338221814839, "pnl": 317.5492850595775, "kel": 8056.89, "cum": -4169.81}, {"d": "2026-03-19", "c": "SOL", "e": 89.84, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.005454140694568177, "pnl": -35.62966495992913, "kel": 6532.59, "cum": -4205.44}, {"d": "2026-03-19", "c": "FARTCOIN", "e": 0.194, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.02783505154639165, "pnl": 278.3505154639165, "kel": 10000.0, "cum": -3927.09}, {"d": "2026-03-19", "c": "ZRO", "e": 2.105, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.02185273159144885, "pnl": -218.5273159144885, "kel": 10000.0, "cum": -4145.62}, {"d": "2026-03-19", "c": "XLM", "e": 0.16768, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.001830868320610746, "pnl": -13.11167193463782, "kel": 7161.45, "cum": -4158.73}, {"d": "2026-03-20", "c": "SUI", "e": 0.9718, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.01101049598682857, "pnl": -31.74270940522743, "kel": 2882.95, "cum": -4190.47}, {"d": "2026-03-20", "c": "NEAR", "e": 1.341, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.02237136465324385, "pnl": -147.2988814317674, "kel": 6584.26, "cum": -4337.77}, {"d": "2026-03-20", "c": "ETH", "e": 2141.7, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.007069150674697822, "pnl": 57.3233893635909, "kel": 8108.95, "cum": -4280.45}, {"d": "2026-03-20", "c": "DOGE", "e": 0.09413, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.001274832678211046, "pnl": -2.193464357803144, "kel": 1720.59, "cum": -4282.64}, {"d": "2026-03-20", "c": "ZRO", "e": 2.055, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.0228710462287105, "pnl": -148.2942627737229, "kel": 6483.93, "cum": -4430.94}, {"d": "2026-03-20", "c": "ADA", "e": 0.2688, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.01450892857142838, "pnl": -43.82944196428514, "kel": 3020.86, "cum": -4474.77}, {"d": "2026-03-20", "c": "XRP", "e": 1.4495, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.003380476026215828, "pnl": -2.743222490513883, "kel": 811.49, "cum": -4477.51}, {"d": "2026-03-20", "c": "HYPE", "e": 39.64, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.006811301715438756, "pnl": 7.923859737638521, "kel": 1163.34, "cum": -4469.59}, {"d": "2026-03-20", "c": "XAN", "e": 0.01301, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.153727901614143, "pnl": -11.25441967717141, "kel": 73.21, "cum": -4480.84}, {"d": "2026-03-20", "c": "ZEC", "e": 234.7, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.003493821900298233, "pnl": -17.13482062207063, "kel": 4904.32, "cum": -4497.97}, {"d": "2026-03-21", "c": "BTC", "e": 70752.65, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 4324.2, "cum": -4497.97}, {"d": "2026-03-21", "c": "LINK", "e": 9.111, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 2541.24, "cum": -4497.97}, {"d": "2026-03-21", "c": "SUI", "e": 0.9618, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 4701.48, "cum": -4497.97}, {"d": "2026-03-21", "c": "LTC", "e": 56.03, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 2778.81, "cum": -4497.97}, {"d": "2026-03-21", "c": "NEAR", "e": 1.311, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 5168.19, "cum": -4497.97}, {"d": "2026-03-21", "c": "XRP", "e": 1.4426, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 3087.25, "cum": -4497.97}, {"d": "2026-03-21", "c": "ADA", "e": 0.2649, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 3666.71, "cum": -4497.97}, {"d": "2026-03-21", "c": "SOL", "e": 90.06, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 1453.82, "cum": -4497.97}, {"d": "2026-03-21", "c": "DOGE", "e": 0.09403, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 3582.66, "cum": -4497.97}, {"d": "2026-03-21", "c": "HYPE", "e": 40.02, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 3044.79, "cum": -4497.97}, {"d": "2026-03-21", "c": "TAO", "e": 270.1, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 3346.69, "cum": -4497.97}, {"d": "2026-03-21", "c": "ZEC", "e": 233.92, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 3230.33, "cum": -4497.97}, {"d": "2026-03-21", "c": "ZRO", "e": 2.013, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 2387.99, "cum": -4497.97}];
-const consHist=[{"ts": "Mar 09", "p": 67579, "l": "NEUTRAL", "prob": 0.4714727765208011, "a": 57.14}, {"ts": "Mar 10", "p": 70759, "l": "NEUTRAL", "prob": 0.3856814479994208, "a": 57.14}, {"ts": "Mar 11", "p": 69520, "l": "DOWN", "prob": 0.3352444946640563, "a": 100.0}, {"ts": "Mar 12", "p": 70032, "l": "DOWN", "prob": 0.3944252441662967, "a": 85.71}, {"ts": "Mar 13", "p": 71994, "l": "DOWN", "prob": 0.2798910961098509, "a": 100.0}, {"ts": "Mar 14", "p": 70438, "l": "NEUTRAL", "prob": 0.4978344965791395, "a": 57.14}, {"ts": "Mar 14", "p": 70594, "l": "DOWN", "prob": 0.3668237818638402, "a": 71.43}, {"ts": "Mar 15", "p": 71765, "l": "UP", "prob": 0.5550917115614457, "a": 85.71}, {"ts": "Mar 16", "p": 73287, "l": "NEUTRAL", "prob": 0.5321464801509528, "a": 57.14}, {"ts": "Mar 16", "p": 74519, "l": "NEUTRAL", "prob": 0.4361338369346383, "a": 57.14}, {"ts": "Mar 17", "p": 73744, "l": "NEUTRAL", "prob": 0.4329091798212053, "a": 57.14}, {"ts": "Mar 18", "p": 73897, "l": "UP", "prob": 0.5096710998105153, "a": 85.71}, {"ts": "Mar 19", "p": 70437, "l": "NEUTRAL", "prob": 0.5147279693612467, "a": 57.14}, {"ts": "Mar 20", "p": 70386, "l": "UP", "prob": 0.5249625409940786, "a": 85.71}, {"ts": "Mar 21", "p": 70707, "l": "DOWN", "prob": 0.4812818486258185, "a": 85.71}];
-const dailyDir=[{"d": "03/06", "u": 11, "dn": 4}, {"d": "03/07", "u": 1, "dn": 14}, {"d": "03/08", "u": 11, "dn": 4}, {"d": "03/09", "u": 15, "dn": 0}, {"d": "03/10", "u": 1, "dn": 14}, {"d": "03/11", "u": 15, "dn": 0}, {"d": "03/12", "u": 14, "dn": 1}, {"d": "03/13", "u": 0, "dn": 15}, {"d": "03/14", "u": 24, "dn": 6}, {"d": "03/15", "u": 13, "dn": 1}, {"d": "03/16", "u": 15, "dn": 15}, {"d": "03/17", "u": 9, "dn": 6}, {"d": "03/18", "u": 0, "dn": 15}, {"d": "03/19", "u": 4, "dn": 10}, {"d": "03/20", "u": 4, "dn": 11}];
+const sniperRows=[{"rank": 1, "sym": "HYPE", "price": 40.02, "ret": 0.005780346820809301, "va": 1.56477123984089, "rs": 0.01235296597664326, "ts": 1.185888088758251, "prob": 0.5304478892508134, "lbl": "UP", "alloc": "SKIP"}, {"rank": 2, "sym": "DOGE", "price": 0.09403, "ret": 0.0005320280910832142, "va": 2.170051858185531, "rs": 0.001318119104748883, "ts": 0.5303210756497156, "prob": 0.5358265842108585, "lbl": "UP", "alloc": "SKIP"}, {"rank": 3, "sym": "SOL", "price": 90.06, "ret": 0.001222901612006666, "va": 1.446573169525938, "rs": 0.009147961956637918, "ts": 0.416817385712521, "prob": 0.5145382237494803, "lbl": "UP", "alloc": "SKIP"}, {"rank": 4, "sym": "AVAX", "price": 9.51, "ret": -0.004188481675392763, "va": 1.71072555634988, "rs": 0.0003442199882035535, "ts": 0.3750492756755966, "prob": 0.4880835922448289, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 5, "sym": "XRP", "price": 1.4426, "ret": 0.001666435217331008, "va": 1.246354165350848, "rs": -0.001424631072113325, "ts": 0.3541267180745591, "prob": 0.5308724995469845, "lbl": "UP", "alloc": "SKIP"}, {"rank": 6, "sym": "ETH", "price": 2159.32, "ret": 0.001995341110523352, "va": 1.287929549692096, "rs": 0.007827249239677592, "ts": 0.1651149909859317, "prob": 0.4973504090370581, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 7, "sym": "ADA", "price": 0.2649, "ret": 0.001891074130105919, "va": 0.8960256241722814, "rs": -0.007185405792615285, "ts": 0.09221037741712526, "prob": 0.5366671294710956, "lbl": "UP", "alloc": "SKIP"}, {"rank": 8, "sym": "ZEC", "price": 233.92, "ret": 0.001970358947999573, "va": 0.747056886497752, "rs": -0.00406932964782547, "ts": 0.05476380386409706, "prob": 0.5323032731918644, "lbl": "UP", "alloc": "SKIP"}, {"rank": 9, "sym": "NEAR", "price": 1.311, "ret": -0.006818181818181945, "va": 2.612473531230063, "rs": -0.016527812928263, "ts": 0.009312176604001104, "prob": 0.5516818564793575, "lbl": "UP", "alloc": "SKIP"}, {"rank": 10, "sym": "LTC", "price": 56.03, "ret": -0.0003568242640499264, "va": 0.6722023121247352, "rs": 0.004725268592575604, "ts": -0.0211622166268645, "prob": 0.5277881034835119, "lbl": "UP", "alloc": "SKIP"}, {"rank": 11, "sym": "SUI", "price": 0.9618, "ret": -0.0002079002079001802, "va": 0.8193760991424839, "rs": -0.0006943772478151811, "ts": -0.1634898241226596, "prob": 0.5470147729321644, "lbl": "UP", "alloc": "SKIP"}, {"rank": 12, "sym": "LINK", "price": 9.111, "ret": 0.001649076517150405, "va": 0.3142600684219717, "rs": 0.004590310739750469, "ts": -0.3358618859893987, "prob": 0.5254124400929786, "lbl": "UP", "alloc": "SKIP"}, {"rank": 13, "sym": "BTC", "price": 70752.65, "ret": 0.002423720183084566, "va": 0.4402449877316748, "rs": 0.006464982419603915, "ts": -0.3650446326309394, "prob": 0.5432419715619833, "lbl": "UP", "alloc": "SKIP"}, {"rank": 14, "sym": "TAO", "price": 270.1, "ret": 0.001594541476619638, "va": 0.2920376078957413, "rs": -0.009845670659831662, "ts": -0.3919899202645446, "prob": 0.5334669403946206, "lbl": "UP", "alloc": "SKIP"}, {"rank": 15, "sym": "ZRO", "price": 2.013, "ret": -0.01032448377581119, "va": 1.0211778982547, "rs": -0.01626646071120796, "ts": -0.9219447557809719, "prob": 0.5238799081319209, "lbl": "UP", "alloc": "SKIP"}, {"rank": 1, "sym": "ADA", "price": 0.2646, "ret": 0.001514004542013669, "va": 3.36924253191763, "rs": -0.007996091178701037, "ts": 0.9360677443291, "prob": 0.5614004106792594, "lbl": "UP", "alloc": "SKIP"}, {"rank": 2, "sym": "LTC", "price": 55.88, "ret": 0.002511661284535283, "va": 0.8246312322653924, "rs": 0.000325879920866301, "ts": 0.4954216978366133, "prob": 0.4756346734338657, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 3, "sym": "ZRO", "price": 2.016, "ret": 0.002985074626865813, "va": 1.21470089014074, "rs": -0.01295010379411243, "ts": 0.4953740454701033, "prob": 0.5115887184157702, "lbl": "UP", "alloc": "SKIP"}, {"rank": 4, "sym": "NEAR", "price": 1.327, "ret": 0.0, "va": 1.0873456647685, "rs": -0.003589773176563282, "ts": 0.4300807785950601, "prob": 0.4747035759044425, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 5, "sym": "XRP", "price": 1.4397, "ret": 0.001600111312091146, "va": 0.7186733442148944, "rs": -0.003560326381910062, "ts": 0.169532141496383, "prob": 0.4701975286949183, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 6, "sym": "BTC", "price": 70421.5, "ret": 0.0007901554588232163, "va": 0.9896259139114176, "rs": -0.0002503934321652634, "ts": 0.09495570674595814, "prob": 0.4773717266901494, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 7, "sym": "ETH", "price": 2152.45, "ret": 0.002193002877443284, "va": 0.5619773675339644, "rs": 0.002852056777436829, "ts": -0.09129476166416697, "prob": 0.4540266478547271, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 8, "sym": "SOL", "price": 89.66, "ret": 0.0006696428571428825, "va": 0.7926294785179144, "rs": 0.00194263495898106, "ts": -0.148020654462275, "prob": 0.4812100632023434, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 9, "sym": "ZEC", "price": 232.48, "ret": 0.002241765821693331, "va": 0.5268399047988113, "rs": -0.008539339394597834, "ts": -0.3309417606715997, "prob": 0.4872932366789679, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 10, "sym": "DOGE", "price": 0.09408, "ret": -0.0002125398512221599, "va": 0.4812012673100988, "rs": 0.0001195745851267915, "ts": -0.4365004058833444, "prob": 0.4631704319372917, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 11, "sym": "LINK", "price": 9.069, "ret": 0.0005516328331862663, "va": 0.6702398260954352, "rs": -0.001875473988552923, "ts": -0.4745232359597423, "prob": 0.4958552833445349, "lbl": "NOUP", "alloc": "SKIP"}, {"rank": 12, "sym": "TAO", "price": 273.4, "ret": -0.004841116732792305, "va": 0.9468439722722489, "rs": -0.01068819646183727, "ts": -1.14015129583209, "prob": 0.4428239267059867, "lbl": "NOUP", "alloc": "SKIP"}];
+const symWRs=[{"s": "HBAR-USD", "t": 36, "w": 0.6667}, {"s": "PEPE-USD", "t": 12, "w": 0.6667}, {"s": "HYPE-USD", "t": 20, "w": 0.65}, {"s": "TRUMP-USD", "t": 5, "w": 0.6}, {"s": "BERA-USD", "t": 5, "w": 0.6}, {"s": "BCH-USD", "t": 5, "w": 0.6}, {"s": "XRP-USD", "t": 34, "w": 0.5882}, {"s": "BTC-USD", "t": 34, "w": 0.5588}, {"s": "NEAR-USD", "t": 13, "w": 0.5385}, {"s": "DOGE-USD", "t": 29, "w": 0.5172}, {"s": "SUI-USD", "t": 31, "w": 0.5161}, {"s": "BNKR-USD", "t": 6, "w": 0.5}, {"s": "FARTCOIN-USD", "t": 6, "w": 0.5}, {"s": "ADA-USD", "t": 37, "w": 0.4865}, {"s": "LTC-USD", "t": 35, "w": 0.4857}, {"s": "AVAX-USD", "t": 25, "w": 0.48}, {"s": "PENGU-USD", "t": 21, "w": 0.4762}, {"s": "ETH-USD", "t": 37, "w": 0.4595}, {"s": "TAO-USD", "t": 29, "w": 0.4483}, {"s": "ZEC-USD", "t": 32, "w": 0.4375}, {"s": "VVV-USD", "t": 19, "w": 0.4211}, {"s": "SOL-USD", "t": 38, "w": 0.3947}, {"s": "ZRO-USD", "t": 18, "w": 0.3889}, {"s": "LINK-USD", "t": 31, "w": 0.3548}, {"s": "PUMP-USD", "t": 12, "w": 0.3333}, {"s": "XLM-USD", "t": 19, "w": 0.3158}];
+const regHist=[{"ts": "03/03", "p": 67740.17, "s": "Neutral"}, {"ts": "03/06", "p": 68535.19, "s": "Neutral"}, {"ts": "03/07", "p": 68026.49, "s": "Neutral"}, {"ts": "03/08", "p": 67685.69, "s": "Bearish"}, {"ts": "03/09", "p": 67701.65, "s": "Neutral"}, {"ts": "03/10", "p": 70796.02, "s": "Neutral"}, {"ts": "03/11", "p": 69524.0, "s": "Bullish"}, {"ts": "03/12", "p": 69945.76, "s": "Neutral"}, {"ts": "03/13", "p": 72096.76, "s": "Neutral"}, {"ts": "03/14", "p": 70482.52, "s": "Neutral"}, {"ts": "03/14", "p": 70572.02, "s": "Neutral"}, {"ts": "03/15", "p": 71707.59, "s": "Bullish"}, {"ts": "03/16", "p": 73245.16, "s": "Bullish"}, {"ts": "03/16", "p": 74503.18, "s": "Bullish"}, {"ts": "03/17", "p": 73701.57, "s": "Bullish"}, {"ts": "03/18", "p": 73881.44, "s": "Neutral"}, {"ts": "03/19", "p": 70440.89, "s": "Neutral"}, {"ts": "03/20", "p": 70248.29, "s": "Neutral"}, {"ts": "03/21", "p": 70682.86, "s": "Neutral"}, {"ts": "03/21", "p": 70328.83, "s": "Bullish"}];
+const aucHist=[{"d": "02/06", "auc": null, "acc": 1.0}, {"d": "02/07", "auc": 0.2777777777777778, "acc": 0.2667}, {"d": "02/08", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 0.4375, "acc": 0.2222}, {"d": "02/11", "auc": 1.0, "acc": 0.8095}, {"d": "02/12", "auc": 0.9305555555555555, "acc": 0.5}, {"d": "02/13", "auc": 0.4382716049382716, "acc": 0.4444}, {"d": "02/14", "auc": 0.8311111111111111, "acc": 0.7667}, {"d": "02/15", "auc": 0.7396694214876033, "acc": 0.697}, {"d": "02/16", "auc": 0.6439628482972136, "acc": 0.6944}, {"d": "02/17", "auc": 0.5267379679144385, "acc": 0.6154}, {"d": "02/18", "auc": 0.5341176470588236, "acc": 0.5}, {"d": "02/19", "auc": 0.4377880184331797, "acc": 0.5556}, {"d": "02/20", "auc": 0.5851851851851853, "acc": 0.5833}, {"d": "02/21", "auc": 0.5092307692307693, "acc": 0.5294}, {"d": "02/22", "auc": 0.4717241379310345, "acc": 0.5}, {"d": "02/23", "auc": 0.5470967741935484, "acc": 0.5893}, {"d": "02/24", "auc": 0.553030303030303, "acc": 0.5763}, {"d": "02/25", "auc": 0.8047619047619047, "acc": 0.6774}, {"d": "02/26", "auc": 0.5946745562130178, "acc": 0.6462}, {"d": "02/27", "auc": 0.5691056910569106, "acc": 0.6618}, {"d": "02/28", "auc": 0.5249169435215947, "acc": 0.5493}, {"d": "03/01", "auc": 0.3422619047619048, "acc": 0.4324}, {"d": "03/02", "auc": 0.2465277777777778, "acc": 0.4156}, {"d": "03/03", "auc": 0.3629916183107672, "acc": 0.5125}, {"d": "03/06", "auc": 0.3578616352201258, "acc": 0.5422}, {"d": "03/07", "auc": 0.3532608695652174, "acc": 0.4884}, {"d": "03/08", "auc": 0.3239795918367347, "acc": 0.4157}, {"d": "03/09", "auc": 0.3096274794388002, "acc": 0.3696}, {"d": "03/10", "auc": 0.3164444444444445, "acc": 0.3789}, {"d": "03/11", "auc": 0.3729662077596996, "acc": 0.4388}, {"d": "03/12", "auc": 0.4496031746031746, "acc": 0.4455}, {"d": "03/13", "auc": 0.4812091503267974, "acc": 0.4231}, {"d": "03/14", "auc": 0.5886699507389161, "acc": 0.5047}, {"d": "03/14", "auc": 0.6414565826330532, "acc": 0.5091}, {"d": "03/15", "auc": 0.7126315789473684, "acc": 0.5221}, {"d": "03/16", "auc": 0.6787547040711598, "acc": 0.4914}, {"d": "03/16", "auc": 0.6692657569850552, "acc": 0.5378}, {"d": "03/17", "auc": 0.7381097560975609, "acc": 0.5738}, {"d": "03/18", "auc": 0.6675084175084175, "acc": 0.56}, {"d": "03/19", "auc": 0.5770081061164333, "acc": 0.5625}, {"d": "03/20", "auc": 0.5370629370629372, "acc": 0.5496}, {"d": "03/21", "auc": 0.4874024526198439, "acc": 0.5224}, {"d": "03/21", "auc": 0.465111301369863, "acc": 0.4745}];
+const horizForecast=[{"h": "1m", "prob": 0.4975, "lbl": "DOWN"}, {"h": "5m", "prob": 0.4508, "lbl": "DOWN"}, {"h": "15m", "prob": 0.4639, "lbl": "DOWN"}, {"h": "30m", "prob": 0.5075, "lbl": "UP"}, {"h": "1h", "prob": 0.5209, "lbl": "UP"}, {"h": "4h", "prob": 0.4618, "lbl": "DOWN"}, {"h": "24h", "prob": 0.8395, "lbl": "UP"}];
+const patSummary=[{"L": 3, "up": 43119, "dn": 52631}, {"L": 4, "up": 43119, "dn": 52630}, {"L": 5, "up": 43119, "dn": 52630}, {"L": 6, "up": 43119, "dn": 52629}, {"L": 7, "up": 43119, "dn": 52628}, {"L": 8, "up": 43118, "dn": 52628}, {"L": 9, "up": 43118, "dn": 52627}, {"L": 10, "up": 43118, "dn": 52627}];
+const preUp3=[{"p": "= = =", "c": 5593}, {"p": "= = \u2193", "c": 2220}, {"p": "\u2193 = =", "c": 2174}, {"p": "= \u2193 =", "c": 1978}, {"p": "\u2193 \u2193 \u2193", "c": 1892}, {"p": "\u2193 \u2191 \u2193", "c": 1833}, {"p": "= = \u2191", "c": 1801}, {"p": "\u2191 \u2191 \u2193", "c": 1586}, {"p": "\u2191 \u2193 \u2193", "c": 1557}, {"p": "\u2191 \u2193 \u2191", "c": 1532}];
+const preDn3=[{"p": "= = =", "c": 6887}, {"p": "= = \u2193", "c": 2793}, {"p": "\u2193 \u2193 \u2193", "c": 2522}, {"p": "\u2193 = =", "c": 2460}, {"p": "= = \u2191", "c": 2424}, {"p": "= \u2193 =", "c": 2296}, {"p": "\u2191 = =", "c": 2133}, {"p": "= \u2191 =", "c": 2029}, {"p": "\u2193 \u2191 \u2193", "c": 1953}, {"p": "\u2193 \u2193 \u2191", "c": 1932}];
+const compStats=[{"L": 3, "occ": 41884, "pU": 13.35, "pD": 16.44, "pE": 70.2}, {"L": 4, "occ": 29404, "pU": 12.41, "pD": 15.16, "pE": 72.43}, {"L": 5, "occ": 21296, "pU": 11.35, "pD": 13.77, "pE": 74.88}, {"L": 6, "occ": 15947, "pU": 10.69, "pD": 12.92, "pE": 76.4}, {"L": 7, "occ": 12183, "pU": 10.51, "pD": 12.36, "pE": 77.13}, {"L": 8, "occ": 9397, "pU": 9.94, "pD": 12.05, "pE": 78.01}, {"L": 9, "occ": 7331, "pU": 9.71, "pD": 11.5, "pE": 78.79}, {"L": 10, "occ": 5776, "pU": 9.31, "pD": 11.36, "pE": 79.33}];
+const hrateData=[{"h": 1, "lh": 40, "lm": 73, "sh": 55, "sm": 77}, {"h": 2, "lh": 50, "lm": 113, "sh": 53, "sm": 102}, {"h": 3, "lh": 62, "lm": 138, "sh": 67, "sm": 132}, {"h": 4, "lh": 73, "lm": 159, "sh": 88, "sm": 140}, {"h": 5, "lh": 65, "lm": 171, "sh": 100, "sm": 149}, {"h": 6, "lh": 68, "lm": 181, "sh": 111, "sm": 149}, {"h": 7, "lh": 72, "lm": 187, "sh": 108, "sm": 149}, {"h": 8, "lh": 79, "lm": 191, "sh": 112, "sm": 151}, {"h": 9, "lh": 82, "lm": 189, "sh": 127, "sm": 150}, {"h": 10, "lh": 82, "lm": 186, "sh": 142, "sm": 149}];
+const recentSigs=[{"ts": "Mar 21 16:51", "side": "LONG", "p": 70412.63, "pct": 0.051, "r": "HIT"}, {"ts": "Mar 21 16:41", "side": "SHORT", "p": 70376.88, "pct": -0.122, "r": "MISS"}, {"ts": "Mar 21 15:45", "side": "SHORT", "p": 70654.25, "pct": -0.084, "r": "HIT"}, {"ts": "Mar 21 12:28", "side": "LONG", "p": 70796.4, "pct": 0.089, "r": "TIE"}, {"ts": "Mar 21 08:55", "side": "SHORT", "p": 70573.38, "pct": -0.095, "r": "MISS"}, {"ts": "Mar 21 08:30", "side": "SHORT", "p": 70500.62, "pct": -0.141, "r": "TIE"}, {"ts": "Mar 21 07:44", "side": "SHORT", "p": 70776.04, "pct": -0.067, "r": "TIE"}, {"ts": "Mar 21 03:33", "side": "SHORT", "p": 70650.75, "pct": -0.076, "r": "TIE"}, {"ts": "Mar 20 17:01", "side": "LONG", "p": 69918.63, "pct": 0.34, "r": "TIE"}, {"ts": "Mar 20 10:55", "side": "LONG", "p": 70551.51, "pct": 0.301, "r": "HIT"}, {"ts": "Mar 20 09:00", "side": "SHORT", "p": 70991.96, "pct": -0.244, "r": "HIT"}, {"ts": "Mar 20 07:00", "side": "SHORT", "p": 70343.51, "pct": -0.186, "r": "MISS"}, {"ts": "Mar 20 05:48", "side": "LONG", "p": 70669.53, "pct": 0.118, "r": "TIE"}, {"ts": "Mar 19 19:57", "side": "SHORT", "p": 70239.67, "pct": -0.232, "r": "MISS"}, {"ts": "Mar 19 10:59", "side": "SHORT", "p": 70148.14, "pct": -0.151, "r": "HIT"}, {"ts": "Mar 19 10:41", "side": "SHORT", "p": 70190.61, "pct": -0.223, "r": "MISS"}, {"ts": "Mar 19 10:31", "side": "SHORT", "p": 70348.65, "pct": -0.126, "r": "HIT"}, {"ts": "Mar 19 08:53", "side": "SHORT", "p": 69983.91, "pct": -0.093, "r": "MISS"}, {"ts": "Mar 19 05:29", "side": "SHORT", "p": 70714.14, "pct": -0.239, "r": "MISS"}, {"ts": "Mar 19 01:37", "side": "LONG", "p": 71107.64, "pct": 0.081, "r": "HIT"}, {"ts": "Mar 19 01:26", "side": "SHORT", "p": 70990.78, "pct": -0.09, "r": "MISS"}];
+const featCmp=[{"feat": "median_minute_usd_24h", "up": 41046.95822, "dn": 26085.09, "mx": 49256.34987}, {"feat": "usd_turnover_24h", "up": 105174406.46836, "dn": 74703530.76692, "mx": 126209287.76203}, {"feat": "volume_accel", "up": 1.34284, "dn": 1.34288, "mx": 1.61145}, {"feat": "vol_breakout", "up": 0.90069, "dn": 0.95365, "mx": 1.14438}, {"feat": "TopMoverScore", "up": 0.21667, "dn": 0.24291, "mx": 0.29149}, {"feat": "rs_7d", "up": -0.001, "dn": 0.00962, "mx": 0.01155}, {"feat": "ret_1h", "up": 0.0028, "dn": 0.00349, "mx": 0.00419}];
+const latestCoefs=[{"f": "median_minute_usd_24h", "c": 1.0112}, {"f": "usd_turnover_24h", "c": -0.7915}, {"f": "rs_7d", "c": -0.2471}, {"f": "vol_breakout", "c": -0.1689}, {"f": "TopMoverScore", "c": 0.1681}, {"f": "Rank", "c": 0.1474}, {"f": "volume_accel", "c": 0.0672}, {"f": "ret_1h", "c": -0.0178}];
+const coefHist=[{"ts": "Mar 20", "v": {"median_minute_usd_24h": 0.9295, "usd_turnover_24h": -0.7223, "rs_7d": -0.2462, "vol_breakout": -0.1888, "TopMoverScore": 0.1787, "Rank": 0.1486, "volume_accel": 0.0518, "ret_1h": -0.0209}}, {"ts": "Mar 21", "v": {"median_minute_usd_24h": 0.9162, "usd_turnover_24h": -0.6954, "rs_7d": -0.2462, "vol_breakout": -0.1792, "TopMoverScore": 0.1559, "Rank": 0.1285, "volume_accel": 0.0552, "ret_1h": -0.0117}}, {"ts": "Mar 21", "v": {"median_minute_usd_24h": 1.0112, "usd_turnover_24h": -0.7915, "rs_7d": -0.2471, "vol_breakout": -0.1689, "TopMoverScore": 0.1681, "Rank": 0.1474, "volume_accel": 0.0672, "ret_1h": -0.0178}}];
+const tradeLog=[{"d": "2026-02-26", "c": "NEAR", "e": 1.146, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0, "pnl": 0.0, "kel": null, "cum": 0.0}, {"d": "2026-03-01", "c": "LINK", "e": 8.999, "r": "STRONG_BULL", "t": "BUY", "ret": -0.0344482720302256, "pnl": -34.4482720302256, "kel": null, "cum": -34.45}, {"d": "2026-03-01", "c": "PENGU", "e": 0.006914, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": -0.01735608909459074, "pnl": -17.35608909459074, "kel": null, "cum": -51.8}, {"d": "2026-03-01", "c": "DOGE", "e": 0.09438, "r": "STRONG_BULL", "t": "STRONG_BUY", "ret": 0.0, "pnl": 0.0, "kel": null, "cum": -51.8}, {"d": "2026-03-02", "c": "TAO", "e": 177.9, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.02259696458684646, "pnl": 22.59696458684646, "kel": null, "cum": -29.21}, {"d": "2026-03-02", "c": "BTC", "e": 66326.0, "r": "NEUTRAL", "t": "SMALL_BUY", "ret": 0.0209667400416127, "pnl": 20.9667400416127, "kel": null, "cum": -8.24}, {"d": "2026-03-16", "c": "TRUMP", "e": 3.92, "r": "STRONG_BULL", "t": "PAPER_TRADE", "ret": -0.05102040816326525, "pnl": -164.5545918367345, "kel": 3225.27, "cum": -172.8}, {"d": "2026-03-17", "c": "ONDO", "e": 0.28102, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.004056650772186976, "pnl": -27.6152039000779, "kel": 6807.39, "cum": -200.41}, {"d": "2026-03-17", "c": "SOL", "e": 93.55, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.003634420096205293, "pnl": 9.492014965259363, "kel": 2611.7, "cum": -190.92}, {"d": "2026-03-17", "c": "ADA", "e": 0.2866, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.003489183531053763, "pnl": 7.54577808792749, "kel": 2162.62, "cum": -183.37}, {"d": "2026-03-17", "c": "SUI", "e": 1.0228, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.004204145482987753, "pnl": 41.66018087602537, "kel": 9909.31, "cum": -141.71}, {"d": "2026-03-17", "c": "VVV", "e": 5.6405, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.02077829979611745, "pnl": -207.7829979611745, "kel": 10000.0, "cum": -349.5}, {"d": "2026-03-17", "c": "ETH", "e": 2313.43, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.0007823880558304186, "pnl": 6.710597122021408, "kel": 8577.07, "cum": -342.78}, {"d": "2026-03-17", "c": "TRUMP", "e": 3.71, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.01078167115902962, "pnl": -107.8167115902962, "kel": 10000.0, "cum": -450.6}, {"d": "2026-03-17", "c": "RENDER", "e": 1.872, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.03792735042735051, "pnl": -140.9755822649576, "kel": 3716.99, "cum": -591.58}, {"d": "2026-03-17", "c": "BTC", "e": 73745.51, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.003008589946696505, "pnl": 30.08589946696505, "kel": 10000.0, "cum": -561.49}, {"d": "2026-03-17", "c": "AVAX", "e": 10.26, "r": "BULL", "t": "PAPER_TRADE", "ret": -0.002923976608187107, "pnl": -12.15456140350866, "kel": 4156.86, "cum": -573.65}, {"d": "2026-03-17", "c": "HYPE", "e": 40.95, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.01343101343101338, "pnl": 47.24184371184354, "kel": 3517.37, "cum": -526.4}, {"d": "2026-03-17", "c": "HBAR", "e": 0.09889, "r": "BULL", "t": "PAPER_TRADE", "ret": 0.0002022449185963282, "pnl": 0.5082172110423412, "kel": 2512.88, "cum": -525.9}, {"d": "2026-03-18", "c": "XRP", "e": 1.5061, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.02808578447646237, "pnl": -280.8578447646237, "kel": 10000.0, "cum": -806.75}, {"d": "2026-03-18", "c": "ETH", "e": 2309.68, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.05827214159537242, "pnl": -433.4095421010695, "kel": 7437.68, "cum": -1240.16}, {"d": "2026-03-18", "c": "LINK", "e": 9.746, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.06279499281756618, "pnl": -262.0705068746152, "kel": 4173.43, "cum": -1502.23}, {"d": "2026-03-18", "c": "TAO", "e": 277.43, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.1082435208881519, "pnl": -476.7304444364342, "kel": 4404.24, "cum": -1978.96}, {"d": "2026-03-18", "c": "HBAR", "e": 0.09866, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.05128724913845528, "pnl": -240.0248388404621, "kel": 4680.01, "cum": -2218.99}, {"d": "2026-03-18", "c": "DOGE", "e": 0.09905, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.04805653710247348, "pnl": -332.2677031802119, "kel": 6914.1, "cum": -2551.26}, {"d": "2026-03-18", "c": "ZRO", "e": 2.281, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.07759754493643145, "pnl": -73.33433581762391, "kel": 945.06, "cum": -2624.59}, {"d": "2026-03-18", "c": "ADA", "e": 0.288, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.06249999999999989, "pnl": -48.29624999999992, "kel": 772.74, "cum": -2672.89}, {"d": "2026-03-18", "c": "SUI", "e": 1.0235, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.05803615046409394, "pnl": -473.8494987787017, "kel": 8164.73, "cum": -3146.74}, {"d": "2026-03-18", "c": "AVAX", "e": 10.21, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.06464250734573951, "pnl": -555.8169637610189, "kel": 8598.32, "cum": -3702.55}, {"d": "2026-03-18", "c": "NEAR", "e": 1.455, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.06804123711340204, "pnl": -411.6188659793813, "kel": 6049.55, "cum": -4114.17}, {"d": "2026-03-18", "c": "SOL", "e": 93.72, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.04097311139564663, "pnl": -244.2325224071704, "kel": 5960.8, "cum": -4358.41}, {"d": "2026-03-19", "c": "BONK", "e": 6.07e-06, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.008237232289950658, "pnl": -64.16639209225764, "kel": 7789.8, "cum": -4422.57}, {"d": "2026-03-19", "c": "SUI", "e": 0.9625, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.01038961038961039, "pnl": 102.1664415584416, "kel": 9833.52, "cum": -4320.41}, {"d": "2026-03-19", "c": "HYPE", "e": 39.73, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.005033979360684504, "pnl": -46.94125346085971, "kel": 9324.88, "cum": -4367.35}, {"d": "2026-03-19", "c": "ADA", "e": 0.27, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.00333333333333341, "pnl": -27.96426666666731, "kel": 8389.28, "cum": -4395.31}, {"d": "2026-03-19", "c": "XRP", "e": 1.4628, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.00786163522012584, "pnl": -30.24135220125807, "kel": 3846.7, "cum": -4425.55}, {"d": "2026-03-19", "c": "BTC", "e": 70186.0, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.005425298492576891, "pnl": 54.25298492576891, "kel": 10000.0, "cum": -4371.3}, {"d": "2026-03-19", "c": "AVAX", "e": 9.55, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.0, "pnl": 0.0, "kel": 5979.3, "cum": -4371.3}, {"d": "2026-03-19", "c": "FET", "e": 0.2182, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.03941338221814839, "pnl": 317.5492850595775, "kel": 8056.89, "cum": -4053.75}, {"d": "2026-03-19", "c": "PEPE", "e": 3.46e-06, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.00578034682080919, "pnl": -38.12098265895916, "kel": 6594.93, "cum": -4091.87}, {"d": "2026-03-19", "c": "NEAR", "e": 1.357, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.01105379513633009, "pnl": -73.03839351510653, "kel": 6607.54, "cum": -4164.91}, {"d": "2026-03-19", "c": "HBAR", "e": 0.09378, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.0005331627212625811, "pnl": -4.903401578162131, "kel": 9196.82, "cum": -4169.81}, {"d": "2026-03-19", "c": "SOL", "e": 89.84, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.005454140694568177, "pnl": -35.62966495992913, "kel": 6532.59, "cum": -4205.44}, {"d": "2026-03-19", "c": "FARTCOIN", "e": 0.194, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.02783505154639165, "pnl": 278.3505154639165, "kel": 10000.0, "cum": -3927.09}, {"d": "2026-03-19", "c": "ZRO", "e": 2.105, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.02185273159144885, "pnl": -218.5273159144885, "kel": 10000.0, "cum": -4145.62}, {"d": "2026-03-19", "c": "XLM", "e": 0.16768, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.001830868320610746, "pnl": -13.11167193463782, "kel": 7161.45, "cum": -4158.73}, {"d": "2026-03-20", "c": "SUI", "e": 0.9718, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.01101049598682857, "pnl": -31.74270940522743, "kel": 2882.95, "cum": -4190.47}, {"d": "2026-03-20", "c": "ZRO", "e": 2.055, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.0228710462287105, "pnl": -148.2942627737229, "kel": 6483.93, "cum": -4338.77}, {"d": "2026-03-20", "c": "ETH", "e": 2141.7, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.007069150674697822, "pnl": 57.3233893635909, "kel": 8108.95, "cum": -4281.44}, {"d": "2026-03-20", "c": "DOGE", "e": 0.09413, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.001274832678211046, "pnl": -2.193464357803144, "kel": 1720.59, "cum": -4283.64}, {"d": "2026-03-20", "c": "NEAR", "e": 1.341, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.02237136465324385, "pnl": -147.2988814317674, "kel": 6584.26, "cum": -4430.94}, {"d": "2026-03-20", "c": "ADA", "e": 0.2688, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.01450892857142838, "pnl": -43.82944196428514, "kel": 3020.86, "cum": -4474.77}, {"d": "2026-03-20", "c": "XRP", "e": 1.4495, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.003380476026215828, "pnl": -2.743222490513883, "kel": 811.49, "cum": -4477.51}, {"d": "2026-03-20", "c": "HYPE", "e": 39.64, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.006811301715438756, "pnl": 7.923859737638521, "kel": 1163.34, "cum": -4469.59}, {"d": "2026-03-20", "c": "XAN", "e": 0.01301, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.153727901614143, "pnl": -11.25441967717141, "kel": 73.21, "cum": -4480.84}, {"d": "2026-03-20", "c": "ZEC", "e": 234.7, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.003493821900298233, "pnl": -17.13482062207063, "kel": 4904.32, "cum": -4497.97}, {"d": "2026-03-21", "c": "ZRO", "e": 2.013, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.001987083954297031, "pnl": 4.745136612021766, "kel": 2387.99, "cum": -4493.23}, {"d": "2026-03-21", "c": "TAO", "e": 270.1, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.01914105886708617, "pnl": 64.05919029988861, "kel": 3346.69, "cum": -4429.17}, {"d": "2026-03-21", "c": "BTC", "e": 70752.65, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.004004372981082582, "pnl": -17.3157096447973, "kel": 4324.2, "cum": -4446.49}, {"d": "2026-03-21", "c": "LINK", "e": 9.111, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.003731752826254042, "pnl": -9.483279552189822, "kel": 2541.24, "cum": -4455.97}, {"d": "2026-03-21", "c": "SUI", "e": 0.9618, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.001039717196922529, "pnl": 4.888209606987333, "kel": 4701.48, "cum": -4451.08}, {"d": "2026-03-21", "c": "LTC", "e": 56.03, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.0005354274495805722, "pnl": -1.48785115116899, "kel": 2778.81, "cum": -4452.57}, {"d": "2026-03-21", "c": "ADA", "e": 0.2649, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.0003775009437525512, "pnl": -1.384186485466917, "kel": 3666.71, "cum": -4453.95}, {"d": "2026-03-21", "c": "ZEC", "e": 233.92, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.005471956224350261, "pnl": -17.67622435020538, "kel": 3230.33, "cum": -4471.63}, {"d": "2026-03-21", "c": "XRP", "e": 1.4426, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.001039789269374758, "pnl": -3.210089421877221, "kel": 3087.25, "cum": -4474.84}, {"d": "2026-03-21", "c": "SOL", "e": 90.06, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": -0.002664890073284631, "pnl": -3.874270486342663, "kel": 1453.82, "cum": -4478.71}, {"d": "2026-03-21", "c": "DOGE", "e": 0.09403, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.001382537488035629, "pnl": 4.953161756885726, "kel": 3582.66, "cum": -4473.76}, {"d": "2026-03-21", "c": "HYPE", "e": 40.02, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.01024487756121939, "pnl": 31.19350074962519, "kel": 3044.79, "cum": -4442.57}, {"d": "2026-03-21", "c": "NEAR", "e": 1.311, "r": "NEUTRAL", "t": "PAPER_TRADE", "ret": 0.01144164759725408, "pnl": 59.13260869565255, "kel": 5168.19, "cum": -4383.43}, {"d": "2026-03-21", "c": "ADA", "e": 0.2646, "r": "BULL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 3070.02, "cum": -4383.43}, {"d": "2026-03-21", "c": "ZRO", "e": 2.016, "r": "BULL", "t": "PAPER_TRADE", "ret": null, "pnl": null, "kel": 927.1, "cum": -4383.43}];
+const consHist=[{"ts": "Mar 10", "p": 70759, "l": "NEUTRAL", "prob": 0.3856814479994208, "a": 57.14}, {"ts": "Mar 11", "p": 69520, "l": "DOWN", "prob": 0.3352444946640563, "a": 100.0}, {"ts": "Mar 12", "p": 70032, "l": "DOWN", "prob": 0.3944252441662967, "a": 85.71}, {"ts": "Mar 13", "p": 71994, "l": "DOWN", "prob": 0.2798910961098509, "a": 100.0}, {"ts": "Mar 14", "p": 70438, "l": "NEUTRAL", "prob": 0.4978344965791395, "a": 57.14}, {"ts": "Mar 14", "p": 70594, "l": "DOWN", "prob": 0.3668237818638402, "a": 71.43}, {"ts": "Mar 15", "p": 71765, "l": "UP", "prob": 0.5550917115614457, "a": 85.71}, {"ts": "Mar 16", "p": 73287, "l": "NEUTRAL", "prob": 0.5321464801509528, "a": 57.14}, {"ts": "Mar 16", "p": 74519, "l": "NEUTRAL", "prob": 0.4361338369346383, "a": 57.14}, {"ts": "Mar 17", "p": 73744, "l": "NEUTRAL", "prob": 0.4329091798212053, "a": 57.14}, {"ts": "Mar 18", "p": 73897, "l": "UP", "prob": 0.5096710998105153, "a": 85.71}, {"ts": "Mar 19", "p": 70437, "l": "NEUTRAL", "prob": 0.5147279693612467, "a": 57.14}, {"ts": "Mar 20", "p": 70386, "l": "UP", "prob": 0.5249625409940786, "a": 85.71}, {"ts": "Mar 21", "p": 70707, "l": "DOWN", "prob": 0.4812818486258185, "a": 85.71}, {"ts": "Mar 21", "p": 70354, "l": "NEUTRAL", "prob": 0.5570226678201697, "a": 57.14}];
+const dailyDir=[{"d": "03/07", "u": 1, "dn": 14}, {"d": "03/08", "u": 11, "dn": 4}, {"d": "03/09", "u": 15, "dn": 0}, {"d": "03/10", "u": 1, "dn": 14}, {"d": "03/11", "u": 15, "dn": 0}, {"d": "03/12", "u": 14, "dn": 1}, {"d": "03/13", "u": 0, "dn": 15}, {"d": "03/14", "u": 24, "dn": 6}, {"d": "03/15", "u": 13, "dn": 1}, {"d": "03/16", "u": 15, "dn": 15}, {"d": "03/17", "u": 9, "dn": 6}, {"d": "03/18", "u": 0, "dn": 15}, {"d": "03/19", "u": 4, "dn": 10}, {"d": "03/20", "u": 4, "dn": 11}, {"d": "03/21", "u": 6, "dn": 9}];
 
 // ── HELPERS ──
 const ink='#f0e4c8', amber='#f0a020', blood='#e8442a', sage='#44cc70', pale='#2a2010', warm='#151008', ghost='#6a5e48', dim='#9a8e78', dimer='#7a6e58';
@@ -1369,7 +2495,8 @@ const conel=document.getElementById('cons-list');
 function mkCtx(id,H){
   const el=document.getElementById(id);if(!el)return[null,0,0];
   const dpr=window.devicePixelRatio||1;
-  const W=Math.max(el.parentElement.clientWidth-26,200);
+  const parent=el.closest('.panel,.chart-wrap')||el.parentElement;
+  const W=Math.max(parent.offsetWidth-26,100);
   el.width=W*dpr;el.height=H*dpr;el.style.width=W+'px';el.style.height=H+'px';
   const ctx=el.getContext('2d');ctx.scale(dpr,dpr);
   return[ctx,W,H];
@@ -1553,7 +2680,8 @@ function chartPnl(){
 function chartPerf(){
   const el=document.getElementById('perfChart');if(!el)return;
   const dpr=window.devicePixelRatio||1;
-  const W=Math.max(el.parentElement.clientWidth-26,200);
+  const parent=el.closest('.panel,.chart-wrap')||el.parentElement;
+  const W=Math.max(parent.offsetWidth-26,100);
   const H=130;
   el.width=W*dpr;el.height=H*dpr;el.style.width=W+'px';el.style.height=H+'px';
   const ctx=el.getContext('2d');ctx.scale(dpr,dpr);
@@ -1566,10 +2694,16 @@ function chartPerf(){
     return;
   }
 
-  // Build equity curve from tradeLog cumulative P&L
-  const points=[{x:0,y:100000}]; // start at $100k
+  // Build equity curve — use t.cum if present, else compute running sum from t.pnl
+  const points=[{x:0,y:100000,lbl:'Start'}];
+  let running=0;
   tradeLog.forEach((t,i)=>{
-    if(t.cum!=null) points.push({x:i+1,y:100000+t.cum});
+    if(t.cum!=null){
+      points.push({x:i+1,y:100000+t.cum,lbl:t.d+' '+t.c});
+    } else if(t.pnl!=null){
+      running+=t.pnl;
+      points.push({x:i+1,y:100000+running,lbl:t.d+' '+t.c});
+    }
   });
 
   const pad={l:52,r:14,t:14,b:22};
@@ -1665,14 +2799,109 @@ function drawAll(){
   chartPat();chartHrate();chartDelta();chartPnl();
 }
 
-window.addEventListener('load',()=>setTimeout(drawAll,100));
-window.addEventListener('resize',drawAll);
+// ── ENTRY TIMING ALERT BAR ──
+function updateTimingBar(){
+  const now = new Date();
+  const h = now.getUTCHours(), m = now.getUTCMinutes(), dow = now.getUTCDay();
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const dayName = days[dow];
+  const hh = String(h).padStart(2,'0'), mm = String(m).padStart(2,'0');
+
+  document.getElementById('timing-clock').textContent = hh+':'+mm+' UTC';
+
+  // DOW signal
+  const dowEl = document.getElementById('timing-dow');
+  if(dow===2){ // Tuesday
+    dowEl.innerHTML = '<span class="tag up" style="font-size:8px">TUE</span><span style="color:var(--sage);margin-left:4px">Long day — 15:00 UTC window active</span>';
+  } else if(dow===4){ // Thursday
+    dowEl.innerHTML = '<span class="tag no" style="font-size:8px">THU</span><span style="color:var(--blood);margin-left:4px">Short day — avoid 14:00–15:00 UTC</span>';
+  } else {
+    dowEl.innerHTML = '<span style="color:var(--ghost)">'+dayName+'</span><span style="color:var(--dimer);margin-left:6px">No DOW edge today</span>';
+  }
+
+  // Hour window signal
+  const winEl = document.getElementById('timing-window');
+  let winHtml = '', actionHtml = '';
+  if(h === 20 || h === 21){
+    winHtml = '<span class="tag up" style="font-size:8px">20–21 UTC ★</span><span style="color:var(--sage);margin-left:4px">Best 60m window · 54.4% win</span>';
+    actionHtml = '<span style="color:var(--sage)">▲ PRIME ENTRY WINDOW — fire sniper now, hold 60m</span>';
+  } else if(h === 0 || h === 1){
+    winHtml = '<span class="tag up" style="font-size:8px">00–01 UTC</span><span style="color:var(--sage);margin-left:4px">Strong window · 52.1% win</span>';
+    actionHtml = '<span style="color:var(--sage)">▲ GOOD ENTRY WINDOW — especially with vol &gt;2×</span>';
+  } else if(h === 14 && dow === 4){
+    winHtml = '<span class="tag no" style="font-size:8px">THU 14:00</span><span style="color:var(--blood);margin-left:4px">Worst 60m slot in dataset</span>';
+    actionHtml = '<span style="color:var(--blood)">▼ SKIP OR SHORT — −0.49% avg return, 36.2% win rate</span>';
+  } else if(h === 15 && dow === 2){
+    winHtml = '<span class="tag up" style="font-size:8px">TUE 15:00 ★</span><span style="color:var(--sage);margin-left:4px">Best weekly slot · 88.9% win</span>';
+    actionHtml = '<span style="color:var(--sage)">▲ PRIME WEEKLY ENTRY — enter top sniper coins now</span>';
+  } else if(h >= 2 && h <= 5){
+    winHtml = '<span class="tag skip" style="font-size:8px">02–05 UTC</span><span style="color:var(--dimer);margin-left:4px">Weak window · avg negative</span>';
+    actionHtml = '<span style="color:var(--dimer)">— AVOID — historically negative 60m returns this hour</span>';
+  } else if(h === 23 || h === 16){
+    winHtml = '<span class="tag no" style="font-size:8px">WEAK HOUR</span><span style="color:var(--blood);margin-left:4px">Below-avg return window</span>';
+    actionHtml = '<span style="color:var(--blood)">▼ BELOW AVERAGE — consider skipping or waiting</span>';
+  } else {
+    winHtml = '<span style="color:var(--ghost)">'+hh+':00 UTC</span><span style="color:var(--dimer);margin-left:6px">Neutral window</span>';
+    actionHtml = '<span style="color:var(--dimer)">— No strong timing edge this hour</span>';
+  }
+  winEl.innerHTML = winHtml;
+  document.getElementById('timing-action').innerHTML = actionHtml;
+}
+// ── DISCLAIMER MODAL ──
+function openDisclaimer(){
+  document.getElementById('disclaimerModal').style.display='flex';
+  document.getElementById('disclaimerCheck').checked=false;
+  document.getElementById('disclaimerBtn').classList.remove('enabled');
+}
+function closeDisclaimer(){
+  document.getElementById('disclaimerModal').style.display='none';
+}
+function toggleDisclaimer(label){
+  const cb=document.getElementById('disclaimerCheck');
+  const btn=document.getElementById('disclaimerBtn');
+  setTimeout(()=>{ btn.classList.toggle('enabled', cb.checked); }, 0);
+}
+window.addEventListener('load',function(){
+  const modal=document.getElementById('disclaimerModal');
+  if(modal) modal.addEventListener('click',function(e){
+    if(e.target===this) closeDisclaimer();
+  });
+});
+
+updateTimingBar();
+setInterval(updateTimingBar, 30000);
+
+
+window.addEventListener('resize',()=>{drawAll();Object.keys(acornDrawn).forEach(k=>delete acornDrawn[k]);drawAcorn();});
 </script>
+<!-- ═══════════ DISCLAIMER MODAL ═══════════ -->
+<div class="modal-overlay" id="disclaimerModal" style="display:none">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDisclaimer()">✕ close</button>
+    <div class="modal-logo">RRP TECH</div>
+    <div class="modal-sub">Crypto Engine — Subscription Access</div>
+    <div class="modal-body">
+      <span class="warn-line">⚠ Important — Please Read Before Continuing</span>
+      The RRP TECH Crypto Engine, including all signals, model outputs, picks, rankings, and analysis, is provided for <strong>informational and educational purposes only</strong>. Nothing on this platform constitutes financial advice, investment advice, trading advice, or any other form of professional advice.<br><br>
+      <strong>Cryptocurrency trading involves substantial risk of loss.</strong> Past performance of any signal, model, or indicator shown here is not indicative of future results. The models and rankings displayed are experimental and may be inaccurate, incomplete, or delayed. You could lose all of your invested capital.<br><br>
+      RRP TECH is <strong>not a registered investment advisor, broker-dealer, or financial institution</strong>. No fiduciary relationship is created by your use of this platform or subscription to this service. All trading decisions are yours alone.<br><br>
+      By proceeding to subscribe, you confirm that you are <strong>18 years of age or older</strong>, that you understand the risks involved in cryptocurrency trading, and that you are not relying on any content here as financial or investment advice.
+    </div>
+    <label class="modal-check-row" onclick="toggleDisclaimer(this)">
+      <input type="checkbox" id="disclaimerCheck">
+      <span>I have read and understood the disclaimer above. I acknowledge that this is not financial advice and that I trade at my own risk.</span>
+    </label>
+    <a id="disclaimerBtn" class="modal-btn" href="https://rrptech.gumroad.com/l/sucvaw" target="_blank" onclick="closeDisclaimer()">
+      ⬦ Subscribe Now — $19.99 / mo
+    </a>
+  </div>
+</div>
+
 <!-- SUBSCRIBE FLOAT -->
 <div class="fsub" id="fsub">
-  <a href="https://rrptech.gumroad.com/l/sucvaw" target="_blank">
+  <button class="fsub-a" onclick="openDisclaimer()" style="display:flex;align-items:center;gap:10px;background:var(--amber);color:#0c0a06;text-decoration:none;font-family:var(--display);font-size:13px;letter-spacing:.1em;padding:10px 20px;box-shadow:0 4px 20px rgba(240,160,32,.4),0 2px 8px rgba(0,0,0,.6);border:none;cursor:pointer;transition:background .15s,transform .15s;">
     ⬦ Subscribe Now <span class="fsub-price">$19.99 / mo</span>
-  </a>
+  </button>
   <button class="fsub-x" onclick="document.getElementById('fsub').style.display='none'">dismiss</button>
 </div>
 </body>
