@@ -911,7 +911,7 @@ canvas { display: block; width: 100%; }
     <span class="logo-sub">Crypto Engine</span>
   </div>
   <div class="masthead-right">
-    <span style="color:var(--ghost)">2026-03-22 · 15:47 UTC · 696 labeled</span><br>
+    <span style="color:var(--ghost)">2026-03-22 · 15:49 UTC · 696 labeled</span><br>
     <span class="live-indicator"><span class="pulse"></span>Pipeline active</span>
   </div>
 </div>
@@ -1643,8 +1643,8 @@ canvas { display: block; width: 100%; }
     </div>
     <div class="panel">
       <div class="ph"><div class="ph-t">Run 38 — Full Metrics</div><div class="badge sage">latest</div></div>
-      <div class="score-line"><span class="sl-name">Holdout Rows</span><span class="sl-score" style="color:var(--ink)">139</span></div>
-      <div class="score-line"><span class="sl-name">Train Rows</span><span class="sl-score" style="color:var(--ink)">696</span></div>
+      <div class="score-line"><span class="sl-name">Holdout Rows</span><span class="sl-score" style="color:var(--ink)">0</span></div>
+      <div class="score-line"><span class="sl-name">Train Rows</span><span class="sl-score" style="color:var(--ink)">0</span></div>
       <div class="score-line"><span class="sl-name">Holdout Up Rate</span><span class="sl-score" style="color:var(--amber)">67.2%</span></div>
       <div class="score-line"><span class="sl-name">Val AUC</span><span class="sl-score" style="color:var(--amber)">0.738</span></div>
       <div class="score-line"><span class="sl-name">Val Accuracy</span><span class="sl-score p">81.0%</span></div>
@@ -1706,7 +1706,7 @@ canvas { display: block; width: 100%; }
   </div>
 
   <div class="panel mb">
-    <div class="ph"><div class="ph-t">Consensus 24h Accuracy</div><div class="badge blood">32.4% overall — 11/34 correct</div></div>
+    <div class="ph"><div class="ph-t">Consensus 24h Accuracy</div><div class="badge blood">0.0% overall — 0/0 correct</div></div>
     <div class="col3" style="padding:14px 16px;gap:1px;background:var(--pale)" id="cons24-grid">
       <div style="background:var(--paper);padding:12px 14px">
         <div class="stat-label">UP calls</div>
@@ -1898,20 +1898,20 @@ function switchTab(id){
 }
 
 // ── ACORN DATA ──
-const acornDaily=[{"d": "Feb 3", "pnl": -197.86, "cum": -197.86, "wr": 40.0}, {"d": "Feb 4", "pnl": -1203.06, "cum": -1400.93, "wr": 6.7}, {"d": "Feb 5", "pnl": -980.09, "cum": -2381.01, "wr": 0.0}, {"d": "Feb 6", "pnl": 553.17, "cum": -1827.84, "wr": 80.0}, {"d": "Feb 7", "pnl": 810.93, "cum": -1016.91, "wr": 93.3}, {"d": "Feb 8", "pnl": -1155.94, "cum": -2172.85, "wr": 0.0}, {"d": "Feb 11", "pnl": 197.8, "cum": -1975.04, "wr": 80.0}, {"d": "Feb 12", "pnl": -600.41, "cum": -2575.45, "wr": 0.0}, {"d": "Feb 13", "pnl": 1402.85, "cum": -1172.6, "wr": 100.0}, {"d": "Feb 14", "pnl": -67.35, "cum": -1239.95, "wr": 46.7}, {"d": "Feb 15", "pnl": -86.86, "cum": -1326.81, "wr": 26.7}, {"d": "Feb 16", "pnl": 136.98, "cum": -1189.83, "wr": 53.3}, {"d": "Feb 17", "pnl": -75.65, "cum": -1265.47, "wr": 40.0}, {"d": "Feb 18", "pnl": -706.35, "cum": -1971.82, "wr": 0.0}, {"d": "Feb 19", "pnl": 202.85, "cum": -1768.97, "wr": 73.3}, {"d": "Feb 20", "pnl": 211.71, "cum": -1557.26, "wr": 93.3}, {"d": "Feb 21", "pnl": -399.66, "cum": -1956.92, "wr": 0.0}, {"d": "Feb 22", "pnl": -282.15, "cum": -2239.07, "wr": 0.0}, {"d": "Feb 23", "pnl": -704.58, "cum": -2943.65, "wr": 0.0}, {"d": "Feb 24", "pnl": 972.24, "cum": -1971.4, "wr": 93.3}, {"d": "Feb 25", "pnl": 593.41, "cum": -1378.0, "wr": 80.0}, {"d": "Feb 26", "pnl": -333.9, "cum": -1711.89, "wr": 6.7}, {"d": "Feb 27", "pnl": -570.05, "cum": -2281.94, "wr": 6.7}, {"d": "Feb 28", "pnl": 738.03, "cum": -1543.92, "wr": 100.0}, {"d": "Mar 1", "pnl": -222.34, "cum": -1766.26, "wr": 13.3}, {"d": "Mar 2", "pnl": 69.58, "cum": -1696.68, "wr": 66.7}, {"d": "Mar 3", "pnl": -239.27, "cum": -1935.95, "wr": 13.3}, {"d": "Mar 6", "pnl": 53.44, "cum": -1882.51, "wr": 73.3}, {"d": "Mar 7", "pnl": -478.36, "cum": -2360.87, "wr": 6.7}, {"d": "Mar 8", "pnl": 120.9, "cum": -2239.98, "wr": 73.3}, {"d": "Mar 9", "pnl": 689.33, "cum": -1550.65, "wr": 100.0}, {"d": "Mar 10", "pnl": -357.15, "cum": -1907.8, "wr": 6.7}, {"d": "Mar 11", "pnl": 329.18, "cum": -1578.62, "wr": 100.0}, {"d": "Mar 12", "pnl": 617.36, "cum": -961.26, "wr": 93.3}, {"d": "Mar 13", "pnl": -622.25, "cum": -1583.51, "wr": 0.0}, {"d": "Mar 14", "pnl": 354.12, "cum": -1229.39, "wr": 80.0}, {"d": "Mar 15", "pnl": 561.74, "cum": -667.66, "wr": 92.9}, {"d": "Mar 16", "pnl": 189.12, "cum": -478.53, "wr": 50.0}, {"d": "Mar 17", "pnl": -64.46, "cum": -542.99, "wr": 60.0}, {"d": "Mar 18", "pnl": -982.95, "cum": -1525.95, "wr": 0.0}, {"d": "Mar 19", "pnl": 15.63, "cum": -1510.32, "wr": 26.7}, {"d": "Mar 20", "pnl": -331.29, "cum": -1841.61, "wr": 26.7}, {"d": "Mar 21", "pnl": -336.08, "cum": -2177.68, "wr": 22.2}];
-const acornAucData=[0.2778, 0.4375, 0.4375, 1.0, 0.9306, 0.4383, 0.8311, 0.7397, 0.644, 0.5267, 0.5341, 0.4378, 0.5852, 0.5092, 0.4717, 0.5471, 0.553, 0.8048, 0.5947, 0.5691, 0.5249, 0.3423, 0.2465, 0.363, 0.3579, 0.3533, 0.324, 0.3096, 0.3164, 0.373, 0.4496, 0.4812, 0.5887, 0.6415, 0.7126, 0.6788, 0.6693, 0.7381, 0.6675, 0.577, 0.5371, 0.4874, 0.4651, 0.473];
-const acornBrierData=[0.4635, 0.4543, 0.4543, 0.109, 0.3051, 0.2715, 0.1779, 0.2763, 0.2768, 0.3435, 0.2769, 0.2714, 0.261, 0.2721, 0.2726, 0.2565, 0.2483, 0.2196, 0.2436, 0.2434, 0.2695, 0.3589, 0.3561, 0.3052, 0.294, 0.3035, 0.3134, 0.3145, 0.3044, 0.2853, 0.2768, 0.2685, 0.245, 0.2458, 0.2427, 0.2505, 0.2482, 0.2429, 0.2431, 0.2479, 0.2505, 0.2578, 0.2633, 0.2591];
-const acornHoldout=[15, 18, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 56, 59, 62, 65, 68, 71, 74, 77, 80, 83, 86, 89, 92, 95, 98, 101, 104, 107, 110, 113, 116, 119, 122, 125, 128, 131, 134, 137, 139];
-const acornLiveAcc=[26.7, 6.7, 100.0, 20.0, 60.0, 80.0, 53.3, 73.3, 60.0, 33.3, 53.3, 73.3, 40.0, 6.7, 100.0, 78.6, 93.3, 26.7, 46.7, 66.7, 0.0, 6.7, 73.3, 33.3, 6.7, 60.0, 20.0, 13.3, 80.0, 73.3, 26.7, 86.7, 90.0, 28.6, 50.0, 53.3, 20.0, 26.7, 33.3, 66.7];
-const acornLiveDates=["Feb 6", "Feb 7", "Feb 8", "Feb 11", "Feb 12", "Feb 13", "Feb 14", "Feb 15", "Feb 16", "Feb 17", "Feb 18", "Feb 19", "Feb 20", "Feb 21", "Feb 22", "Feb 23", "Feb 24", "Feb 25", "Feb 26", "Feb 27", "Feb 28", "Mar 1", "Mar 2", "Mar 3", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", "Mar 11", "Mar 12", "Mar 13", "Mar 14", "Mar 15", "Mar 16", "Mar 17", "Mar 18", "Mar 19", "Mar 20", "Mar 21"];
+const acornDaily=[];
+const acornAucData=[];
+const acornBrierData=[];
+const acornHoldout=[];
+const acornLiveAcc=[];
+const acornLiveDates=[];
 const acornRollingLbls=['R7–11','R10–14','R13–17','R16–20','R19–23','R22–26','R25–29','R28–32','R31–35','R34–38'];
 const acornRollingAUC=[0.655,0.519,0.533,0.614,0.455,0.333,0.332,0.386,0.575,0.688];
 const acornRollingBrier=[0.270,0.285,0.262,0.242,0.294,0.324,0.306,0.290,0.256,0.246];
-const acornRankData=[{"r": 1, "wr": 38.3, "avg": -1.272, "pnl": -597.7, "n": 47}, {"r": 2, "wr": 36.2, "avg": -0.804, "pnl": -377.9, "n": 47}, {"r": 3, "wr": 46.8, "avg": -0.287, "pnl": -134.9, "n": 47}, {"r": 4, "wr": 44.7, "avg": -0.787, "pnl": -370.0, "n": 47}, {"r": 5, "wr": 48.9, "avg": -0.193, "pnl": -90.5, "n": 47}, {"r": 6, "wr": 40.4, "avg": -0.708, "pnl": -332.7, "n": 47}, {"r": 7, "wr": 46.8, "avg": 0.348, "pnl": 163.6, "n": 47}, {"r": 8, "wr": 48.9, "avg": -0.496, "pnl": -233.3, "n": 47}, {"r": 9, "wr": 51.1, "avg": 0.136, "pnl": 64.1, "n": 47}, {"r": 10, "wr": 44.7, "avg": 0.505, "pnl": 237.4, "n": 47}, {"r": 11, "wr": 55.3, "avg": -0.148, "pnl": -69.5, "n": 47}, {"r": 12, "wr": 47.8, "avg": -0.475, "pnl": -218.4, "n": 46}, {"r": 13, "wr": 35.6, "avg": -0.775, "pnl": -348.9, "n": 45}, {"r": 14, "wr": 44.4, "avg": -0.012, "pnl": -5.5, "n": 45}, {"r": 15, "wr": 51.2, "avg": 0.318, "pnl": 136.5, "n": 43}];
-const acornTopCoins=[{"s": "BNKR", "n": 6, "wr": 50.0, "pnl": 603.0}, {"s": "TAO", "n": 31, "wr": 48.4, "pnl": 339.8}, {"s": "USELESS", "n": 1, "wr": 100.0, "pnl": 168.2}, {"s": "VVV", "n": 19, "wr": 47.4, "pnl": 160.5}, {"s": "SOL", "n": 41, "wr": 58.5, "pnl": 145.4}, {"s": "PENGU", "n": 22, "wr": 45.5, "pnl": 109.6}, {"s": "FARTCOIN", "n": 9, "wr": 55.6, "pnl": 98.4}, {"s": "ETH", "n": 39, "wr": 53.8, "pnl": 96.3}, {"s": "HYPE", "n": 20, "wr": 55.0, "pnl": 77.1}, {"s": "ONDO", "n": 5, "wr": 60.0, "pnl": 68.9}];
-const acornBotCoins=[{"s": "ARB", "n": 2, "wr": 0.0, "pnl": -189.4}, {"s": "WLFI", "n": 2, "wr": 0.0, "pnl": -190.1}, {"s": "BIRB", "n": 1, "wr": 0.0, "pnl": -207.6}, {"s": "BERA", "n": 5, "wr": 20.0, "pnl": -253.2}, {"s": "GHST", "n": 1, "wr": 0.0, "pnl": -254.8}, {"s": "BONK", "n": 6, "wr": 16.7, "pnl": -255.0}, {"s": "PEPE", "n": 15, "wr": 26.7, "pnl": -263.6}, {"s": "FAI", "n": 1, "wr": 0.0, "pnl": -291.3}, {"s": "BCH", "n": 7, "wr": 14.3, "pnl": -313.6}, {"s": "NEAR", "n": 16, "wr": 18.8, "pnl": -431.2}];
+const acornRankData=[];
+const acornTopCoins=[];
+const acornBotCoins=[];
 const acornH60=[0.0742,0.0192,-0.0405,0.0072,-0.0421,-0.0586,0.0016,0.0154,0.0162,-0.0012,-0.0171,-0.0192,-0.0037,0.0007,-0.0397,-0.0166,-0.0771,-0.0189,-0.0101,-0.0192,0.0467,0.0362,0.0011,-0.0600];
-const acornFeats=[{"n": "median_minute_usd_24h", "v": 1.0373}, {"n": "usd_turnover_24h", "v": 0.8057}, {"n": "rs_7d", "v": 0.2501}, {"n": "TopMoverScore", "v": 0.235}, {"n": "Rank", "v": 0.2082}, {"n": "vol_breakout", "v": 0.1539}, {"n": "volume_accel", "v": 0.07}, {"n": "ret_1h", "v": 0.0312}];
+const acornFeats=[];
 const acornIntervals=[
   {ev:'60m',h:'45m',n:3174,wr:51.8,avg:0.0122,sh:0.0248,pnl:38.70,ok:true},
   {ev:'30m',h:'45m',n:6348,wr:51.5,avg:0.0064,sh:0.0130,pnl:40.85,ok:true},
@@ -1937,15 +1937,15 @@ const acornShortCombos=[
 // ── Live-injected data variables (replaced by generator on every run) ──
 const regimeByLabel=[];
 const regimeByProb=[];
-const horizonAcc=[{"hm": 1, "n": 36, "acc": 69.4, "n_up": 10, "n_dn": 26, "n_up_actual": 11}, {"hm": 5, "n": 36, "acc": 36.1, "n_up": 27, "n_dn": 9, "n_up_actual": 10}, {"hm": 15, "n": 36, "acc": 41.7, "n_up": 25, "n_dn": 11, "n_up_actual": 14}, {"hm": 30, "n": 36, "acc": 44.4, "n_up": 22, "n_dn": 14, "n_up_actual": 18}, {"hm": 60, "n": 36, "acc": 41.7, "n_up": 21, "n_dn": 15, "n_up_actual": 18}, {"hm": 240, "n": 36, "acc": 41.7, "n_up": 20, "n_dn": 16, "n_up_actual": 17}, {"hm": 1440, "n": 34, "acc": 50.0, "n_up": 13, "n_dn": 21, "n_up_actual": 18}];
-const horizonDir=[{"hm": 1, "pred": "DOWN", "n": 26, "acc": 76.9}, {"hm": 1, "pred": "UP", "n": 10, "acc": 50.0}, {"hm": 5, "pred": "DOWN", "n": 9, "acc": 66.7}, {"hm": 5, "pred": "UP", "n": 27, "acc": 25.9}, {"hm": 15, "pred": "DOWN", "n": 11, "acc": 54.5}, {"hm": 15, "pred": "UP", "n": 25, "acc": 36.0}, {"hm": 30, "pred": "DOWN", "n": 14, "acc": 42.9}, {"hm": 30, "pred": "UP", "n": 22, "acc": 45.5}, {"hm": 60, "pred": "DOWN", "n": 15, "acc": 40.0}, {"hm": 60, "pred": "UP", "n": 21, "acc": 42.9}, {"hm": 240, "pred": "DOWN", "n": 16, "acc": 43.8}, {"hm": 240, "pred": "UP", "n": 20, "acc": 40.0}, {"hm": 1440, "pred": "DOWN", "n": 21, "acc": 47.6}, {"hm": 1440, "pred": "UP", "n": 13, "acc": 53.8}];
-const cons24Data=[{"label": "DOWN", "acc": 37.5, "n": 8}, {"label": "NEUTRAL", "acc": 0.0, "n": 12}, {"label": "UP", "acc": 57.1, "n": 14}];
+const horizonAcc=[];
+const horizonDir=[];
+const cons24Data=[];
 const priceTierData=[];
 const tmsQuartiles=[];
 const vaQuartiles=[];
 const rsQuartiles=[];
-const dowLongCombos=[{"dow": "Tue", "hour": 15, "win": 74.5, "avg": 0.501}, {"dow": "Tue", "hour": 14, "win": 57.6, "avg": 0.2865}, {"dow": "Wed", "hour": 0, "win": 61.5, "avg": 0.2059}, {"dow": "Sun", "hour": 1, "win": 57.8, "avg": 0.1747}, {"dow": "Fri", "hour": 0, "win": 55.0, "avg": 0.1638}, {"dow": "Fri", "hour": 12, "win": 59.8, "avg": 0.1613}, {"dow": "Wed", "hour": 17, "win": 58.0, "avg": 0.1335}, {"dow": "Thu", "hour": 20, "win": 59.4, "avg": 0.1313}, {"dow": "Mon", "hour": 3, "win": 57.1, "avg": 0.1249}, {"dow": "Mon", "hour": 20, "win": 59.6, "avg": 0.1249}];
-const dowShortCombos=[{"dow": "Sat", "hour": 6, "win": 41.5, "avg": -0.2236}, {"dow": "Tue", "hour": 2, "win": 30.4, "avg": -0.2401}, {"dow": "Thu", "hour": 16, "win": 48.6, "avg": -0.2455}, {"dow": "Thu", "hour": 15, "win": 44.2, "avg": -0.2909}, {"dow": "Thu", "hour": 14, "win": 36.7, "avg": -0.4699}];
+const dowLongCombos=[];
+const dowShortCombos=[];
 
 // ── Render functions for live tables ──
 function renderRegimeTables(){
