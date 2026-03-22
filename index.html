@@ -911,7 +911,7 @@ canvas { display: block; width: 100%; }
     <span class="logo-sub">Crypto Engine</span>
   </div>
   <div class="masthead-right">
-    <span style="color:var(--ghost)">2026-03-22 · 12:24 UTC · 696 labeled</span><br>
+    <span style="color:var(--ghost)">2026-03-22 · 15:45 UTC · 696 labeled</span><br>
     <span class="live-indicator"><span class="pulse"></span>Pipeline active</span>
   </div>
 </div>
@@ -1168,7 +1168,7 @@ canvas { display: block; width: 100%; }
 
 
 <!-- ═════════════════════ TAB: PATTERNS ═════════════════════ -->
-<div class="tab-pane" id="tab-patterns">
+<div class="tab-pane" id="tab-patterns" style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Pattern Recognition — What Are We Looking At?</div>
     <div class="tab-intro-body">
@@ -1176,6 +1176,7 @@ canvas { display: block; width: 100%; }
       <strong>Key finding:</strong> BTC has a persistent <span class="hl-red">downward micro-bias</span> — after any sequence of flat bars, price breaks down ~1.2× more often than it breaks up. The <strong>Compression Stats</strong> table shows this clearly: after 8 flat bars in a row, there's only a 10% chance of going up vs 12% chance of going down. The other 78% of the time it just stays flat. <strong>This is why the sniper only fires when volume spikes confirm a real move.</strong>
     </div>
   </div>
+  <div class="col3">
     <div class="panel">
       <div class="ph"><div class="ph-t">Global UP/DOWN Bias</div><div class="badge blood">DOWN-biased</div></div>
       <div id="ps-list"></div>
@@ -1203,12 +1204,12 @@ canvas { display: block; width: 100%; }
     <div class="panel mb">
       <div class="ph"><div class="ph-t">UP vs DOWN Count by Pattern Length</div><div class="badge">86,600 observations</div></div>
       <div class="chart-wrap" style="height:155px"><canvas id="patChart" height="125"></canvas></div>
-</div>
-
+    </div>
+  </div>
 </div>
 
 <!-- ═════════════════════ TAB: SIGNALS ═════════════════════ -->
-<div class="tab-pane" id="tab-signals">
+<div class="tab-pane" id="tab-signals" style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Signals &amp; Horizons — What Is a Signal?</div>
     <div class="tab-intro-body">
@@ -1217,6 +1218,7 @@ canvas { display: block; width: 100%; }
       <strong>Key finding:</strong> <span class="hl-red">SHORT signals dramatically outperform LONG signals</span> (49.2% vs 29.2% hit rate at H10). This aligns with BTC's persistent downward micro-bias shown on the Pattern tab. The <strong>BTC Horizon Forecast</strong> shows the model's directional probability for the next 1 minute through 24 hours.
     </div>
   </div>
+  <div class="mblock-4">
     <div class="mblock"><div class="stat-label">Total Signals</div><div class="display-num">768</div><div class="stat-sub">356 LONG · 412 SHORT</div></div>
     <div class="mblock"><div class="stat-label">Overall Hit Rate H10</div><div class="display-num amber">40.0%</div><div class="stat-sub">204 HIT · 313 MISS</div></div>
     <div class="mblock"><div class="stat-label">SHORT Hit Rate H10</div><div class="display-num sage">48.8%</div><div class="stat-sub">143 HIT · 150 MISS</div></div>
@@ -1293,12 +1295,12 @@ canvas { display: block; width: 100%; }
 </div></div>
     <div style="padding:10px 13px;border-top:1px solid var(--pale);font-family:var(--mono);font-size:9px;color:var(--dimer);line-height:1.8">
       Weights: 1m×1.0 · 5m×1.0 · 15m×1.25 · 30m×1.25 · 1h×1.5 · 4h×1.75 · 24h×2.0. Agreement threshold 60%. The 24h model (DOWN 26.8%) is pulling consensus to NEUTRAL.
-</div>
-
+    </div>
+  </div>
 </div>
 
 <!-- ═════════════════════ TAB: UP vs DOWN ═════════════════════ -->
-<div class="tab-pane" id="tab-updown">
+<div class="tab-pane" id="tab-updown" style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">UP vs DOWN — How Does the Model Tell Them Apart?</div>
     <div class="tab-intro-body">
@@ -1307,6 +1309,7 @@ canvas { display: block; width: 100%; }
       The <strong>return distribution</strong> chart shows the spread of actual price moves — UP coins can swing wildly in either direction, but on average they drift higher.
     </div>
   </div>
+  <div class="mblock-4">
     <div class="mblock"><div class="stat-label">Total UP Outcomes</div><div class="display-num sage">316</div><div class="stat-sub">Avg delta +3.69%</div></div>
     <div class="mblock"><div class="stat-label">Total DOWN Outcomes</div><div class="display-num blood">378</div><div class="stat-sub">Avg delta -3.66%</div></div>
     <div class="mblock"><div class="stat-label">UP Rate</div><div class="display-num amber">45.4%</div><div class="stat-sub">DOWN-biased dataset</div></div>
@@ -1346,8 +1349,10 @@ canvas { display: block; width: 100%; }
 
 </div>
 
+</div>
+
 <!-- ═════════════════════ TAB: MODEL EXPLAINER ═════════════════════ -->
-<div class="tab-pane" id="tab-model">
+<div class="tab-pane" id="tab-model" style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Model Explainer — How Does the Engine Work?</div>
     <div class="tab-intro-body">
@@ -1418,7 +1423,7 @@ canvas { display: block; width: 100%; }
 </div>
 
 <!-- ═════════════════════ TAB: ACORN P&L ═════════════════════ -->
-<div class="tab-pane" id="tab-acorn-pnl">
+<div class="tab-pane" id="tab-acorn-pnl" style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Acorn P&amp;L — How Has the Strategy Actually Performed?</div>
     <div class="tab-intro-body">
@@ -1427,6 +1432,7 @@ canvas { display: block; width: 100%; }
       <strong>Important findings:</strong> The <span class="hl-amber">$10–$100 price tier</span> (SOL, HYPE range) has the best win rate at 56.5%. The <span class="hl-red">$0.10–$1 tier</span> is the worst — 44.8% win rate and the largest losses. <strong>Consensus label days matter:</strong> UP-label days produce +$1,101 on average vs NEUTRAL days which lose −$489. The sweet spot for BTC probability is <span class="hl-green">55–60%</span> — above 70% is actually the worst bucket (0% win rate).
     </div>
   </div>
+  <div class="mblock-4">
     <div class="mblock"><div class="stat-label">Total P&amp;L · 39 Days</div><div class="display-num blood">−$479</div><div class="stat-sub">609 closed · $1k/trade</div></div>
     <div class="mblock"><div class="stat-label">Overall Win Rate</div><div class="display-num amber">48.1%</div><div class="stat-sub">vs 50% base rate</div></div>
     <div class="mblock"><div class="stat-label">Best Day</div><div class="display-num sage">+$1,403</div><div class="stat-sub">Feb 13 · 100% win rate</div></div>
@@ -1570,8 +1576,10 @@ canvas { display: block; width: 100%; }
 
 </div>
 
+</div>
+
 <!-- ═════════════════════ TAB: ACORN MODEL ═════════════════════ -->
-<div class="tab-pane" id="tab-acorn-model">
+<div class="tab-pane" id="tab-acorn-model" style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Acorn Model Health — Is the AI Getting Better?</div>
     <div class="tab-intro-body">
@@ -1581,6 +1589,7 @@ canvas { display: block; width: 100%; }
       <strong>Recall</strong> = out of all coins that actually went UP, what % did the model correctly flag? <strong>Precision</strong> = out of all the coins the model flagged as UP, what % actually went UP. High recall with lower precision means the model casts a wide net — it catches most winners but also some losers. <strong>Feature importance</strong> shows which signals the model is leaning on most — liquidity (median_minute_usd) now dominates, which may be a concern as the model grows.
     </div>
   </div>
+  <div class="mblock-4">
     <div class="mblock"><div class="stat-label">Latest AUC (Run 38)</div><div class="display-num amber">0.738</div><div class="stat-sub">122-row holdout</div></div>
     <div class="mblock"><div class="stat-label">Brier Score</div><div class="display-num sage">0.243</div><div class="stat-sub">↓ from 0.464 early Feb</div></div>
     <div class="mblock"><div class="stat-label">Val Recall</div><div class="display-num sage">85.7%</div><div class="stat-sub">Strongest recall yet</div></div>
@@ -1650,8 +1659,10 @@ canvas { display: block; width: 100%; }
 
 </div>
 
+</div>
+
 <!-- ═════════════════════ TAB: ENTRY PATTERNS ═════════════════════ -->
-<div class="tab-pane" id="tab-acorn-entry">
+<div class="tab-pane" id="tab-acorn-entry" style="display:none">
 
   <div class="tab-intro">
     <div class="tab-intro-title">Entry Patterns — When Is the Best Time to Trade?</div>
@@ -1809,7 +1820,7 @@ canvas { display: block; width: 100%; }
 </div>
 
 <!-- ═════════════════════ TAB: TRADES ═════════════════════ -->
-<div class="tab-pane" id="tab-trades">
+<div class="tab-pane" id="tab-trades" style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Trade Log — Every Signal the System Has Acted On</div>
     <div class="tab-intro-body">
@@ -1818,6 +1829,7 @@ canvas { display: block; width: 100%; }
       <strong>Kelly $</strong> is the mathematically optimal position size based on the model's win probability — it sizes larger when confidence is higher, smaller when it's marginal. It is now also adjusted by <strong>price tier</strong>: coins in the $10–$100 range get a 1.25× boost (best historical performance), coins in the $0.10–$1 range get a 0.5× penalty (worst historical performance). <strong>Return %</strong> is the actual price move from entry to the next day's price. <strong>P&amp;L</strong> is that return applied to the Kelly position size.
     </div>
   </div>
+  <div class="mblock-4">
     <div class="mblock"><div class="stat-label">Total Deployed</div><div class="display-num">$73,000</div><div class="stat-sub">73 trades · all closed</div></div>
     <div class="mblock"><div class="stat-label">Net P&amp;L</div><div class="display-num blood">−$4,509.61</div><div class="stat-sub">−0.14% return</div></div>
     <div class="mblock"><div class="stat-label">Win Rate</div><div class="display-num amber">29.6%</div><div class="stat-sub">2W · 2L · 2 flat</div></div>
@@ -1839,6 +1851,7 @@ canvas { display: block; width: 100%; }
         <div class="scroll-y" style="max-height:215px" id="cons-list"></div>
       </div>
     </div>
+  </div>
 </div><!-- /wrap -->
 
 
@@ -1860,19 +1873,28 @@ canvas { display: block; width: 100%; }
 <script>
 // ── TAB SWITCHING ──
 function switchTab(id){
-  // Deactivate all tabs and panes
+  // Hide all panes with inline style
+  document.querySelectorAll('.tab-pane').forEach(p => {
+    p.style.display = 'none';
+    p.classList.remove('active');
+  });
+  // Deactivate all nav tabs
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-  // Activate the clicked one
+  // Show the target pane
   const pane = document.getElementById('tab-' + id);
-  if(pane) pane.classList.add('active');
-  // Find matching nav tab by its onclick attribute
+  if(pane){ pane.style.display = 'block'; pane.classList.add('active'); }
+  // Activate matching nav tab
   document.querySelectorAll('.nav-tab').forEach(t => {
     if(t.getAttribute('onclick') === "switchTab('" + id + "')") t.classList.add('active');
   });
   window.scrollTo(0, 0);
+  // Clear Acorn canvas cache so they redraw at correct width
+  if(id.startsWith('acorn')){
+    Object.keys(acornDrawn).forEach(k => delete acornDrawn[k]);
+    setTimeout(drawAcorn, 300);   // first attempt
+    setTimeout(drawAcorn, 800);   // fallback if layout not settled yet
+  }
   setTimeout(drawAll, 60);
-  setTimeout(drawAcorn, 120);
 }
 
 // ── ACORN DATA ──
@@ -1929,7 +1951,7 @@ const dowShortCombos=[];
 function renderRegimeTables(){
   // By label
   const labelTbl = document.getElementById('regime-label-tbl');
-  if(labelTbl && !labelTbl.children.length){
+  if(labelTbl){
     const labelOrder = {UP:0, DOWN:1, NEUTRAL:2};
     [...regimeByLabel].sort((a,b)=>(labelOrder[a.label]??9)-(labelOrder[b.label]??9)).forEach(r=>{
       const lc=r.label==='UP'?'up':r.label==='DOWN'?'no':'neu';
@@ -1946,7 +1968,7 @@ function renderRegimeTables(){
   }
   // By prob bucket
   const probTbl = document.getElementById('regime-prob-tbl');
-  if(probTbl && !probTbl.children.length){
+  if(probTbl){
     regimeByProb.forEach(r=>{
       const best=r.bucket==='55-60%';
       const worst=r.bucket==='>70%';
@@ -1964,7 +1986,7 @@ function renderHorizonTables(){
   const hzMap = {1:'1m',5:'5m',15:'15m',30:'30m',60:'1h',240:'4h',1440:'24h'};
   // Overall accuracy
   const accTbl = document.getElementById('horizon-acc-tbl');
-  if(accTbl && !accTbl.children.length){
+  if(accTbl){
     horizonAcc.forEach(r=>{
       const best=r.hm===1;
       const lbl=hzMap[r.hm]||r.hm+'m';
@@ -1978,7 +2000,7 @@ function renderHorizonTables(){
   }
   // By direction
   const dirTbl = document.getElementById('horizon-dir-tbl');
-  if(dirTbl && !dirTbl.children.length){
+  if(dirTbl){
     horizonDir.forEach(r=>{
       const lbl=hzMap[r.hm]||r.hm+'m';
       const reliable=r.acc>=65; const inverse=r.acc<35;
@@ -2008,7 +2030,7 @@ function renderHorizonTables(){
   });
   // Consensus 24h table
   const cons24Tbl = document.getElementById('cons24-tbl');
-  if(cons24Tbl && !cons24Tbl.children.length){
+  if(cons24Tbl){
     const labelOrder = {UP:0, DOWN:1, NEUTRAL:2};
     [...cons24Data].sort((a,b)=>(labelOrder[a.label]??9)-(labelOrder[b.label]??9)).forEach(r=>{
       cons24Tbl.innerHTML+=`<tr>
@@ -2022,7 +2044,7 @@ function renderHorizonTables(){
 
 function renderPriceTierTable(){
   const tbl = document.getElementById('price-tier-tbl');
-  if(tbl && !tbl.children.length){
+  if(tbl){
     priceTierData.forEach(r=>{
       const best=r.tier==='$10–$100'; const worst=r.tier==='$0.10–$1';
       tbl.innerHTML+=`<tr>
@@ -2044,7 +2066,7 @@ function renderQuartileTables(){
   ];
   pairs.forEach(([id, data, star])=>{
     const tbl = document.getElementById(id);
-    if(tbl && !tbl.children.length){
+    if(tbl){
       data.forEach(r=>{
         const best=r.q===star;
         tbl.innerHTML+=`<tr>
@@ -2061,7 +2083,7 @@ function renderQuartileTables(){
 
 function renderDowCombos(){
   const ld = document.getElementById('dow-long-tbl');
-  if(ld && !ld.children.length){
+  if(ld){
     dowLongCombos.forEach(r=>{
       const h=String(r.hour).padStart(2,'0')+':00';
       ld.innerHTML+=`<div class="combo-row">
@@ -2074,7 +2096,7 @@ function renderDowCombos(){
     });
   }
   const sd = document.getElementById('dow-short-tbl');
-  if(sd && !sd.children.length){
+  if(sd){
     [...dowShortCombos].reverse().forEach(r=>{
       const h=String(r.hour).padStart(2,'0')+':00';
       sd.innerHTML+=`<div class="combo-row">
@@ -2105,8 +2127,8 @@ function drawAcorn(){
   function mkCtxA(id,h){
     const el=document.getElementById(id);if(!el)return[null,0,0];
     const parent=el.closest('.panel,.acorn-chart-wrap')||el.parentElement;
-    const W=parent.offsetWidth-28;
-    if(W<50)return[null,0,0]; // parent still hidden, skip
+    const W=(parent.offsetWidth||parent.scrollWidth||parent.getBoundingClientRect().width)-28;
+    if(W<20)return[null,0,0]; // parent still hidden
     if(acornDrawn[id]&&el._lastW===W)return[null,0,0]; // already drawn at this width
     acornDrawn[id]=true;el._lastW=W;
     const dpr=window.devicePixelRatio||1;
@@ -2265,10 +2287,17 @@ function drawAcorn(){
     }
   }
 
-  // ── Heatmap cells (static — render once) ──
+  // ── Clear DOM-rendered containers so they redraw fresh ──
+  ['acorn-hmap','acorn-feat-bars','acorn-rank-tbl','acorn-top-coins','acorn-bot-coins',
+   'acorn-interval-rows','dow-long-tbl','dow-short-tbl',
+   'regime-label-tbl','regime-prob-tbl','horizon-acc-tbl','horizon-dir-tbl',
+   'cons24-tbl','price-tier-tbl','tms-quartile-tbl','va-quartile-tbl','rs-quartile-tbl'
+  ].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='';});
+
+  // ── Heatmap cells ──
   {
     const div=document.getElementById('acorn-hmap');
-    if(div&&!div.children.length){
+    if(div){
       const mx=Math.max(...acornH60.map(Math.abs));
       acornH60.forEach((v,i)=>{
         const t=v/mx,a=Math.abs(t);
@@ -2284,7 +2313,7 @@ function drawAcorn(){
 
   // ── Feature bars ──
   {
-    const div=document.getElementById('acorn-feat-bars');if(div&&!div.children.length){
+    const div=document.getElementById('acorn-feat-bars');if(div){
       const mx=acornFeats[0].v;
       acornFeats.forEach(f=>{
         div.innerHTML+=`<div class="feat-bar-row">
@@ -2298,7 +2327,7 @@ function drawAcorn(){
 
   // ── Rank table ──
   {
-    const tbl=document.getElementById('acorn-rank-tbl');if(tbl&&!tbl.children.length){
+    const tbl=document.getElementById('acorn-rank-tbl');if(tbl){
       acornRankData.forEach(r=>{
         const pc=r.pnl>0?'pos':'neg',ac=r.avg>0?'pos':'neg';
         tbl.innerHTML+=`<tr>
@@ -2313,17 +2342,17 @@ function drawAcorn(){
 
   // ── Top/bot coin tables ──
   {
-    const top=document.getElementById('acorn-top-coins');if(top&&!top.children.length){
+    const top=document.getElementById('acorn-top-coins');if(top){
       acornTopCoins.forEach(c=>{top.innerHTML+=`<tr><td><span class="sym" style="font-size:12px">${c.s}</span></td><td class="r muted">${c.n}</td><td class="r pos">${c.wr.toFixed(0)}%</td><td class="r pos">+$${c.pnl.toFixed(0)}</td></tr>`;});
     }
-    const bot=document.getElementById('acorn-bot-coins');if(bot&&!bot.children.length){
+    const bot=document.getElementById('acorn-bot-coins');if(bot){
       acornBotCoins.forEach(c=>{bot.innerHTML+=`<tr><td><span class="sym" style="font-size:12px">${c.s}</span></td><td class="r muted">${c.n}</td><td class="r neg">${c.wr.toFixed(0)}%</td><td class="r neg">-$${Math.abs(c.pnl).toFixed(0)}</td></tr>`;});
     }
   }
 
   // ── Interval rows ──
   {
-    const div=document.getElementById('acorn-interval-rows');if(div&&!div.children.length){
+    const div=document.getElementById('acorn-interval-rows');if(div){
       acornIntervals.forEach(r=>{
         const pc=r.pnl>0?'pos':'neg';
         div.innerHTML+=`<div class="int-row">
@@ -2861,16 +2890,19 @@ function toggleDisclaimer(label){
   const btn=document.getElementById('disclaimerBtn');
   setTimeout(()=>{ btn.classList.toggle('enabled', cb.checked); }, 0);
 }
+document.addEventListener('DOMContentLoaded', function(){
+  updateTimingBar();
+  setTimeout(function(){ drawAll(); }, 200);
+});
+
 window.addEventListener('load',function(){
   const modal=document.getElementById('disclaimerModal');
   if(modal) modal.addEventListener('click',function(e){
     if(e.target===this) closeDisclaimer();
   });
+  setTimeout(function(){ drawAll(); }, 200);
+  setInterval(updateTimingBar, 30000);
 });
-
-updateTimingBar();
-setInterval(updateTimingBar, 30000);
-
 
 window.addEventListener('resize',()=>{drawAll();Object.keys(acornDrawn).forEach(k=>delete acornDrawn[k]);drawAcorn();});
 </script>
