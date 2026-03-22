@@ -911,7 +911,7 @@ canvas { display: block; width: 100%; }
     <span class="logo-sub">Crypto Engine</span>
   </div>
   <div class="masthead-right">
-    <span style="color:var(--ghost)">2026-03-22 · 15:49 UTC · 696 labeled</span><br>
+    <span style="color:var(--ghost)">2026-03-22 · 15:55 UTC · 696 labeled</span><br>
     <span class="live-indicator"><span class="pulse"></span>Pipeline active</span>
   </div>
 </div>
@@ -1888,13 +1888,21 @@ function switchTab(id){
     if(t.getAttribute('onclick') === "switchTab('" + id + "')") t.classList.add('active');
   });
   window.scrollTo(0, 0);
-  // Clear Acorn canvas cache so they redraw at correct width
-  if(id.startsWith('acorn')){
-    Object.keys(acornDrawn).forEach(k => delete acornDrawn[k]);
-    setTimeout(drawAcorn, 300);   // first attempt
-    setTimeout(drawAcorn, 800);   // fallback if layout not settled yet
-  }
-  setTimeout(drawAll, 60);
+  // Clear all canvas caches and DOM containers
+  Object.keys(acornDrawn).forEach(k => delete acornDrawn[k]);
+  ['acorn-hmap','acorn-feat-bars','acorn-rank-tbl','acorn-top-coins','acorn-bot-coins',
+   'acorn-interval-rows','dow-long-tbl','dow-short-tbl',
+   'regime-label-tbl','regime-prob-tbl','horizon-acc-tbl','horizon-dir-tbl',
+   'cons24-tbl','price-tier-tbl','tms-quartile-tbl','va-quartile-tbl','rs-quartile-tbl'
+  ].forEach(eid=>{const el=document.getElementById(eid);if(el)el.innerHTML='';});
+  // Use rAF to draw after browser has painted new layout
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      drawAll();
+      drawAcorn();
+      setTimeout(drawAcorn, 500);
+    });
+  });
 }
 
 // ── ACORN DATA ──
@@ -2113,10 +2121,7 @@ function renderDowCombos(){
 const acornDrawn={};
 
 function drawAcorn(){
-  const activePanes=['tab-acorn-pnl','tab-acorn-model','tab-acorn-entry'];
-  const anyActive=activePanes.some(id=>{const el=document.getElementById(id);return el&&el.classList.contains('active');});
-  if(!anyActive)return;
-
+  // Run whenever called - DOM renders are idempotent (containers cleared first)
   const amber=getComputedStyle(document.documentElement).getPropertyValue('--amber').trim()||'#f0a020';
   const sage=getComputedStyle(document.documentElement).getPropertyValue('--sage').trim()||'#44cc70';
   const blood=getComputedStyle(document.documentElement).getPropertyValue('--blood').trim()||'#e8442a';
@@ -2126,10 +2131,14 @@ function drawAcorn(){
 
   function mkCtxA(id,h){
     const el=document.getElementById(id);if(!el)return[null,0,0];
-    const parent=el.closest('.panel,.acorn-chart-wrap')||el.parentElement;
-    const W=(parent.offsetWidth||parent.scrollWidth||parent.getBoundingClientRect().width)-28;
-    if(W<20)return[null,0,0]; // parent still hidden
-    if(acornDrawn[id]&&el._lastW===W)return[null,0,0]; // already drawn at this width
+    // Walk up to find a parent with real width
+    let parent=el.parentElement;
+    while(parent && parent.offsetWidth < 20 && parent !== document.body){
+      parent = parent.parentElement;
+    }
+    const W=(parent?parent.offsetWidth:0)-28;
+    if(W<20)return[null,0,0];
+    if(acornDrawn[id]&&el._lastW===W)return[null,0,0];
     acornDrawn[id]=true;el._lastW=W;
     const dpr=window.devicePixelRatio||1;
     el.width=W*dpr;el.height=h*dpr;el.style.width=W+'px';el.style.height=h+'px';
@@ -2286,13 +2295,6 @@ function drawAcorn(){
       [0,4,8,12,16,20,23].forEach(h=>ctx.fillText(String(h).padStart(2,'0'),pad.l+h*gap+gap/2,pad.t+(H-pad.t-pad.b)+20));
     }
   }
-
-  // ── Clear DOM-rendered containers so they redraw fresh ──
-  ['acorn-hmap','acorn-feat-bars','acorn-rank-tbl','acorn-top-coins','acorn-bot-coins',
-   'acorn-interval-rows','dow-long-tbl','dow-short-tbl',
-   'regime-label-tbl','regime-prob-tbl','horizon-acc-tbl','horizon-dir-tbl',
-   'cons24-tbl','price-tier-tbl','tms-quartile-tbl','va-quartile-tbl','rs-quartile-tbl'
-  ].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='';});
 
   // ── Heatmap cells ──
   {
