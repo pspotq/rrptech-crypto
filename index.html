@@ -911,7 +911,7 @@ canvas { display: block; width: 100%; }
     <span class="logo-sub">Crypto Engine</span>
   </div>
   <div class="masthead-right">
-    <span style="color:var(--ghost)">2026-03-23 · 13:28 UTC · 707 labeled</span><br>
+    <span style="color:var(--ghost)">2026-03-23 · 18:55 UTC · 707 labeled</span><br>
     <span class="live-indicator"><span class="pulse"></span>Pipeline active</span>
   </div>
 </div>
@@ -1874,18 +1874,27 @@ canvas { display: block; width: 100%; }
 <script>
 // ── TAB SWITCHING ──
 function switchTab(id){
-  // Hide all panes and deactivate all tabs
-  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  // Hide all panes using inline style (overrides the display:none inline style)
+  document.querySelectorAll('.tab-pane').forEach(p => {
+    p.style.display = 'none';
+    p.classList.remove('active');
+  });
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   // Show target pane
   const pane = document.getElementById('tab-' + id);
-  if(pane) pane.classList.add('active');
+  if(pane){ pane.style.display = 'block'; pane.classList.add('active'); }
   // Activate matching nav tab
   document.querySelectorAll('.nav-tab').forEach(t => {
     if(t.getAttribute('onclick') === "switchTab('" + id + "')") t.classList.add('active');
   });
   window.scrollTo(0, 0);
   Object.keys(acornDrawn).forEach(k => delete acornDrawn[k]);
+  // Clear DOM-rendered containers
+  ['acorn-hmap','acorn-feat-bars','acorn-rank-tbl','acorn-top-coins','acorn-bot-coins',
+   'acorn-interval-rows','dow-long-tbl','dow-short-tbl','tl-body','cons-list',
+   'regime-label-tbl','regime-prob-tbl','horizon-acc-tbl','horizon-dir-tbl',
+   'cons24-tbl','price-tier-tbl','tms-quartile-tbl','va-quartile-tbl','rs-quartile-tbl'
+  ].forEach(eid=>{const el=document.getElementById(eid);if(el)el.innerHTML='';});
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
       drawAll();
@@ -2389,7 +2398,13 @@ const dailyDir=[{"d": "03/08", "u": 11, "dn": 4}, {"d": "03/09", "u": 15, "dn": 
 
 // ── HELPERS ──
 const ink='#f0e4c8', amber='#f0a020', blood='#e8442a', sage='#44cc70', pale='#2a2010', warm='#151008', ghost='#6a5e48', dim='#9a8e78', dimer='#7a6e58';
-function fp(p){if(p>=1000)return'$'+p.toLocaleString('en-US',{maximumFractionDigits:2});if(p>=1)return'$'+p.toFixed(4);return'$'+p.toFixed(6);}
+function fp(p){
+  if(p==null||p===undefined||isNaN(p))return'—';
+  p=parseFloat(p);
+  if(p>=1000)return'$'+p.toLocaleString('en-US',{maximumFractionDigits:2});
+  if(p>=1)return'$'+p.toFixed(4);
+  return'$'+p.toFixed(6);
+}
 function pct(r){const s=(r*100).toFixed(2);const c=r>=0?'pos':'neg';return`<span class="${c}">${r>=0?'+':''}${s}%</span>`;}
 function sbar(v){const w=Math.min(66,Math.abs(v)/1*66);return`<div class="sbar-wrap"><div class="sbar${v<0?' neg':''}" style="width:${w}px"></div><span class="sv">${v.toFixed(3)}</span></div>`;}
 function probTag(p){const c=p>=.52?'sage':p<=.46?'blood':'';const cls=p>=.52?'hi':p<=.46?'lo':'mid';return`<span class="prob-tag ${cls}" style="${c?'color:var(--'+c+')':('' )}">${(p*100).toFixed(1)}%</span>`;}
@@ -2496,27 +2511,36 @@ latestCoefs.forEach(c=>{
 
 // Trade log + consensus — rendered via function so they fire on drawAll
 function renderTradeLog(){
-  const tlb=document.getElementById('tl-body');
-  if(tlb&&!tlb.children.length){
-    if(!tradeLog||!tradeLog.length){
-      tlb.innerHTML='<div style="padding:12px 13px;font-size:10px;color:var(--dim);font-style:italic">No closed trades yet.</div>';
-    } else {
-      tradeLog.forEach(t=>{
-        const pc=t.pnl>0?'win':t.pnl<0?'loss':'flat';
-        const rs=t.ret==null?'—':`${(t.ret*100).toFixed(2)}%`;
-        const ps=t.pnl==null?'—':`${t.pnl>=0?'+':''}$${Math.abs(t.pnl).toFixed(2)}`;
-        tlb.innerHTML+=`<div class="tl-row"><div style="color:${dimer};font-size:9px">${t.d}</div><div style="font-family:var(--display);font-size:16px;letter-spacing:.05em">${t.c}</div><div style="font-size:10px;font-variant-numeric:tabular-nums">${fp(t.e)}</div><div style="font-family:var(--cond);font-size:8px;color:${dimer}">${t.r}</div><div style="font-family:var(--cond);font-size:8px">${t.t?t.t.replace(/_/g,' '):'—'}</div><div><span class="tag skip" style="font-size:7px">CLOSED</span></div><div class="tl-pnl ${pc}">${rs}</div><div class="tl-pnl ${pc}">${ps}</div></div>`;
+  try {
+    const tlb=document.getElementById('tl-body');
+    if(tlb&&!tlb.children.length){
+      if(!tradeLog||!tradeLog.length){
+        tlb.innerHTML='<div style="padding:12px 13px;font-size:10px;color:var(--dim);font-style:italic">No closed trades yet.</div>';
+      } else {
+        tradeLog.forEach(t=>{
+          try {
+            const pnl = t.pnl!=null ? parseFloat(t.pnl) : null;
+            const ret = t.ret!=null ? parseFloat(t.ret) : null;
+            const pc=pnl>0?'win':pnl<0?'loss':'flat';
+            const rs=ret==null?'—':`${(ret*100).toFixed(2)}%`;
+            const ps=pnl==null?'—':`${pnl>=0?'+':''}$${Math.abs(pnl).toFixed(2)}`;
+            const tier=t.t?String(t.t).replace(/_/g,' '):'—';
+            tlb.innerHTML+=`<div class="tl-row"><div style="color:${dimer};font-size:9px">${t.d||'—'}</div><div style="font-family:var(--display);font-size:16px;letter-spacing:.05em">${t.c||'—'}</div><div style="font-size:10px;font-variant-numeric:tabular-nums">${fp(t.e)}</div><div style="font-family:var(--cond);font-size:8px;color:${dimer}">${t.r||'—'}</div><div style="font-family:var(--cond);font-size:8px">${tier}</div><div><span class="tag skip" style="font-size:7px">CLOSED</span></div><div class="tl-pnl ${pc}">${rs}</div><div class="tl-pnl ${pc}">${ps}</div></div>`;
+          } catch(rowErr){ console.warn('tl-row error:', rowErr, t); }
+        });
+      }
+    }
+  } catch(e){ console.error('renderTradeLog error:', e); }
+  try {
+    const conel=document.getElementById('cons-list');
+    if(conel&&!conel.children.length){
+      [...consHist].reverse().forEach(c=>{
+        const lc=c.l==='UP'?'up':c.l==='DOWN'?'no':'neu';
+        const agCol=c.a>=85?sage:c.a>=70?amber:blood;
+        conel.innerHTML+=`<div class="cons-row"><span style="font-family:var(--mono);font-size:10px;color:${dimer};min-width:54px">${c.ts}</span><span style="font-variant-numeric:tabular-nums;min-width:68px;text-align:right">$${c.p.toLocaleString()}</span><span class="tag ${lc}" style="font-size:8px;margin-left:4px">${c.l}</span><span style="font-family:var(--mono);font-size:10px;min-width:40px;text-align:right;font-variant-numeric:tabular-nums">${(c.prob*100).toFixed(1)}%</span><span style="font-family:var(--cond);font-size:9px;min-width:46px;text-align:right;color:${agCol}">${c.a.toFixed(0)}% ✓</span></div>`;
       });
     }
-  }
-  const conel=document.getElementById('cons-list');
-  if(conel&&!conel.children.length){
-    [...consHist].reverse().forEach(c=>{
-      const lc=c.l==='UP'?'up':c.l==='DOWN'?'no':'neu';
-      const agCol=c.a>=85?sage:c.a>=70?amber:blood;
-      conel.innerHTML+=`<div class="cons-row"><span style="font-family:var(--mono);font-size:10px;color:${dimer};min-width:54px">${c.ts}</span><span style="font-variant-numeric:tabular-nums;min-width:68px;text-align:right">$${c.p.toLocaleString()}</span><span class="tag ${lc}" style="font-size:8px;margin-left:4px">${c.l}</span><span style="font-family:var(--mono);font-size:10px;min-width:40px;text-align:right;font-variant-numeric:tabular-nums">${(c.prob*100).toFixed(1)}%</span><span style="font-family:var(--cond);font-size:9px;min-width:46px;text-align:right;color:${agCol}">${c.a.toFixed(0)}% ✓</span></div>`;
-    });
-  }
+  } catch(e){ console.error('renderConsHist error:', e); }
 }
 
 // ── CANVAS CHARTS ──
