@@ -226,8 +226,8 @@ body::after {
 .nav-tab:hover { color: var(--ink); background: var(--pale); }
 .nav-tab.active { color: var(--amber); border-bottom-color: var(--amber); background: var(--paper); font-weight: 600; }
 
-.tab-pane { display: none; }
-.tab-pane.active { display: block; animation: reveal .25s ease; }
+.tab-pane { display: none !important; }
+.tab-pane.active { display: block !important; animation: reveal .25s ease; }
 @keyframes reveal { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
 
 /* ═══════════════════════════ GRID SYSTEM ═══════════════════════════ */
@@ -911,7 +911,7 @@ canvas { display: block; width: 100%; }
     <span class="logo-sub">Crypto Engine</span>
   </div>
   <div class="masthead-right">
-    <span style="color:var(--ghost)">2026-03-23 · 11:34 UTC · 707 labeled</span><br>
+    <span style="color:var(--ghost)">2026-03-23 · 13:23 UTC · 707 labeled</span><br>
     <span class="live-indicator"><span class="pulse"></span>Pipeline active</span>
   </div>
 </div>
@@ -990,7 +990,7 @@ canvas { display: block; width: 100%; }
 <!-- ═════════════════════ TAB: OVERVIEW ═════════════════════ -->
 
 
-<div class="tab-pane active" id="tab-overview">
+<div class="tab-pane active" id="tab-overview" style="display:block">
 
   <!-- INTRO BANNER -->
   <div class="tab-intro">
@@ -1168,7 +1168,7 @@ canvas { display: block; width: 100%; }
 
 
 <!-- ═════════════════════ TAB: PATTERNS ═════════════════════ -->
-<div class="tab-pane" id="tab-patterns" style="display:none">
+<div class="tab-pane" id="tab-patterns"  style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Pattern Recognition — What Are We Looking At?</div>
     <div class="tab-intro-body">
@@ -1209,7 +1209,7 @@ canvas { display: block; width: 100%; }
 </div>
 
 <!-- ═════════════════════ TAB: SIGNALS ═════════════════════ -->
-<div class="tab-pane" id="tab-signals" style="display:none">
+<div class="tab-pane" id="tab-signals"  style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Signals &amp; Horizons — What Is a Signal?</div>
     <div class="tab-intro-body">
@@ -1300,7 +1300,7 @@ canvas { display: block; width: 100%; }
 </div>
 
 <!-- ═════════════════════ TAB: UP vs DOWN ═════════════════════ -->
-<div class="tab-pane" id="tab-updown" style="display:none">
+<div class="tab-pane" id="tab-updown"  style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">UP vs DOWN — How Does the Model Tell Them Apart?</div>
     <div class="tab-intro-body">
@@ -1352,7 +1352,7 @@ canvas { display: block; width: 100%; }
 </div>
 
 <!-- ═════════════════════ TAB: MODEL EXPLAINER ═════════════════════ -->
-<div class="tab-pane" id="tab-model" style="display:none">
+<div class="tab-pane" id="tab-model"  style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Model Explainer — How Does the Engine Work?</div>
     <div class="tab-intro-body">
@@ -1423,7 +1423,7 @@ canvas { display: block; width: 100%; }
 </div>
 
 <!-- ═════════════════════ TAB: ACORN P&L ═════════════════════ -->
-<div class="tab-pane" id="tab-acorn-pnl" style="display:none">
+<div class="tab-pane" id="tab-acorn-pnl"  style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Acorn P&amp;L — How Has the Strategy Actually Performed?</div>
     <div class="tab-intro-body">
@@ -1579,7 +1579,7 @@ canvas { display: block; width: 100%; }
 </div>
 
 <!-- ═════════════════════ TAB: ACORN MODEL ═════════════════════ -->
-<div class="tab-pane" id="tab-acorn-model" style="display:none">
+<div class="tab-pane" id="tab-acorn-model"  style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Acorn Model Health — Is the AI Getting Better?</div>
     <div class="tab-intro-body">
@@ -1732,6 +1732,7 @@ canvas { display: block; width: 100%; }
   <div style="border-top:1px solid var(--pale);padding-top:16px;margin-bottom:12px">
     <span style="font-family:var(--cond);font-size:9px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--ghost)">Entry Timing Strategies</span>
   </div>
+  <div class="mblock-4">
     <div class="mblock"><div class="stat-label">Best Long Strategy</div><div class="display-num sage">+$135</div><div class="stat-sub">Tue 15:00 UTC · 60m hold</div></div>
     <div class="mblock"><div class="stat-label">Best Short Strategy</div><div class="display-num sage">+$95</div><div class="stat-sub">Thu 14:00 UTC · 60m hold</div></div>
     <div class="mblock"><div class="stat-label">Daily Cadence</div><div class="display-num sage">+$96</div><div class="stat-sub">21:00 UTC · 60m · 132 trades</div></div>
@@ -1820,7 +1821,7 @@ canvas { display: block; width: 100%; }
 </div>
 
 <!-- ═════════════════════ TAB: TRADES ═════════════════════ -->
-<div class="tab-pane" id="tab-trades" style="display:none">
+<div class="tab-pane" id="tab-trades"  style="display:none">
   <div class="tab-intro">
     <div class="tab-intro-title">Trade Log — Every Signal the System Has Acted On</div>
     <div class="tab-intro-body">
@@ -1873,29 +1874,18 @@ canvas { display: block; width: 100%; }
 <script>
 // ── TAB SWITCHING ──
 function switchTab(id){
-  // Hide all panes with inline style
-  document.querySelectorAll('.tab-pane').forEach(p => {
-    p.style.display = 'none';
-    p.classList.remove('active');
-  });
-  // Deactivate all nav tabs
+  // Hide all panes and deactivate all tabs
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  // Show the target pane
+  // Show target pane
   const pane = document.getElementById('tab-' + id);
-  if(pane){ pane.style.display = 'block'; pane.classList.add('active'); }
+  if(pane) pane.classList.add('active');
   // Activate matching nav tab
   document.querySelectorAll('.nav-tab').forEach(t => {
     if(t.getAttribute('onclick') === "switchTab('" + id + "')") t.classList.add('active');
   });
   window.scrollTo(0, 0);
-  // Clear all canvas caches and DOM containers
   Object.keys(acornDrawn).forEach(k => delete acornDrawn[k]);
-  ['acorn-hmap','acorn-feat-bars','acorn-rank-tbl','acorn-top-coins','acorn-bot-coins',
-   'acorn-interval-rows','dow-long-tbl','dow-short-tbl',
-   'regime-label-tbl','regime-prob-tbl','horizon-acc-tbl','horizon-dir-tbl',
-   'cons24-tbl','price-tier-tbl','tms-quartile-tbl','va-quartile-tbl','rs-quartile-tbl'
-  ].forEach(eid=>{const el=document.getElementById(eid);if(el)el.innerHTML='';});
-  // Use rAF to draw after browser has painted new layout
   requestAnimationFrame(function(){
     requestAnimationFrame(function(){
       drawAll();
@@ -1928,18 +1918,6 @@ const acornIntervals=[
   {ev:'15m',h:'45m',n:12695,wr:50.3,avg:-0.0064,sh:-0.0129,pnl:-81.43,ok:false},
   {ev:'4h',h:'4h',n:793,wr:51.1,avg:-0.0338,sh:-0.0300,pnl:-26.81,ok:false},
   {ev:'24h',h:'24h',n:132,wr:49.2,avg:-0.089,sh:-0.041,pnl:-117.0,ok:false},
-];
-const acornLongCombos=[
-  {d:'Tue',h:'15:00',avg:'+0.527%',wr:'74.7%'},{d:'Tue',h:'14:00',avg:'+0.289%',wr:'57.7%'},
-  {d:'Wed',h:'00:00',avg:'+0.202%',wr:'60.6%'},{d:'Fri',h:'12:00',avg:'+0.186%',wr:'62.5%'},
-  {d:'Sun',h:'01:00',avg:'+0.168%',wr:'56.1%'},{d:'Wed',h:'12:00',avg:'+0.148%',wr:'62.4%'},
-  {d:'Fri',h:'00:00',avg:'+0.147%',wr:'52.6%'},{d:'Wed',h:'13:00',avg:'+0.130%',wr:'56.1%'},
-  {d:'Mon',h:'20:00',avg:'+0.125%',wr:'59.6%'},{d:'Mon',h:'21:00',avg:'+0.119%',wr:'56.0%'},
-];
-const acornShortCombos=[
-  {d:'Thu',h:'14:00',avg:'−0.491%',wr:'36.2%'},{d:'Thu',h:'15:00',avg:'−0.308%',wr:'43.7%'},
-  {d:'Thu',h:'16:00',avg:'−0.267%',wr:'47.4%'},{d:'Tue',h:'02:00',avg:'−0.240%',wr:'30.4%'},
-  {d:'Sat',h:'06:00',avg:'−0.237%',wr:'39.7%'},
 ];
 
 // ── Live-injected data variables (replaced by generator on every run) ──
@@ -2121,9 +2099,19 @@ function renderDowCombos(){
 const acornDrawn={};
 
 function drawAcorn(){
-  // Run whenever called - DOM renders are idempotent (containers cleared first)
+  // Only run when an Acorn tab is actually visible
+  const acornTabs=['tab-acorn-pnl','tab-acorn-model','tab-acorn-entry'];
+  const activeTab=acornTabs.find(id=>{const el=document.getElementById(id);return el&&el.classList.contains('active');});
+  if(!activeTab)return;
   const amber=getComputedStyle(document.documentElement).getPropertyValue('--amber').trim()||'#f0a020';
   const sage=getComputedStyle(document.documentElement).getPropertyValue('--sage').trim()||'#44cc70';
+
+  // Clear DOM containers before redrawing
+  ['acorn-hmap','acorn-feat-bars','acorn-rank-tbl','acorn-top-coins','acorn-bot-coins',
+   'acorn-interval-rows','dow-long-tbl','dow-short-tbl',
+   'regime-label-tbl','regime-prob-tbl','horizon-acc-tbl','horizon-dir-tbl',
+   'cons24-tbl','price-tier-tbl','tms-quartile-tbl','va-quartile-tbl','rs-quartile-tbl'
+  ].forEach(eid=>{const el=document.getElementById(eid);if(el)el.innerHTML='';});
   const blood=getComputedStyle(document.documentElement).getPropertyValue('--blood').trim()||'#e8442a';
   const ghost=getComputedStyle(document.documentElement).getPropertyValue('--ghost').trim()||'#6a5e48';
   const pale=getComputedStyle(document.documentElement).getPropertyValue('--pale').trim()||'#2a2010';
@@ -2505,22 +2493,31 @@ latestCoefs.forEach(c=>{
   cel.innerHTML+=`<div class="coef-row" style="align-items:flex-start;padding:10px 13px"><div style="min-width:168px"><div style="font-family:var(--mono);font-size:10px;color:${ink};font-weight:700;margin-bottom:5px">${c.f}</div><div class="coef-track"><div class="coef-fill" style="width:${w}%;background:${col};opacity:.7"></div></div><div style="font-family:var(--mono);font-size:9px;color:${col};margin-top:3px;font-variant-numeric:tabular-nums">${c.c>=0?'+':''}${c.c.toFixed(4)}</div></div><div style="flex:1;margin-left:16px;font-family:var(--mono);font-size:10px;color:${dimer};line-height:1.8;font-style:italic">${c.d}</div></div>`;
 });
 
-// Trade log
-const tlb=document.getElementById('tl-body');
-tradeLog.forEach(t=>{
-  const pc=t.pnl>0?'win':t.pnl<0?'loss':'flat';
-  const rs=t.ret===0?'—':`${(t.ret*100).toFixed(2)}%`;
-  const ps=t.pnl===0?'—':`${t.pnl>=0?'+':''}$${Math.abs(t.pnl).toFixed(2)}`;
-  tlb.innerHTML+=`<div class="tl-row"><div style="color:${dimer};font-size:9px">${t.d}</div><div style="font-family:var(--display);font-size:16px;letter-spacing:.05em">${t.c}</div><div style="font-size:10px;font-variant-numeric:tabular-nums">${fp(t.e)}</div><div style="font-family:var(--cond);font-size:8px;color:${dimer}">${t.r}</div><div style="font-family:var(--cond);font-size:8px">${t.t.replace(/_/g,' ')}</div><div><span class="tag skip" style="font-size:7px">CLOSED</span></div><div class="tl-pnl ${pc}">${rs}</div><div class="tl-pnl ${pc}">${ps}</div></div>`;
-});
 
-// Consensus history
-const conel=document.getElementById('cons-list');
-[...consHist].reverse().forEach(c=>{
-  const lc=c.l==='UP'?'up':c.l==='DOWN'?'no':'neu';
-  const agCol=c.a>=85?sage:c.a>=70?amber:blood;
-  conel.innerHTML+=`<div class="cons-row"><span style="font-family:var(--mono);font-size:10px;color:${dimer};min-width:54px">${c.ts}</span><span style="font-variant-numeric:tabular-nums;min-width:68px;text-align:right">$${c.p.toLocaleString()}</span><span class="tag ${lc}" style="font-size:8px;margin-left:4px">${c.l}</span><span style="font-family:var(--mono);font-size:10px;min-width:40px;text-align:right;font-variant-numeric:tabular-nums">${(c.prob*100).toFixed(1)}%</span><span style="font-family:var(--cond);font-size:9px;min-width:46px;text-align:right;color:${agCol}">${c.a.toFixed(0)}% ✓</span></div>`;
-});
+// Trade log + consensus — rendered via function so they fire on drawAll
+function renderTradeLog(){
+  const tlb=document.getElementById('tl-body');
+  if(tlb&&!tlb.children.length){
+    if(!tradeLog||!tradeLog.length){
+      tlb.innerHTML='<div style="padding:12px 13px;font-size:10px;color:var(--dim);font-style:italic">No closed trades yet.</div>';
+    } else {
+      tradeLog.forEach(t=>{
+        const pc=t.pnl>0?'win':t.pnl<0?'loss':'flat';
+        const rs=t.ret==null?'—':`${(t.ret*100).toFixed(2)}%`;
+        const ps=t.pnl==null?'—':`${t.pnl>=0?'+':''}$${Math.abs(t.pnl).toFixed(2)}`;
+        tlb.innerHTML+=`<div class="tl-row"><div style="color:${dimer};font-size:9px">${t.d}</div><div style="font-family:var(--display);font-size:16px;letter-spacing:.05em">${t.c}</div><div style="font-size:10px;font-variant-numeric:tabular-nums">${fp(t.e)}</div><div style="font-family:var(--cond);font-size:8px;color:${dimer}">${t.r}</div><div style="font-family:var(--cond);font-size:8px">${t.t?t.t.replace(/_/g,' '):'—'}</div><div><span class="tag skip" style="font-size:7px">CLOSED</span></div><div class="tl-pnl ${pc}">${rs}</div><div class="tl-pnl ${pc}">${ps}</div></div>`;
+      });
+    }
+  }
+  const conel=document.getElementById('cons-list');
+  if(conel&&!conel.children.length){
+    [...consHist].reverse().forEach(c=>{
+      const lc=c.l==='UP'?'up':c.l==='DOWN'?'no':'neu';
+      const agCol=c.a>=85?sage:c.a>=70?amber:blood;
+      conel.innerHTML+=`<div class="cons-row"><span style="font-family:var(--mono);font-size:10px;color:${dimer};min-width:54px">${c.ts}</span><span style="font-variant-numeric:tabular-nums;min-width:68px;text-align:right">$${c.p.toLocaleString()}</span><span class="tag ${lc}" style="font-size:8px;margin-left:4px">${c.l}</span><span style="font-family:var(--mono);font-size:10px;min-width:40px;text-align:right;font-variant-numeric:tabular-nums">${(c.prob*100).toFixed(1)}%</span><span style="font-family:var(--cond);font-size:9px;min-width:46px;text-align:right;color:${agCol}">${c.a.toFixed(0)}% ✓</span></div>`;
+    });
+  }
+}
 
 // ── CANVAS CHARTS ──
 function mkCtx(id,H){
@@ -2826,7 +2823,7 @@ function renderRecentTrades(){
 }
 
 function drawAll(){
-  chartPerf();renderRecentTrades();chartBTC();chartAUC('aucChart',115);chartAUC('fullAucChart',145);
+  chartPerf();renderRecentTrades();renderTradeLog();chartBTC();chartAUC('aucChart',115);chartAUC('fullAucChart',145);
   chartPat();chartHrate();chartDelta();chartPnl();
 }
 
